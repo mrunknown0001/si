@@ -11,7 +11,7 @@
 	<div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View All Subjects</h3>
+                <h3 class="page-header">View All Grade Levels</h3>
             </div>
             
         </div>
@@ -20,16 +20,16 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>Subject Code</th>
-        					<th>Subject Title</th>
+        					<th>Grade Level Code</th>
+        					<th>Grade Level Title</th>
         					<th>Description</th>
         					<th>Actions</th>
         				</tr>
         			</thead>
         			<tbody>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 1</td>
+        					<td>7</td>
+        					<td>Grade 7</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -40,8 +40,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 2</td>
+        					<td>8</td>
+        					<td>Grade 8</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -52,8 +52,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 3</td>
+        					<td>9</td>
+        					<td>Grade 9</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -64,8 +64,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 4</td>
+        					<td>10</td>
+        					<td>Grade 10</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">

@@ -59,5 +59,7 @@
 
 	    {{-- Custom Theme JavaScript --}}
 	    <script src="{{ URL::asset('dist/js/sb-admin-2.js') }}"></script>
+
+
 	</body>
 </html>

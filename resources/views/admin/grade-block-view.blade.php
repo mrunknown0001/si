@@ -11,25 +11,26 @@
 	<div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View All Subjects</h3>
+                <h3 class="page-header">View All Grade Blocks</h3>
             </div>
             
         </div>
+
         <div class="row">
         	<div class="col-lg-12 col-md-12">
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>Subject Code</th>
-        					<th>Subject Title</th>
+        					<th>Grade Block Code</th>
+        					<th>Grade Block Title</th>
         					<th>Description</th>
         					<th>Actions</th>
         				</tr>
         			</thead>
         			<tbody>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 1</td>
+        					<td>123</td>
+        					<td>Block 1</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -40,8 +41,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 2</td>
+        					<td>123</td>
+        					<td>Block 2</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -52,8 +53,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 3</td>
+        					<td>123</td>
+        					<td>Block 3</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -64,8 +65,8 @@
         					</td>
         				</tr>
         				<tr>
-        					<td>12345</td>
-        					<td>Subject 4</td>
+        					<td>123</td>
+        					<td>Block 4</td>
         					<td>Description</td>
         					<td>
 								<div class="btn-group btn-group-xs">
@@ -81,6 +82,7 @@
         		<!-- Page Number -->
         	</div>
         </div>
+        
     </div>
 </div>
 @endsection

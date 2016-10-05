@@ -11,19 +11,16 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Students</h3>
+                <h3 class="page-header">School Year</h3>
             </div>
             
         </div>
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('students_import') }}">Import Students</a>
+				<a href="{{ route('school_year_add') }}">Add New School Year</a>
 			</div>
-            <div class="col-lg-3 col-md-6">
-                <a href="{{ route('students_filter') }}">Students Filter</a>
-            </div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('students_view') }}">View All Students</a>
+				<a href="{{ route('school_year_select_quarter') }}">Select Quarter</a>
 			</div>
 		</div>
        

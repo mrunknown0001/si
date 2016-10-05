@@ -12,208 +12,19 @@
     <!-- /.navbar-header -->
 
     <ul class="nav navbar-top-links navbar-right">
+
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-messages">
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Smith</strong>
-                            <span class="pull-right text-muted">
-                                <em>Yesterday</em>
-                            </span>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Smith</strong>
-                            <span class="pull-right text-muted">
-                                <em>Yesterday</em>
-                            </span>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <strong>John Smith</strong>
-                            <span class="pull-right text-muted">
-                                <em>Yesterday</em>
-                            </span>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>Read All Messages</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-messages -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-tasks">
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 1</strong>
-                                <span class="pull-right text-muted">40% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                    <span class="sr-only">40% Complete (success)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 2</strong>
-                                <span class="pull-right text-muted">20% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                    <span class="sr-only">20% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 3</strong>
-                                <span class="pull-right text-muted">60% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 4</strong>
-                                <span class="pull-right text-muted">80% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                    <span class="sr-only">80% Complete (danger)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All Tasks</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-tasks -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-alerts">
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-comment fa-fw"></i> New Comment
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                            <span class="pull-right text-muted small">12 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-envelope fa-fw"></i> Message Sent
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-tasks fa-fw"></i> New Task
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#">
-                        <div>
-                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                            <span class="pull-right text-muted small">4 minutes ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-alerts -->
-        </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> Admin Profile</a>
+            <ul class="dropdown-menu dropdown-message">
+                <li><a href="{{ route('admin_profile') }}"><i class="fa fa-user fa-fw"></i> Admin Profile</a>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="{{ route('admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li><a href="#"><i class="fa fa-history fa-fw"></i> Admin Log</a></li>
+                <li><a href="{{ route('admin_activity_log') }}"><i class="fa fa-history fa-fw"></i> Admin Log</a></li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -225,22 +36,11 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
-                <li class="sidebar-search">
-                    <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                    </div>
-                    <!-- /input-group -->
-                </li>
                 <li>
                     <a href="{{ route('admin_home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('co_admin') }}"><i class="fa fa-users fa-fw"></i> Co-Admins<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-users fa-fw"></i> Co-Admins<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ route('co_admin_add') }}">Add New Co-Admin</a>
@@ -252,10 +52,13 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="{{ route('students') }}"><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ route('students_import') }}">Import Students</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('students_filter') }}">Students Filter</a>
                         </li>
                         <li>
                             <a href="{{ route('students_view') }}">View All Students</a>
@@ -264,7 +67,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="{{ route('subjects') }}"><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ route('subjects_add') }}">Add New Subject</a>
@@ -276,26 +79,41 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="{{ route('grade_levels') }}"><i class="fa fa-list fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ route('grade_levels_add') }}">Add New Grade Level</a>
                         </li>
                         <li>
-                            <a href="#">View All Grade Levels</a>
+                            <a href="{{ route('grade_levels_view') }}">View All Grade Levels</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a><i class="fa fa-clock-o fa-fw"></i> Select Quarter</a>
+                    <a><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('grade_blocks_add') }}">Add New Grade Block</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('grade_blocks_view') }}">View All Grade Blocks</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a><i class="fa fa-university fa-fw"></i> School Year<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                        	<a href="{{ route('school_year_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add School Year</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('school_year_select_quarter') }}"><i class="fa fa-clock-o fa-fw"></i> Select Quarter</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
 
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Tools</a>
-                </li>
-                <li>
-                	<a href="#"><i class="fa fa-archive" aria-hidden="true"></i> Archive</a>
                 </li>
             </ul>
         </div>

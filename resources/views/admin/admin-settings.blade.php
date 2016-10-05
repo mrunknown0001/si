@@ -11,37 +11,39 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Add New Grade Level</h3>
+                <h3 class="page-header">Admin Settings</h3>
             </div>
             
         </div>
-		<div class="row">
+        <div class="row">
         	<div class="col-lg-8 col-md-12">
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong>Fill in the Details</strong>
+	        			<strong>Change Password</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="#" method="POST">
 	        				<div class="form-group">
-	        					<input type="text" name="code" class="form-control" placeholder="Grade Level Code" />
+	        					<input type="password" name="old_pass" class="form-control" placeholder="Old Password" />
 	        				</div>
 	        				<div class="form-group">
-	        					<input type="text" name="title" class="form-control" placeholder="Grade Level Title" />
+	        					<input type="password" name="password" class="form-control" placeholder="New Password" />
 	        				</div>
 		        			<div class="form-group">
-		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Grade Level..."></textarea>
+	        					<input type="password" name="password_confirmation" class="form-control" placeholder="Confrim Password" />
 		        			</div>
 		        			<div class="form-group">
 		        				{{ csrf_field() }}
-		        				<button class="btn btn-primary">Add Grade Level</button>
+		        				<button class="btn btn-primary">Change Password</button>
 		        			</div>
 		        		</form>
 	        		</div>
 	        	</div>
+        		<p><i>Note: Use alpha-numeric password, minimum password: 8</i></p>
         		
         	</div>
         </div>
+
        
     </div>
 

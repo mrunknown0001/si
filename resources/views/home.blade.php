@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
+            <div class="login-panel panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title text-center">Student Information System Login</h3>
                 </div>

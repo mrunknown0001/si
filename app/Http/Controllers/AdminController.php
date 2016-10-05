@@ -49,4 +49,40 @@ class AdminController extends Controller
     	return view('admin.subjects-view');
     }
 
+
+    /*
+     * This getAllGradeLevels() method use to get info of grade levels
+     */
+    public function getAllGradeLevels()
+    {
+    	return view('admin.grade-levels-view');
+    }
+
+
+    /*
+     * This adminActivityLog() returns all the activity made by admin
+     */
+    public function adminActivityLog()
+    {
+    	return view('admin.admin-log');
+    }
+
+
+    /*
+     * This adminProfile() shows the profile of the admin
+     */
+    public function adminProfile()
+    {
+    	return view('admin.admin-profile');
+    }
+
+
+    /*
+     * This getAllGradeBlocks() getting all info in grade block 
+     */
+    public function getAllGradeBlocks()
+    {
+        return view('admin.grade-block-view');
+    }
+
 } // End of AdminController Class

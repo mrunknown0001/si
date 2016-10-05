@@ -15,7 +15,8 @@ class CreateClassBlocksTable extends Migration
     {
         Schema::create('class_blocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
+            $table->string('code')->unique();
+            $table->string('title');
             $table->string('description')->nullable();
             $table->timestamps();
         });

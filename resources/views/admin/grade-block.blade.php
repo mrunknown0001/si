@@ -11,19 +11,16 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Students</h3>
+                <h3 class="page-header">Grade Block</h3>
             </div>
             
         </div>
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('students_import') }}">Import Students</a>
+				<a href="{{ route('grade_blocks_add') }}">Add New Grade Block</a>
 			</div>
-            <div class="col-lg-3 col-md-6">
-                <a href="{{ route('students_filter') }}">Students Filter</a>
-            </div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('students_view') }}">View All Students</a>
+				<a href="{{ route('grade_blocks_view') }}">View All Grade Blocks</a>
 			</div>
 		</div>
        
