@@ -268,3 +268,37 @@ Route::group(['prefix' => 'admin'], function () {
 	});
 
 });
+
+
+/*
+ * Route Group co-admin
+ */
+Route::group(['prefix' => 'co-admin'], function () {
+
+	/*
+	 * Route to co-admin dashboard
+	 */
+	Route::get('/', function () {
+		return view('coadmin.co-admin-home');
+	})->name('co_admin_home');
+
+});
+
+
+/*
+ * Route Grou s => stands for students
+ */
+Route::group(['prefix' => 's'], function () {
+
+	/*
+	 * Route to students
+	 */
+	Route::get('panel', function () {
+		return view('students.students-home');
+	})->name('students_home');
+
+	Route::get('/', function () {
+		return redirect()->route('students_home');
+	});
+
+});
