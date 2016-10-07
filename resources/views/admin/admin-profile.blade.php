@@ -23,11 +23,11 @@
 	        		</div>
 	        		<div class="panel-body">
 		        		<ul>
-		        			<li class="profile">ID: 12345</li>
-		        			<li class="profile">Name: Juan Dela Cruz</li>
-		        			<li class="profile">Email: juan@juan.com</li>
-		        			<li class="profile">Mobile Number: 09123455556</li>
-		        			<li class="profile">Birthday: 1/2/10</li>
+		        			<li class="profile">ID: {{ $admin->user_id }}</li>
+		        			<li class="profile">Name: {{ $admin->firstname }}  {{ $admin->lastname }}</li>
+		        			<li class="profile">Email: {{ $admin->email }}</li>
+		        			<li class="profile">Mobile Number: {{ $admin->mobile }}</li>
+		        			<li class="profile">Birthday: {{ $admin->birthday }}</li>
 		        		</ul>
 	        		</div>
 	        	</div>

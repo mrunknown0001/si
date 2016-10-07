@@ -1,20 +1,56 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
-
+ * Home route
+ */
 Route::get('/', function () {
+
+	/*
+	 * Checking if there are authenticated user and redirecting
+	 * to the corrent path
+	 */
+	if(Auth::check()) {
+		if(Auth::user()->privilege == 1) {
+			return redirect()->route('admin_home');
+		}
+		else if(Auth::user()->privilege == 2) {
+			return redirect()->route('co_admin_home');
+		}
+		else if(Auth::user()->privilege == 3) {
+			return redirect()->route('students_home');
+		}
+		else {
+			return view('home');
+		}
+	}
     return view('home');
 })->name('home');
+
+
+/*
+ * Admin and Co-Admin Login
+ */
+Route::get('login', function () {
+	return view('login');
+})->name('login');
+
+Route::post('login', [
+	'uses' => 'UserController@postLogin',
+	'as' => 'admin_post_login'
+	]);
+
+
+/*
+ * Student Login
+ */
+Route::get('student-login', function () {
+	return redirect()->route('home');
+});
+
+Route::post('student-login', [
+	'uses' => 'StudentController@studentLogin',
+	'as' => 'student_post_login'
+	]);
 
 
 /*
@@ -26,10 +62,11 @@ Route::get('logout', [
 	]);
 
 
+
 /*
  * Route Group admin
  */
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], function () {
 
 	/*
 	 * Route to Admin Dashboard
@@ -272,15 +309,72 @@ Route::group(['prefix' => 'admin'], function () {
 
 /*
  * Route Group co-admin
+ * middleware auth and checkcoadmin
  */
-Route::group(['prefix' => 'co-admin'], function () {
+Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']], function () {
 
 	/*
 	 * Route to co-admin dashboard
 	 */
-	Route::get('/', function () {
+	Route::get('dashboard', function () {
 		return view('coadmin.co-admin-home');
 	})->name('co_admin_home');
+
+	Route::get('/', function () {
+		return redirect()->route('co_admin_home');
+	});
+
+
+	/*
+	 * Route to co-admin profile
+	 */
+	Route::get('profile', [
+		'uses' => 'CoAdminController@getProfile',
+		'as' => 'co_admin_profile'
+		]);
+
+
+	/*
+	 * Route to co-admin settings
+	 */
+	Route::get('settings', function () {
+		return view('coadmin.co-admin-settings');
+	})->name('co_admin_settings');
+
+
+	/*
+	 * Route to co-admin log
+	 */
+	Route::get('activity-log', [
+		'uses' => 'CoAdminController@coAdminActivityLog',
+		'as' => 'co_admin_log'
+		]);
+
+
+	/*
+	 * Route to View All Subjects on co-admin
+	 */
+	Route::get('my-subjects', [
+		'uses' => 'CoAdminController@getMySubjects',
+		'as' => 'co_admin_my_subjects'
+		]);
+
+
+	/*
+	 * Route to view grade block handled by co-admin
+	 */
+	Route::get('my-grade-blocks', [
+		'uses' => 'CoAdminController@getMyGradeBlocks',
+		'as' => 'co_admin_my_grade_blocks'
+		]);
+
+
+	/*
+	 * route to import grade used by co-admind
+	 */
+	Route::get('import-grades', function () {
+		return view('coadmin.co-admin-import-grades');
+	})->name('co_admin_import_grades');
 
 });
 

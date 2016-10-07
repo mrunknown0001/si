@@ -31,3 +31,11 @@ ul {
     font-size: 15px;
     font-weight: bold;
 }
+
+.top-space {
+    margin-top: 50px;
+}
+
+.note {
+    border-left: 6px solid #f90822 !important;
+}

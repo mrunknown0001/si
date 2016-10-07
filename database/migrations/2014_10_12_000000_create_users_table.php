@@ -15,14 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id'); // ID Number of Teacher/Admin
+            $table->string('user_id')->unique(); // ID Number of Teacher/Admin
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->integer('mobile')->nullable();
-            $table->date('birthday');
+            $table->string('mobile')->nullable();
+            $table->string('birthday');
             $table->string('password'); // Bcrypt Password
-            $table->string('privilege'); // Admin or Co-Admin/Teacher
+            $table->string('privilege'); // Admin or Co-Admin/Teacher -- 1 for admin, 2 for co-admin
             $table->tinyInteger('status')->default(1); // 0 or 1 - Inactive or Active
             $table->rememberToken();
             $table->timestamps();

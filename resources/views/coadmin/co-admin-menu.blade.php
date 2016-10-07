@@ -18,13 +18,13 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-message">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i>  Co-Admin Profile</a>
+                <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  Co-Admin Profile</a>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="{{ route('co_admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li><a href="#"><i class="fa fa-history fa-fw"></i> Co-Admin Log</a></li>
+                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> Co-Admin Log</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -43,22 +43,22 @@
                     <a><i class="fa fa-book fa-fw"></i> My Subjects<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">View My Subjects</a>
+                            <a href="{{ route('co_admin_my_subjects') }}">View My Subjects</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a><i class="fa fa-list fa-fw"></i> My Grade Block<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-list fa-fw"></i> My Grade Blocks<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">View My Grade Blocks</a>
+                            <a href="{{ route('co_admin_my_grade_blocks') }}">View My Grade Blocks</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-import"></span> Import Grades</a>
+                    <a href="{{ route('co_admin_import_grades') }}"><span class="glyphicon glyphicon-import"></span> Import Grades</a>
                 </li>
             </ul>
         </div>

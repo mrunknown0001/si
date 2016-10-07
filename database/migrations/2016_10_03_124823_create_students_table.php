@@ -15,13 +15,14 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('student_id');
+            $table->string('student_id')->unique();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->integer('mobile')->nullable();
-            $table->date('birthday');
+            $table->string('mobile')->nullable();
+            $table->string('birthday')->nullable();
             $table->string('password'); // Bcrypt Password
+            $table->string('privilege')->default('3'); // 3 for students
             $table->timestamps();
         });
     }

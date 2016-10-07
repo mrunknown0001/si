@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+
 class AdminController extends Controller
 {
     
@@ -73,7 +77,12 @@ class AdminController extends Controller
      */
     public function adminProfile()
     {
-    	return view('admin.admin-profile');
+        /*
+         * Load the profile of the admin and pass it to view
+         */
+        $profile = User::findorfail(Auth::user()->id);
+
+    	return view('admin.admin-profile', ['admin' => $profile]);
     }
 
 
