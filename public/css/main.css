@@ -39,3 +39,7 @@ ul {
 .note {
     border-left: 6px solid #f90822 !important;
 }
+
+.navbar-right {
+   padding-right: 15px !important;
+}

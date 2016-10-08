@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Admin Dashboard - Student Information System @endsection
+@section('title') Import Students - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -20,7 +20,7 @@
         	<div class="col-lg-6 col-md-8">
         		<div class="panel panel-primary">
         			<div class="panel-heading">
-        				<strong>Import Students List</strong>
+        				<strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Import Students List</strong>
         			</div>
         			<div class="panel-body">
         				<form action="#" method="POST" enctype="multipart/form-data" class="form-inline">

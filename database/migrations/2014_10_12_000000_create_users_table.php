@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('user_id')->unique(); // ID Number of Teacher/Admin
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('mobile')->nullable();
-            $table->string('birthday');
+            $table->string('birthday')->nullable();
             $table->string('password'); // Bcrypt Password
-            $table->string('privilege'); // Admin or Co-Admin/Teacher -- 1 for admin, 2 for co-admin
+            $table->string('privilege'); // 1 for admin, 2 for co-admin, 3 for students 
             $table->tinyInteger('status')->default(1); // 0 or 1 - Inactive or Active
             $table->rememberToken();
             $table->timestamps();

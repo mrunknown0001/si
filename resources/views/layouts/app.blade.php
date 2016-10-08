@@ -55,7 +55,6 @@
 	    {{-- Morris Charts JavaScript --}}
 	    <script src="{{ URL::asset('vendor/raphael/raphael.min.js') }}"></script>
 	    <script src="{{ URL::asset('vendor/morrisjs/morris.min.js') }}"></script>
-	    <script src="{{ URL::asset('data/morris-data.js') }}"></script>
 
 	    {{-- Custom Theme JavaScript --}}
 	    <script src="{{ URL::asset('dist/js/sb-admin-2.js') }}"></script>

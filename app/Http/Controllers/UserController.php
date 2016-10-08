@@ -35,6 +35,15 @@ class UserController extends Controller
 		 */
 		if(Auth::attempt(['user_id' => $id, 'password' => $password])) {
             
+			/*
+			 * Check if the user is inactive
+			 * the user will not login and redirect to login with error message
+			 */
+			if(Auth::user()->status != 1) {
+				Auth::logout();
+				return redirect()->route('login')->with('error_msg', 'Your Accout is Inactive! Please Report to Admin.');
+			}
+
             /*
              * Redirect to Admin Panel if privilege is admin
              */
@@ -48,6 +57,19 @@ class UserController extends Controller
 			if(Auth::user()->privilege == 2) {
 				return redirect()->route('co_admin_home');
 			}
+
+			/*
+			 * redirect to home page and will login if stuents
+			 */
+			if(Auth::user()->privilege == 3) {
+				Auth::logout();
+				return redirect()->route('home')->with('error_msg', 'Use this login form for students');
+			}
+
+
+			// if there is something error
+			Auth::logout();
+			return redirect()->route('home')->with('error_msg', 'App has encountered error. Please reload this page.');
 
     	}
 

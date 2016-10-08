@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Co-Admin Dashboard - Student Information System @endsection
+@section('title') Settings - Co-Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Co-Admin Settings</h3>
+                <h3 class="page-header">Settings</h3>
             </div>
             
         </div>
@@ -19,7 +19,7 @@
         	<div class="col-lg-8 col-md-12">
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong>Change Password</strong>
+	        			<strong><i class="fa fa-key fa-lg" aria-hidden="true"></i> Change Password</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="#" method="POST">

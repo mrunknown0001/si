@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Co-Admin Dashboard - Student Information System @endsection
+@section('title') My Profile - Co-Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Co-Admin Profile</h3>
+                <h3 class="page-header">My Profile Profile</h3>
             </div>
             
         </div>
@@ -19,7 +19,7 @@
         	<div class="col-lg-8 col-md-12">
         		<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong>Co-Admin Details</strong>
+	        			<strong><i class="fa fa-user fa-lg" aria-hidden="true"></i> Co-Admin Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 		        		<ul>

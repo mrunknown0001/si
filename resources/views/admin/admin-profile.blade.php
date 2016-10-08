@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Admin Dashboard - Student Information System @endsection
+@section('title') Profile - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -19,7 +19,7 @@
         	<div class="col-lg-8 col-md-12">
         		<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong>Admin Details</strong>
+	        			<strong><i class="fa fa-user fa-lg" aria-hidden="true"></i> Admin Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 		        		<ul>

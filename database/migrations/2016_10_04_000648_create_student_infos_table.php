@@ -16,7 +16,7 @@ class CreateStudentInfosTable extends Migration
         Schema::create('student_infos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned(); // Student ID
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->integer('grade_level')->unsigned(); // Grade Level ID
             $table->foreign('grade_level')->references('id')->on('grade_levels');
             $table->integer('class_block')->unsigned(); // Class Block ID

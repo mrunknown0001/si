@@ -3,13 +3,24 @@
 @section('title') Students Panel - Student Information System @endsection
 
 @section('content')
-<div id="wrapper">
+{{-- Include Student Menu --}}
+@include('students.students-menu')
+<div class="container-fluid">">
     
+    <div class="page-wrapper">
+    	<div class="row">
+    		<div class="col-lg-8 col-md-12 col-lg-offset-2">
+    			{{-- Includes errors and session flash message display container --}}
+		    	@include('includes.errors')
+		    	@include('includes.error')
+		    	@include('includes.success')
+		    	@include('includes.notice')
 
-    {{-- Include Student Menu --}}
-    @include('students.students-menu')
-    
-    <h3>Students Panel</h3>
+		    	
+    		</div>
+    	</div>
+    	
+    </div>
 
 </div>
 @endsection

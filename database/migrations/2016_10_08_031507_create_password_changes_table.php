@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudentLogsTable extends Migration
+class CreatePasswordChangesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateStudentLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_logs', function (Blueprint $table) {
+        Schema::create('password_changes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student')->unsigned();
-            $table->foreign('student')->references('id')->on('users');
-            $table->string('action');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status')->unsigned(); // 1 for yes, 0 for no -> question: changed password at least once?
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateStudentLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_logs');
+        Schema::dropIfExists('password_changes');
     }
 }

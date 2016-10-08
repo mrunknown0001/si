@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
+        // admin
     	DB::table('users')->insert([
     		'user_id' => '12345',
     		'firstname' => 'Admin',
@@ -21,10 +22,11 @@ class DatabaseSeeder extends Seeder
     		'email' => 'admin@admin.com',
     		'mobile' => '09111111111',
     		'password' => bcrypt('admin'),
-    		'privilege' =>'1',
+    		'privilege' =>'1',  // admin privilege
             'birthday' => '11/1/1992'
     		]);
 
+        // co-admin
         DB::table('users')->insert([
             'user_id' => '54321',
             'firstname' => 'Co-Admin',
@@ -32,20 +34,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'coadmin@admin.com',
             'mobile' => '09222222222',
             'password' => bcrypt('admin'),
-            'privilege' =>'2',
+            'privilege' =>'2',  // co-admin privilege
             'birthday' => '10/1/1992'
             ]);
 
-        // DB::table('students')->insert([
-        //     'student_id' => '111',
-        //     'firstname' => 'Michael Adam',
-        //     'lastname' => 'Trinidad',
-        //     'email' => 'adam@adam.com',
-        //     'mobile' => '09156119134',
-        //     'birthday' => '11/1/1992',
-        //     'password' => bcrypt('adam'),
-        //     'privilege' => '3'
-        //     ]);
+        // student
+        DB::table('users')->insert([
+            'user_id' => '111',
+            'firstname' => 'Michael Adam',
+            'lastname' => 'Trinidad',
+            'email' => 'adam@adam.com',
+            'mobile' => '09156119134',
+            'birthday' => '11/1/1992',
+            'password' => bcrypt('adam'),
+            'privilege' => '3' // student privilege
+            ]);
 
     }
 }

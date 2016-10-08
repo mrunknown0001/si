@@ -13,20 +13,20 @@
             @include('includes.error')
             <div class="login-panel panel panel-primary">
                 <div class="panel-heading">
-                    <strong>Student Login</strong>
+                    <strong><i class="fa fa-user fa-lg"></i> Student Login</strong>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="{{ route('student_post_login') }}" method="POST">
+                    <form role="form" action="{{ route('student_post_login') }}" method="POST" autocomplete="off">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Enter ID" name="id" type="text" autofocus>
+                                <input class="form-control" placeholder="Student Number" name="id" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password" value="">
                             </div>
                             <div class="form-group">
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
                                 
                             </div>
                             

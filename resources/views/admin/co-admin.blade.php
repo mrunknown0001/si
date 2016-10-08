@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Admin Dashboard - Student Information System @endsection
+@section('title') Co-Admin - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">

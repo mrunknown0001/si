@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Admin Dashboard - Student Information System @endsection
+@section('title') Add New Co-Admin - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -19,7 +19,7 @@
         	<div class="col-lg-8 col-md-12">
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong>Fill in the Details</strong>
+	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Fill in the Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="#" method="POST">

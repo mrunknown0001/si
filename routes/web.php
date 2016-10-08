@@ -382,7 +382,7 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 /*
  * Route Grou s => stands for students
  */
-Route::group(['prefix' => 's'], function () {
+Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], function () {
 
 	/*
 	 * Route to students
@@ -394,5 +394,66 @@ Route::group(['prefix' => 's'], function () {
 	Route::get('/', function () {
 		return redirect()->route('students_home');
 	});
+
+
+	/*
+	 * Route to students log
+	 */
+	Route::get('activity-log', [
+		'uses' => 'StudentController@getAllStudentsLog',
+		'as' => 'students_log'
+		]);
+
+
+	/*
+	 * Route to settings on student
+	 */
+	Route::get('settings', function () {
+		return view('students.students-settings');
+	})->name('students_settings');
+
+
+	/*
+	 * Route to change password of students
+	 */
+	Route::post('change-password', [
+		'uses' => 'StudentController@postChangePassword',
+		'as' => 'students_post_change_password'
+		]);
+
+	Route::get('change-password', function () {
+		return abort(404);
+	});
+
+
+	/*
+	 * Route to student's profile
+	 */
+	Route::get('profile', [
+		'uses' => 'StudentController@getStudentProfile',
+		'as' => 'students_profile'
+		]);
+
+
+	/*
+	 * Route to filter grades of students options
+	 */
+	Route::get('view-grades', function () {
+		return view('students.students-view-my-grades');
+	})->name('students_view_my_grades');
+
+
+	/*
+	 * Route to show edit a student profile
+	 */
+	Route::get('profile-update', [
+		'uses' => 'StudentController@showProfileUpdate',
+		'as' => 'students_profile_update'
+		]);
+
+	Route::post('profile-update', [
+		'uses' => 'StudentController@postProfileUpdate',
+		'as' => 'students_post_profile_update'
+		]);
 
 });
