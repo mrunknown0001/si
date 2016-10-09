@@ -37,7 +37,7 @@
                 <p class="text-center"><strong>{{ $logs->count() + $logs->perPage() * ($logs->currentPage() - 1) }} of {{ $logs->total() }}</strong></p>
 
                 <!-- Page Number render() -->
-                <div class="text-center"> {{ $logs->render() }}</div>
+                <div class="text-center"> {{ $logs->links() }}</div>
         	</div>
         </div>
 

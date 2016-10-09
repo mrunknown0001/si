@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Add New Co-Admin - Admin - Student Information System @endsection
+@section('title') Edit Co-Admin - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Add New Co-Admin</h3>
+                <h3 class="page-header">Edit Co-Admin</h3>
             </div>
             
         </div>
@@ -27,28 +27,29 @@
 	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Co-Admin Details</strong>
 	        		</div>
 	        		<div class="panel-body">
-	        			<form action="{{ route('admin_post_add_co_admin') }}" method="POST" autocomplete="off">
+	        			<form action="{{ route('admin_post_update_co_admin_profile') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="user_id" class="form-control" placeholder="User ID" />
+	        					<input type="text" name="user_id" class="form-control" value="{{ $user->user_id }}" placeholder="User ID" />
 	        				</div>
 		        			<div class="form-group">
-		        				<input type="text" name="firstname" class="form-control" placeholder="First Name" />
+		        				<input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}" placeholder="First Name" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+		        				<input type="text" name="lastname" class="form-control" value="{{ $user->lastname }}" placeholder="Last Name" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="email" class="form-control" placeholder="Email Address" />
+		        				<input type="text" name="email" class="form-control" value="{{ $user->email }}" placeholder="Email Address" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="mobile" class="form-control" placeholder="11 Digit Mobile Number" />
+		        				<input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}" placeholder="11 Digit Mobile Number" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="birthday" class="form-control" placeholder="MM/DD/YYYY" />
+		        				<input type="text" name="birthday" class="form-control" value="{{ $user->birthday }}" placeholder="MM/DD/YYYY" />
 		        			</div>
 		        			<div class="form-group">
 		        				{{ csrf_field() }}
-		        				<button class="btn btn-primary">Add Co-Admin</button>
+	        					<input type="hidden" name="id" value="{{ $user->id }}" />
+		        				<button class="btn btn-primary">Update Co-Admin</button>
 		        			</div>
 		        		</form>
 	        		</div>

@@ -24,7 +24,7 @@
                                 <i class="fa fa-users fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">10</div>
+                                <div class="huge">{{ $co_admins }}</div>
                                 <div>Co-Admins</div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
 	                            <i class="fa fa-graduation-cap fa-5x"></i>
 	                        </div>
 	                        <div class="col-xs-9 text-right">
-	                            <div class="huge">100</div>
+	                            <div class="huge">{{ $students }}</div>
 	                            <div>Students</div>
 	                        </div>
 	                    </div>

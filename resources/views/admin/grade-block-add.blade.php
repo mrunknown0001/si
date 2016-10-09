@@ -20,7 +20,7 @@
         	<div class="col-lg-8 col-md-12">
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong><i class="fa fa-list fa-lg" aria-hidden="true"></i> Fill in the Details</strong>
+	        			<strong><i class="fa fa-list fa-lg" aria-hidden="true"></i> Grade Block Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="#" method="POST">

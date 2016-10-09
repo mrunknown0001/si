@@ -167,6 +167,42 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return view('admin.co-admin-add');
 		})->name('co_admin_add');
 
+		Route::post('add', [
+			'uses' => 'AdminController@postAddCoAdmin',
+			'as' => 'admin_post_add_co_admin'
+			]);
+
+
+		/*
+		 * Route to edit co-admin by admin
+		 */
+		Route::get('edit/{user_id}', [
+			'uses' => 'AdminController@showCoAdminProfile',
+			'as' => 'admin_get_edit_co_admin'
+			]);
+
+		Route::get('edit', function () {
+			return redirect()->route('co_admin_view');
+		});
+
+		Route::post('edit', [
+			'uses' => 'AdminController@postUpdateCoAdminProfile',
+			'as' => 'admin_post_update_co_admin_profile'
+			]);
+
+
+		/*
+		 * Route to remove co-admin
+		 */
+		Route::get('remove/{id}', [
+			'uses' => 'AdminController@getRemoveCoAdmin',
+			'as' => 'admin_get_remove_co_admin'
+			]);
+
+		Route::get('remove', function () {
+			return abort(404);
+		});
+
 	});
 
 
