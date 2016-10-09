@@ -56,7 +56,7 @@ class AdminController extends Controller
          * Input Validation
          */
         $this->validate($request, [
-            'user_id' => 'required|unique:users',
+            'tin' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users',
@@ -65,7 +65,7 @@ class AdminController extends Controller
             ]);
 
         // Assigning Values to variables
-        $user_id = $request['user_id'];
+        $user_id = $request['tin'];
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
         $email = $request['email'];
@@ -76,7 +76,7 @@ class AdminController extends Controller
         $user_id_check = User::where('user_id', $user_id)->first();
 
         if(!empty($user_id_check)) {
-            return redirect()->route('co_admin_add')->with('error_msg', 'This User ID: ' . $user_id . ' is already in use.');
+            return redirect()->route('co_admin_add')->with('error_msg', 'This TIN: ' . $user_id . ' is already in use.');
         }
 
         // Check email availability
@@ -105,11 +105,11 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Added Co-Admin with User ID: ' . $user_id;
+            $log->action = 'Added Co-Admin with User TIN: ' . $user_id;
 
             $log->save();
 
-            return redirect()->route('co_admin_add')->with('success', 'Co-Admin Added with User ID: ' . $user_id);
+            return redirect()->route('co_admin_add')->with('success', 'Co-Admin Added with User TIN: ' . $user_id);
 
         }
 
@@ -154,7 +154,7 @@ class AdminController extends Controller
          * Input validation
          */
         $this->validate($request, [
-            'user_id' => 'required',
+            'tin' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
@@ -164,7 +164,7 @@ class AdminController extends Controller
 
         // Assigning Values to variables
         $id = $request['id'];
-        $user_id = $request['user_id'];
+        $user_id = $request['tin'];
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
         $email = $request['email'];
@@ -193,7 +193,7 @@ class AdminController extends Controller
             $user_id_check = User::where('user_id', $user_id)->first();
 
             if($user_id_check == True) {
-                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'User ID already in use.');
+                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'TIN already in use.');
             }
         }
 
@@ -222,6 +222,15 @@ class AdminController extends Controller
         $user->birthday = $birthday;
 
         if($user->save()) {
+
+            // Log for Admin Action
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Updated Co-Admin Profile Details TIN: ' . $user_id;
+
+            $log->save();
+
             return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('success', 'Co-Admin Details Successfully Updated');
         }
         else {
@@ -255,7 +264,7 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Removed Co-Admin with User ID: ' . $user_id;
+            $log->action = 'Removed Co-Admin with TIN: ' . $user_id;
 
             $log->save();
 
@@ -272,6 +281,7 @@ class AdminController extends Controller
      */
     public function getAllStudents()
     {
+
     	return view('admin.students-view');
     }
 

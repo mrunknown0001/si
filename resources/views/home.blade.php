@@ -19,7 +19,7 @@
                     <form role="form" action="{{ route('student_post_login') }}" method="POST" autocomplete="off">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Student Number" name="id" type="text" autofocus>
+                                <input class="form-control" placeholder="Learner Reference Number" name="id" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password" value="">

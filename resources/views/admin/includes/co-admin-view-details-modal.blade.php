@@ -8,7 +8,7 @@
                 <h4 class="modal-title">Co-Admin Details</h4>
             </div>
             <div class="modal-body">
-                <p>User ID: {{ $c->user_id }}</p>
+                <p>TIN: {{ $c->user_id }}</p>
                 <p>Name: {{ $c->firstname }} {{ $c->lastname }}</p>
                 <p>Email: {{ $c->email }}</p>
                 <p>Mobile: {{ $c->mobile }}</p>

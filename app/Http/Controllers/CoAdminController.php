@@ -72,7 +72,7 @@ class CoAdminController extends Controller
     public function postProfileUpdate(Request $request)
     {
 
-         /*
+        /*
          * validating input
          */
         $this->validate($request, [

@@ -29,7 +29,7 @@
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_add_co_admin') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="user_id" class="form-control" placeholder="User ID" />
+	        					<input type="text" name="tin" class="form-control" placeholder="Tax Identification Number" />
 	        				</div>
 		        			<div class="form-group">
 		        				<input type="text" name="firstname" class="form-control" placeholder="First Name" />

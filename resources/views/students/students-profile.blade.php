@@ -21,7 +21,7 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li class="profile">ID: {{ $s->user_id }}</li>
+                        <li class="profile">LRN: {{ $s->user_id }}</li>
                         <li class="profile">Name: {{ $s->firstname }} {{ $s->lastname }}</li>
                         <li class="profile">Email: {{ $s->email }}</li>
                         <li class="profile">Mobile Number: {{ $s->mobile }}</li>

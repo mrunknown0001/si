@@ -25,15 +25,15 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>ID Number</th>
+        					<th>TIN</th>
         					<th>Full Name</th>
         					<th>Email</th>
         					<th>Actions</th>
         				</tr>
         			</thead>
         			<tbody>
-        				<tr>
                         @foreach($ca as $c)
+                        <tr>
         					<td>{{ $c->user_id }}</td>
         					<td>{{ $c->firstname }}  {{ $c->lastname }}</td>
         					<td>{{ $c->email }}</td>
