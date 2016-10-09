@@ -99,11 +99,42 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 
 
 	/*
+	 * Route to change Password in Admin
+	 */
+	Route::post('change-password', [
+		'uses' => 'GeneralController@postChangePassword',
+		'as' => 'admin_post_change_password'
+		]);
+
+	Route::get('change-password', function () {
+		return abort(404);
+	});
+
+
+	/*
 	 * Route to Admin Profile
 	 */
 	Route::get('profile', [
 		'uses' => 'AdminController@adminProfile',
 		'as' => 'admin_profile'
+		]);
+
+
+	/*
+	 * Route to update admin profile in form
+	 */
+	Route::get('profile-update', [
+		'uses' => 'AdminController@showProfileUpdate',
+		'as' => 'admin_show_profile_update'
+		]);
+
+
+	/*
+	 * route to update the admin profile
+	 */
+	Route::post('profile-update', [
+		'uses' => 'AdminController@postProfileUpdate',
+		'as' => 'admin_post_profile_update'
 		]);
 
 
@@ -335,11 +366,43 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 
 
 	/*
+	 * Route to show profile of co-admin in form
+	 */
+	Route::get('profile-update', [
+		'uses' => 'CoAdminController@showProfileUpdate',
+		'as' => 'co_admin_show_profile_update'
+		]);
+
+
+	/*
+	 * Route to update profile of co-admin
+	 */
+	Route::post('profile-update', [
+		'uses' => 'CoAdminController@postProfileUpdate',
+		'as' => 'co_admin_post_profile_update'
+		]);
+
+
+	/*
 	 * Route to co-admin settings
 	 */
 	Route::get('settings', function () {
 		return view('coadmin.co-admin-settings');
 	})->name('co_admin_settings');
+
+
+	/*
+	 * Route to change Password in co-Admin
+	 */
+	Route::post('change-password', [
+		'uses' => 'GeneralController@postChangePassword',
+		'as' => 'co_admin_post_change_password'
+		]);
+
+	Route::get('change-password', function () {
+		return abort(404);
+	});
+
 
 
 	/*
@@ -417,7 +480,7 @@ Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], functi
 	 * Route to change password of students
 	 */
 	Route::post('change-password', [
-		'uses' => 'StudentController@postChangePassword',
+		'uses' => 'GeneralController@postChangePassword',
 		'as' => 'students_post_change_password'
 		]);
 

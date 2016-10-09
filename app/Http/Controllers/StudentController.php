@@ -8,8 +8,6 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Contracts\Hashing\Hasher;
-
 use App\User;
 use App\StudentLog;
 use App\PasswordChange;
@@ -125,80 +123,6 @@ class StudentController extends Controller
 
 
     /*
-     * postChangePassword() method to cnhange password for students
-     */
-    public function postChangePassword(Request $request)
-    {
-    	/*
-    	 * input validation
-    	 */
-    	$this->validate($request, [
-    		'old_pass' => 'required',
-    		'password' => 'required| min:8 | max:64 | confirmed',
-    		'password_confirmation' => 'required'
-    		]);
-
-    	
-    	// Assign values to variable
-    	$old_pass = $request['old_pass'];
-    	$password = $request['password'];
-
-
-    	// Check if old password and new password is the same, this is not permitted
-    	if($old_pass == $password) {
-    		return redirect()->route('students_settings')->with('error_msg', 'Choose different password from your current password.');    	}
-
-    	// bcrypt (hashed) password of students
-    	$hashed_password = Auth::user()->password;
-
-    	// id of the student
-    	$student_id = Auth::user()->id;
-
-    	// verify the entered old password
-    	$password_compare = password_verify($old_pass, $hashed_password);
-    	if($password_compare == True) {
-    		$student = User::findorfail($student_id);
-
-    		$student->password = bcrypt($password);
-
-    		$student->save();
-
-    		/*
-			 * Save students log
-			 */
-			$students_log = new StudentLog();
-
-			$students_log->student = Auth::user()->id;
-			$students_log->action = 'Password Change';
-
-			$students_log->save();
-
-
-			$password_change = PasswordChange::where('user_id', Auth::user()->id)->first();
-
-			if(empty($password_change)) {
-				
-				$change = new PasswordChange();
-
-				$change->user_id = Auth::user()->id;
-				$change->status = 1;
-
-				$change->save();
-
-			}
-
-    		// Successfully Change Password
-    		return redirect()->route('students_settings')->with('success', 'Your Password Has Been Successfully Changed!');
-    	}
-    	else {
-    		// Wrong Password
-    		return redirect()->route('students_settings')->with('error_msg', 'Your Password is Incorrect! Please Try Again.');
-    	}
-    
-    }
-
-
-    /*
      * showProfileEdit() methods use to update profile of a student, that loads on form
      */
     public function showProfileUpdate()
@@ -207,6 +131,7 @@ class StudentController extends Controller
     	$profile = User::findorfail(Auth::user()->id);
 
     	return view('students.students-profile-update', ['student' => $profile]);
+    
     }
 
 
@@ -244,7 +169,7 @@ class StudentController extends Controller
     	 */
     	if($email != Auth::user()->email) {
 
-    		$email_check = User::where('email', $email)->get();
+    		$email_check = User::where('email', $email)->first();
 
     		if(!empty($email_check)) {
 
@@ -253,8 +178,10 @@ class StudentController extends Controller
     		}
     		else {
 
+                // Assign Details to be updated
     			$student_update->firstname = $firstname;
 	    		$student_update->lastname = $lastname;
+                $student_update->email = $email;
 	    		$student_update->mobile = $mobile;
 	    		$student_update->birthday = $birthday;
 
@@ -263,6 +190,7 @@ class StudentController extends Controller
 
 	    			$student_update->save();
 
+                    // Student log for updating details
 	    			$students_log = new StudentLog();
 
 	    			$students_log->student = Auth::user()->id;
@@ -270,10 +198,13 @@ class StudentController extends Controller
 
 	    			$students_log->save();
 
-	    			return redirect()->route('students_profile_update')->with('success', 'Profile Updated Successfully!');
+                    // redirect opneration successful
+	    			return redirect()->route('students_profile')->with('success', 'Profile Updated Successfully!');
 
 	    		}
 	    		else {
+
+                    // redirect if password is incorrect
 	    			return redirect()->route('students_profile_update')->with('error_msg', 'Incorrect Password!');
 	    		}
 
@@ -282,6 +213,7 @@ class StudentController extends Controller
     	// if the email entered is same with the current email address of the student, nothing to do with it
     	else {
 
+            // Setting details to be updated
     		$student_update->firstname = $firstname;
     		$student_update->lastname = $lastname;
     		$student_update->mobile = $mobile;
@@ -292,6 +224,8 @@ class StudentController extends Controller
 
     			$student_update->save();
 
+
+                // Students log for updating details
     			$students_log = new StudentLog();
 
     			$students_log->student = Auth::user()->id;
@@ -299,14 +233,19 @@ class StudentController extends Controller
 
     			$students_log->save();
 
-    			return redirect()->route('students_profile_update')->with('success', 'Profile Updated Successfully!');
+
+                // redirect operation successful
+    			return redirect()->route('students_profile')->with('success', 'Profile Updated Successfully!');
 
     		}
     		else {
+
+                // redirect is password is incorrect
     			return redirect()->route('students_profile_update')->with('error_msg', 'Incorrect Password!');
     		}
 
     	}
+    
     }
 
 }

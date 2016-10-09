@@ -17,12 +17,17 @@
         </div>
         <div class="row">
         	<div class="col-lg-8 col-md-12">
+        		{{-- Includes Errors and Success Message templates --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
 	        			<strong><i class="fa fa-key fa-lg" aria-hidden="true"></i> Change Password</strong>
 	        		</div>
 	        		<div class="panel-body">
-	        			<form action="#" method="POST">
+	        			<form action="{{ route('co_admin_post_change_password') }}" method="POST">
 	        				<div class="form-group">
 	        					<input type="password" name="old_pass" class="form-control" placeholder="Old Password" />
 	        				</div>

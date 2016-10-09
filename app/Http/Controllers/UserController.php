@@ -8,9 +8,12 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\UserLog;
+
 class UserController extends Controller
 {
-    
+
+
 	/*
 	 * postLogin() method use to login admin and co-admins
 	 */ 
@@ -48,6 +51,17 @@ class UserController extends Controller
              * Redirect to Admin Panel if privilege is admin
              */
             if(Auth::user()->privilege == 1) {
+
+            	/*
+            	 * User Log
+            	 */
+            	$user_log = new UserLog();
+
+            	$user_log->user_id = Auth::user()->id;
+            	$user_log->action = 'Login';
+
+            	$user_log->save();
+
 				return redirect()->route('admin_home');
 			}
 
@@ -55,6 +69,17 @@ class UserController extends Controller
 			 * Redirect to Co-Admin Panel if privilege is co-admin
 			 */
 			if(Auth::user()->privilege == 2) {
+
+				/*
+            	 * User Log
+            	 */
+            	$user_log = new UserLog();
+
+            	$user_log->user_id = Auth::user()->id;
+            	$user_log->action = 'Login to your account';
+
+            	$user_log->save();
+
 				return redirect()->route('co_admin_home');
 			}
 

@@ -5,7 +5,7 @@
 @section('content')
 {{-- Include Student Menu --}}
 @include('students.students-menu')
-<div class="container-fluid">">
+<div class="container-fluid">
     
     <div class="page-wrapper">
     	<div class="row">
