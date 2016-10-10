@@ -32,7 +32,7 @@
 		        			<li class="profile">Name: {{ $admin->firstname }}  {{ $admin->lastname }}</li>
 		        			<li class="profile">Email: {{ $admin->email }}</li>
 		        			<li class="profile">Mobile Number: {{ $admin->mobile }}</li>
-		        			<li class="profile">Birthday: {{ $admin->birthday }}</li>
+		        			<li class="profile">Birthday: {{ date('F j, Y', strtotime($admin->birthday)) }}</li>
 		        		</ul>
 	        		</div>
 	        	</div>

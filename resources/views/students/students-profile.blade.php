@@ -25,7 +25,7 @@
                         <li class="profile">Name: {{ $s->firstname }} {{ $s->lastname }}</li>
                         <li class="profile">Email: {{ $s->email }}</li>
                         <li class="profile">Mobile Number: {{ $s->mobile }}</li>
-                        <li class="profile">Birthday: {{ $s->birthday }}</li>
+                        <li class="profile">Birthday: {{ date('F j, Y', strtotime($s->birthday)) }}</li>
                     </ul>
                 </div>
             </div>

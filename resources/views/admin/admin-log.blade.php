@@ -27,7 +27,7 @@
                     <tbody>
                         @foreach($logs as $log)
                         <tr>
-                            <td>{{ date('F d, Y - g:i A l', strtotime($log->created_at) + 28800) }}</td>
+                            <td>{{ date('F j, Y - g:i A l', strtotime($log->created_at) + 28800) }}</td>
                             <td>{{ $log->action }}</td>
                         </tr>
                         @endforeach

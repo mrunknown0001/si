@@ -42,7 +42,7 @@
                                 <input type="text" name="mobile" class="form-control" value="{{ $admin->mobile }}" placeholder="11 Digit Mobile Number" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="birthday" class="form-control" value="{{ $admin->birthday }}" placeholder="MM/DD/YYY" autofocus="" />
+                                <input type="text" name="birthday" class="form-control" value="{{ date('m/d/Y', strtotime($admin->birthday)) }}" placeholder="MM/DD/YYY" autofocus="" />
                             </div>
                             <div class="form-group">
                                 <hr/>

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
     		'mobile' => '09111111111',
     		'password' => bcrypt('admin'),
     		'privilege' =>'1',  // admin privilege
-            'birthday' => '11/1/1992'
+            'birthday' => date('Y-m-d', strtotime('11/1/1992'))
     		]);
 
         // co-admin
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'mobile' => '09222222222',
             'password' => bcrypt('admin'),
             'privilege' =>'2',  // co-admin privilege
-            'birthday' => '10/1/1992'
+            'birthday' => date('Y-m-d', strtotime('10/1/1992'))
             ]);
 
         // student
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'lastname' => 'Trinidad',
             'email' => 'adam@adam.com',
             'mobile' => '09156119134',
-            'birthday' => '11/1/1992',
+            'birthday' => date('Y-m-d', strtotime('11/1/1992')),
             'password' => bcrypt('adam'),
             'privilege' => '3' // student privilege
             ]);

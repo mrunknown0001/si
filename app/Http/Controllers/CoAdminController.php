@@ -89,7 +89,7 @@ class CoAdminController extends Controller
         $lastname = $request['lastname'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = $request['birthday'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
         $password = $request['password'];
 
         $user_update = User::findorfail(Auth::user()->id);

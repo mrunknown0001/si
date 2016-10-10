@@ -70,7 +70,7 @@ class AdminController extends Controller
         $lastname = $request['lastname'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = $request['birthday'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
 
         // Check User ID Availability
         $user_id_check = User::where('user_id', $user_id)->first();
@@ -169,7 +169,7 @@ class AdminController extends Controller
         $lastname = $request['lastname'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = $request['birthday'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
 
         if($id == null) {
             // If the script is modified suspiciously
@@ -366,7 +366,7 @@ class AdminController extends Controller
         $lastname = $request['lastname'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = $request['birthday'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
         $password = $request['password'];
 
         $user_update = User::findorfail(Auth::user()->id);

@@ -3,7 +3,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header modal-header-success">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Co-Admin Details</h4>
             </div>
@@ -12,7 +12,7 @@
                 <p>Name: {{ $c->firstname }} {{ $c->lastname }}</p>
                 <p>Email: {{ $c->email }}</p>
                 <p>Mobile: {{ $c->mobile }}</p>
-                <p>Birthday: {{ $c->birthday }}</p>
+                <p>Birthday: {{ date('F j, Y', strtotime($c->birthday)) }}</p>
             </div>
             <div class="modal-footer">
             

@@ -13,12 +13,12 @@
 		
 		{{-- Twitter Bootstrap Framework 3.3.7 --}}
 		<!-- <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}"> -->
-		
-		{{-- Import Custom CSS --}}
-		<link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
 
 	    {{-- Twitter Bootstrap Core --}}
 	    <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+		
+		{{-- Import Custom CSS --}}
+		<link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
 
 	    {{-- MetisMenu CSS --}}
 	    <link href="{{ URL::asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
