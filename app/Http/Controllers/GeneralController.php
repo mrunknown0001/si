@@ -108,7 +108,7 @@ class GeneralController extends Controller
     	}
     	else {
     		// Wrong Password
-    		return redirect()->route('students_settings')->with('error_msg', 'Your Password is Incorrect! Please Try Again.');
+    		return redirect()->back()->with('error_msg', 'Your Password is Incorrect! Please Try Again.');
     	}
     
     }
