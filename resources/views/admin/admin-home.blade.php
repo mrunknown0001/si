@@ -70,7 +70,7 @@
 	                            <i class="fa fa-book fa-5x"></i>
 	                        </div>
 	                        <div class="col-xs-9 text-right">
-	                            <div class="huge">25</div>
+	                            <div class="huge">{{ $subjects }}</div>
 	                            <div>Subjects</div>
 	                        </div>
 	                    </div>
@@ -116,7 +116,7 @@
                                 <i class="fa fa-list-alt fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">6</div>
+                                <div class="huge">{{ $grade_levels }}</div>
                                 <div>Grade Level</div>
                             </div>
                         </div>

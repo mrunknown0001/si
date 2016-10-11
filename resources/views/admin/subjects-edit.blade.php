@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Add Subject - Admin - Student Information System @endsection
+@section('title') Edit Subject - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Add Subject</h3>
+                <h3 class="page-header">Edit Subject</h3>
             </div>
             
         </div>
@@ -27,19 +27,20 @@
 	        			<strong><i class="fa fa-book fa-lg" aria-hidden="true"></i> Subject Details</strong>
 	        		</div>
 	        		<div class="panel-body">
-	        			<form action="{{ route('admin_post_add_subject') }}" method="POST" autocomplete="off">
+	        			<form action="{{ route('admin_post_subject_update') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="code" class="form-control text-uppercase" placeholder="Subject Code" />
+	        					<input type="text" name="code" class="form-control text-uppercase" value="{{ $subject->code }}" placeholder="Subject Code" />
 	        				</div>
 		        			<div class="form-group">
-		        				<input type="text" name="title" class="form-control" placeholder="Subject Title" />
+		        				<input type="text" name="title" class="form-control" value="{{ $subject->title }}" placeholder="Subject Title" />
 		        			</div>
 		        			<div class="form-group">
-		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Subject..."></textarea>
+		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Subject...">{{ $subject->description }}</textarea>
 		        			</div>
 		        			<div class="form-group">
 		        				{{ csrf_field() }}
-		        				<button class="btn btn-primary">Add Subject</button>
+		        				<input type="hidden" name="id" value="{{ $subject->id }}" />
+		        				<button class="btn btn-primary">Update Subject</button>
 		        			</div>
 		        		</form>
 	        		</div>

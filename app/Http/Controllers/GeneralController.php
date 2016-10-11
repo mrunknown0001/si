@@ -120,6 +120,11 @@ class GeneralController extends Controller
 	public function logout()
 	{
 
+		if(empty(Auth::user())) {
+			return redirect()->route('home')->with('notice', 'Login first!');
+		}
+
+
 		/*
 		 * UserLog  1 and 2 and StudentLog 3
 		 */

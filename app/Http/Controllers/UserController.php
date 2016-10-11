@@ -36,7 +36,7 @@ class UserController extends Controller
 		/*
 		 * Authentication Login attemp
 		 */
-		if(Auth::attempt(['user_id' => $id, 'password' => $password])) {
+		if(Auth::attempt(['user_id' => $id, 'password' => $password], True)) {
             
 			/*
 			 * Check if the user is inactive

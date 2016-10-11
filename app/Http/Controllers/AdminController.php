@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\UserLog;
+use App\Subject;
+use App\GradeLevel;
 
 class AdminController extends Controller
 {
@@ -27,8 +29,14 @@ class AdminController extends Controller
         $co_admins = User::where(['privilege' => 2, 'status' => 1])->count();
         // Get count of active students/currently enrolled
         $students = User::where(['privilege' => 3, 'status' => 1])->count();
+        // Get count of subjects
+        $subjects = Subject::count();
+        // Get count of Grade Levels
+        $grade_levels = GradeLevel::count();
 
-    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students]);
+
+
+    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students, 'subjects' => $subjects, 'grade_levels' => $grade_levels]);
     }
 
 
@@ -291,7 +299,190 @@ class AdminController extends Controller
      */
     public function getAllSubjects()
     {
-    	return view('admin.subjects-view');
+        $subjects = Subject::paginate(15);
+
+    	return view('admin.subjects-view', ['subjects' => $subjects]);
+    }
+
+
+    /*
+     * postAddSubject() method is use to add subject
+     */
+    public function postAddSubject(Request $request)
+    {
+
+        /*
+         * Validate User Input
+         */
+        $this->validate($request, [
+            'code' => 'required|unique:subjects',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        // Assign Values to Variables
+        $code = $request['code'];
+        $title = $request['title'];
+        $description = $request['description'];
+
+        $add = new Subject();
+
+        $add->code = $code;
+        $add->title = $title;
+        $add->description = $description;
+
+        if($add->save()) {
+
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Added New Subject with a code: ' . $code;
+
+            $log->save();
+
+            return redirect()->route('subjects_add')->with('success', 'Subject Successfully Added!');
+
+        }
+
+    }
+
+
+    /*
+     * showSubjectEdit() method is use to show subject to edit
+     */
+    public function showSubjectEdit($code = null)
+    {
+
+        $subject = Subject::where('code', $code)->first();
+
+        // If the code doesn't exist in database
+        if(empty($subject)) {
+            return abort(404);
+        }
+
+        return view('admin.subjects-edit', ['subject' => $subject]);
+
+    }
+
+
+    /*
+     * postSubjectUpdate() method use to update edited subject
+     */
+    public function postSubjectUpdate(Request $request)
+    {
+
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'code' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        $id = $request['id'];
+        $code = $request['code'];
+        $title = $request['title'];
+        $description = $request['description'];
+
+        // If id is empty
+        if(empty($id)) {
+            return 'System encountered error. Please reload this page.';
+        }
+
+        $subject = Subject::findorfail($id);
+
+        if(empty($subject)) {
+            // If id is not on database
+            return abort(404);
+        }
+
+        // Check the availability of the subject code is the code is changed
+        if(strtolower($code) != $subject->code) {
+
+            $code_check = Subject::where('code', $code)->first();
+            if($code_check == True) {
+                // If the code entered is alreay in use
+                return 'System encountered error. Please reload this page.';    
+            }
+
+            else {
+
+                $subject->title = $title;
+                $subject->description = $description;
+
+                if($subject->save()) {
+
+                    $log = new UserLog();
+
+                    $log->user_id = Auth::user()->id;
+                    $log->action = 'Updated Subject';
+
+                    $log->save();
+
+                    return redirect()->route('admin_get_edit_subject', strtoupper($code))->with('success', 'Subject Successfully Updated');
+
+                }
+
+                return 'Error in Saving Update';
+
+            }
+            
+        }
+        else {
+
+            $subject->title = $title;
+            $subject->description = $description;
+
+            if($subject->save()) {
+
+                $log = new UserLog();
+
+                $log->user_id = Auth::user()->id;
+                $log->action = 'Updated Subject';
+
+                $log->save();
+
+                return redirect()->route('admin_get_edit_subject', strtoupper($code))->with('success', 'Subject Successfully Updated');
+
+            }
+
+            return 'Error in Saving Update';
+
+        }
+
+    }
+
+
+    /*
+     * removeSubject() method is use to remove subject
+     */
+    public function removeSubject($code = null)
+    {
+
+        $subject = Subject::where('code', $code)->first();
+
+        // Check if subject code belongs to a specific subject
+        // If not, redirect to 404
+        if(empty($subject)) {
+            return abort(404);
+        }
+
+        if($subject->delete()) {
+
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Remove Subject';
+
+            $log->save();
+
+            return redirect()->route('subjects_view')->with('success', 'Subject Removed Successfully.');
+
+        }
+
+        return redirect()->back()->with('notice', 'Some Error Occured, Please Reload this page.');
+
     }
 
 
@@ -300,7 +491,10 @@ class AdminController extends Controller
      */
     public function getAllGradeLevels()
     {
-    	return view('admin.grade-levels-view');
+
+        $levels = GradeLevel::paginate(15);
+
+    	return view('admin.grade-levels-view', ['levels' => $levels]);
     }
 
 
@@ -465,5 +659,152 @@ class AdminController extends Controller
     {
         return view('admin.grade-block-view');
     }
+
+
+    /*
+     * postAddGradeLevel() methos is use to add new grade block in database
+     */
+    public function postAddGradeLevel(Request $request)
+    {
+        
+        /*
+         * Input Validation
+         */
+        $this->validate($request,[
+            'code' => 'required|unique:grade_levels',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        // Assign values to variables
+        $code = $request['code'];
+        $title = $request['title'];
+        $description = $request['description'];
+
+        $grade_level = new GradeLevel();
+
+        $grade_level->code = $code;
+        $grade_level->title = $title;
+        $grade_level->description = $description;
+
+        if($grade_level->save()) {
+
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Added New GradeLevel';
+
+            $log->save();
+
+            return redirect()->route('grade_levels_add')->with('success', 'Grade Level Added Successfully!');
+
+        }
+
+        return 'Error Occured! Please Refresh this page.';
+    }
+
+
+    /*
+     * getRemoveGradeLevel() use to remove grade level in the database
+     */
+    public function getRemoveGradeLevel($id = null)
+    {
+        $gl = GradeLevel::findorfail($id);
+
+        if($gl->delete()) {
+
+            // Admin Log
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Remove Grade Level';
+            $log->save();
+
+            return redirect()->route('')->with('success', 'Grade Level Removed Successfully!');
+
+        }
+
+        return 'Error Occured. Please Reload this page';
+    }
+
+
+    /*
+     * showGradeLevelEdit() methos is use to show and edit grade level
+     */
+    public function showGradeLevelEdit($code = null) {
+
+        $level = GradeLevel::where('code', $code)->first();
+
+        // If code doesn't belong to any record in database
+        // 404
+        if(empty($level)) {
+            return abort(404);
+        }
+
+        return view('admin.grade-levels-edit', ['l' => $level]);
+
+    }
+
+
+    /*
+     * postGradeLevelUpdate() to save edited grade levels
+     */
+    public function postGradeLevelUpdate(Request $request)
+    {
+
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'code' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        // Assign Values to variables
+        $id = $request['id'];
+        $code = $request['code'];
+        $title = $request['title'];
+        $description = $request['description'];
+
+        $level = GradeLevel::findorfail($id);
+
+        // Check Availability of Grade Level Code, if changed
+        if($code != $level->code) {
+            $check_code = GradeLevel::where('code', $code)->first();
+
+            if($check_code == True) {
+
+                return redirect()->route('admin_show_grade_level_edit', $level->code)->with('notice', 'Grade Level not Available');
+
+            }
+            else {
+                // Assign new code when updated
+                $level->code = $code;
+
+            }
+        }
+
+        $level->title = $title;
+        $level->description = $description;
+
+        if($level->save()) {
+
+            // User Log in editting Grade Level
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Updated Grade Level';
+
+            $log->save();
+
+            return redirect()->route('grade_levels_view')->with('success', 'Grade Level Successfully Updated!');
+
+        }
+
+        // If something error in saving
+        return 'error in updating grade level';
+
+    }
+
 
 } // End of AdminController Class

@@ -266,6 +266,46 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return view('admin.subjects-add');
 		})->name('subjects_add');
 
+		Route::post('add', [
+			'uses' => 'AdminController@postAddSubject',
+			'as' => 'admin_post_add_subject'
+			]);
+
+
+		/*
+		 * Route to remove subject in database
+		 */
+		Route::get('remove/{code}', [
+			'uses' => 'AdminController@removeSubject',
+			'as' => 'admin_get_remove_subject'
+			]);
+
+		Route::get('remove', function () {
+			return abort(404);
+		});
+
+
+		/*
+		 * Route to show subject edit
+		 */
+		Route::get('edit/{code}', [
+			'uses' => 'AdminController@showSubjectEdit',
+			'as' => 'admin_get_edit_subject'
+			]);
+
+		Route::get('edit', function () {
+			return abort(404);
+		});
+
+
+		/*
+		 * Route to update subject
+		 */
+		Route::post('edit', [
+			'uses' => 'AdminController@postSubjectUpdate',
+			'as' => 'admin_post_subject_update'
+			]);
+
 
 		/*
 		 * Route to view all subjects
@@ -297,6 +337,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return view('admin.grade-levels-add');
 		})->name('grade_levels_add');
 
+		Route::post('add', [
+			'uses' => 'AdminController@postAddGradeLevel',
+			'as' => 'admin_post_add_grade_level'
+			]);
+
 
 		/*
 		 * Route to view grade levels
@@ -304,6 +349,37 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		Route::get('view', [
 			'uses' => 'AdminController@getAllGradeLevels',
 			'as' => 'grade_levels_view'
+			]);
+
+
+		/*
+		 * Route to remove grade level
+		 */
+		Route::get('remove/{id}', [
+			'uses' => 'AdminController@getRemoveGradeLevel',
+			'as' => 'admin_get_remove_grade_level'
+			]);
+
+		Route::get('remove', function () {
+			return abort(404);
+		});
+
+
+		/*
+		 * Route to edit show grade subject
+		 */
+		Route::get('edit/{code}', [
+			'uses' => 'AdminController@showGradeLevelEdit',
+			'as' => 'admin_show_grade_level_edit'
+			]);
+
+		Route::get('edit', function () {
+			return abort(404);
+		});
+
+		Route::post('edit', [
+			'uses' => 'AdminController@postGradeLevelUpdate',
+			'as' => 'admin_post_grade_level_update'
 			]);
 
 	});

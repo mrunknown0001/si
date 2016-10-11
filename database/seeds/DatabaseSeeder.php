@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         // admin
     	DB::table('users')->insert([
-    		'user_id' => '12345',
+    		'user_id' => '143934412',
     		'firstname' => 'Admin',
     		'lastname' => 'Admin',
     		'email' => 'admin@admin.com',
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         // co-admin
         DB::table('users')->insert([
-            'user_id' => '54321',
+            'user_id' => '143934413',
             'firstname' => 'Co-Admin',
             'lastname' => 'Co-Admin',
             'email' => 'coadmin@admin.com',
@@ -40,13 +40,13 @@ class DatabaseSeeder extends Seeder
 
         // student
         DB::table('users')->insert([
-            'user_id' => '111',
+            'user_id' => '106330120056',
             'firstname' => 'Michael Adam',
             'lastname' => 'Trinidad',
             'email' => 'adam@adam.com',
             'mobile' => '09156119134',
             'birthday' => date('Y-m-d', strtotime('11/1/1992')),
-            'password' => bcrypt('adam'),
+            'password' => bcrypt('0000'),
             'privilege' => '3' // student privilege
             ]);
 

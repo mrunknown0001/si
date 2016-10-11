@@ -11,6 +11,8 @@
             {{-- Includes Errors and Success Message templates --}}
             @include('includes.errors')
             @include('includes.error')
+            @include('includes.notice')
+            @include('includes.success')
             <div class="login-panel panel panel-primary">
                 <div class="panel-heading">
                     <strong><i class="fa fa-user fa-lg"></i> Student Login</strong>

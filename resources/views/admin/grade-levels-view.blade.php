@@ -17,6 +17,11 @@
         </div>
         <div class="row">
         	<div class="col-lg-12 col-md-12">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
         		<table class="table table-hover">
         			<thead>
         				<tr>
@@ -27,58 +32,29 @@
         				</tr>
         			</thead>
         			<tbody>
+                        @foreach($levels as $l)
         				<tr>
-        					<td>7</td>
-        					<td>Grade 7</td>
-        					<td>Description</td>
+        					<td class="text-uppercase">{{ $l->code }}</td>
+        					<td>{{ $l->title }}</td>
+        					<td>{{ $l->description }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $l->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+									<a href="{{ route('admin_show_grade_level_edit', $l->code) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#{{ $l->code }}-remove"><i class="fa fa-times" aria-hidden="true"></i></button>
 								</div>
         					</td>
         				</tr>
-        				<tr>
-        					<td>8</td>
-        					<td>Grade 8</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
-        				<tr>
-        					<td>9</td>
-        					<td>Grade 9</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
-        				<tr>
-        					<td>10</td>
-        					<td>Grade 10</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
+                        @include('admin.includes.grade-level-view-details-modal')
+                        @include('admin.includes.grade-level-remove-confirm-modal')
+        				@endforeach
         			</tbody>
         		</table>
-        		<!-- Count and Total -->
-        		<!-- Page Number -->
+        		<!-- Count and Total count() of total() -->
+                <p class="text-center"><strong>{{ $levels->count() + $levels->perPage() * ($levels->currentPage() - 1) }} of {{ $levels->total() }}</strong></p>
+
+                <!-- Page Number render() -->
+                <div class="text-center"> {{ $levels->links() }}</div>
         	</div>
         </div>
     </div>
