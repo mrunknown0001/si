@@ -438,11 +438,47 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 
 
 		/*
+		 * Route to add new grade block to database
+		 */
+		Route::post('add', [
+			'uses' => 'AdminController@postAddGradeBlock',
+			'as' => 'admin_post_add_grade_block'
+			]);
+
+
+		/*
 		 * Route to view all grade block
 		 */
 		Route::get('view', [
 			'uses' => 'AdminController@getAllGradeBlocks',
 			'as' => 'grade_blocks_view'
+			]);
+
+
+		/*
+		 * Route to remove grade block in database
+		 */
+		Route::get('remove/{id}', [
+			'uses' => 'AdminController@getGradeBlockRemove',
+			'as' => 'admin_get_grade_block_remove'
+			]);
+
+
+		/*
+		 * Rout to edit view of grade block
+		 */
+		Route::get('edit/{code}', [
+			'uses' => 'AdminController@showGradeBlockEdit',
+			'as' => 'admin_show_grade_block_edit'
+			]);
+
+		Route::get('edit', function () {
+			return abort(404);
+		});
+
+		Route::post('edit', [
+			'uses' => 'AdminController@postGradeBlockUpdate',
+			'as' => 'admin_post_grade_block_update'
 			]);
 
 	});

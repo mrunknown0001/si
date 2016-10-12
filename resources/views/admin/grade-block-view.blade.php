@@ -18,6 +18,11 @@
 
         <div class="row">
         	<div class="col-lg-12 col-md-12">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
         		<table class="table table-hover">
         			<thead>
         				<tr>
@@ -28,58 +33,29 @@
         				</tr>
         			</thead>
         			<tbody>
+                        @foreach($blocks as $block)
         				<tr>
-        					<td>123</td>
-        					<td>Block 1</td>
-        					<td>Description</td>
+        					<td>{{ $block->code }}</td>
+        					<td>{{ $block->name }}</td>
+        					<td>{{ $block->description }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $block->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+									<a href="{{ route('admin_show_grade_block_edit', $block->code) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#{{ $block->code }}-remove"><i class="fa fa-times" aria-hidden="true"></i></button>
 								</div>
         					</td>
         				</tr>
-        				<tr>
-        					<td>123</td>
-        					<td>Block 2</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
-        				<tr>
-        					<td>123</td>
-        					<td>Block 3</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
-        				<tr>
-        					<td>123</td>
-        					<td>Block 4</td>
-        					<td>Description</td>
-        					<td>
-								<div class="btn-group btn-group-xs">
-									<button class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-									<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-								</div>
-        					</td>
-        				</tr>
+        				@include('admin.includes.grade-block-view-details-modal')
+                        @include('admin.includes.grade-block-remove-confirm-modal')
+                        @endforeach
         			</tbody>
         		</table>
-        		<!-- Count and Total -->
-        		<!-- Page Number -->
+        		<!-- Count and Total count() of total() -->
+                <p class="text-center"><strong>{{ $blocks->count() + $blocks->perPage() * ($blocks->currentPage() - 1) }} of {{ $blocks->total() }}</strong></p>
+
+                <!-- Page Number render() -->
+                <div class="text-center"> {{ $blocks->links() }}</div>
         	</div>
         </div>
         

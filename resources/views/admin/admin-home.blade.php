@@ -93,7 +93,7 @@
                                 <i class="fa fa-list fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
+                                <div class="huge">{{ $grade_blocks }}</div>
                                 <div>Grade Block</div>
                             </div>
                         </div>

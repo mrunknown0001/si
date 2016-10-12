@@ -12,6 +12,7 @@ use App\User;
 use App\UserLog;
 use App\Subject;
 use App\GradeLevel;
+Use App\ClassBlock;
 
 class AdminController extends Controller
 {
@@ -33,10 +34,12 @@ class AdminController extends Controller
         $subjects = Subject::count();
         // Get count of Grade Levels
         $grade_levels = GradeLevel::count();
+        // Get count of Grade Block
+        $grade_blocks = ClassBlock::count();
 
 
 
-    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students, 'subjects' => $subjects, 'grade_levels' => $grade_levels]);
+    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students, 'subjects' => $subjects, 'grade_levels' => $grade_levels, 'grade_blocks' => $grade_blocks]);
     }
 
 
@@ -657,7 +660,149 @@ class AdminController extends Controller
      */
     public function getAllGradeBlocks()
     {
-        return view('admin.grade-block-view');
+
+        $blocks = ClassBlock::paginate();
+
+        return view('admin.grade-block-view', ['blocks' => $blocks]);
+    }
+
+
+    /*
+     * postAddGradeBlock() use to save new grade block / class block to database
+     */
+    public function postAddGradeBlock(Request $request)
+    {
+
+        /*
+         * Input validation 
+         */
+        $this->validate($request, [
+            'code' => 'required|unique:class_blocks',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        // Assigning Values to Variable
+        $code = $request['code'];
+        $name = $request['title'];
+        $description = $request['description'];
+
+        $class = new ClassBlock();
+
+        $class->code = $code;
+        $class->name = $name;
+        $class->description = $description;
+
+        // Condition and Saving of new Grade/Class Block
+        if($class->save()) {
+
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Added Grade or Class Block';
+            // Saving Log for this activity
+            $log->save();
+
+            return redirect()->route('grade_blocks_add')->with('success', 'Grade/Class Block Successfully Added');
+        }
+
+        return 'Error Occured! Please reload this page.';
+    }
+
+
+    /*
+     * getGradeBlockRemove() use to remove grade block in database
+     */
+    public function getGradeBlockRemove($id = null)
+    {
+        $block = ClassBlock::findorfail($id);
+
+        if($block->delete()) {
+
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Removed Grade Block';
+            // Save log for removing grade block
+            $log->save();
+
+            return redirect()->route('grade_blocks_view')->with('success', 'Grade Block Successfully Removed');
+        }
+
+        return 'Error Occured! Please reload this page.';
+    }
+
+
+    /*
+     * showGradeBlockEdit() use to show and edit grade block
+     */
+    public function showGradeBlockEdit($code = null)
+    {
+
+        $block = ClassBlock::where('code', $code)->first();
+
+        if(empty($block)) {
+            return redirect()->route('grade_blocks_view')->with('error_msg', 'Something\'s Fishy!');
+        }
+
+        return view('admin.grade-block-edit', ['block' => $block]);
+    }
+
+
+    /*
+     * postGradeBlockUpdate() use to save editted grade block
+     */
+    public function postGradeBlockUpdate(Request $request)
+    {
+
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'code' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+            ]);
+
+        // Assign Values to variables
+        $code = $request['code'];
+        $name = $request['title'];
+        $description = $request['description'];
+        $id = $request['id'];
+
+        $block = ClassBlock::findorfail($id);
+
+        if($code != $block->code) {
+        
+            $code_check = ClassBlock::where('code', $code)->first();
+
+            if(empty($code_check)) {
+                return redirect()->route('admin_show_grade_block_edit', $block->code)->with('error_msg', 'Block Code is not Available.');
+            }
+
+            $block->code = $code;
+
+        }
+
+
+        $block->name = $name;
+        $block->description = $description;
+
+        if($block->save()) {
+
+            // Adming Log in updating grade block
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Updated Grade Block';
+
+            $log->save();
+
+            return redirect()->route('grade_blocks_view')->with('success' ,'Grade Block Successfully Udpated!');
+
+        }
+
+
     }
 
 
@@ -730,7 +875,8 @@ class AdminController extends Controller
     /*
      * showGradeLevelEdit() methos is use to show and edit grade level
      */
-    public function showGradeLevelEdit($code = null) {
+    public function showGradeLevelEdit($code = null)
+    {
 
         $level = GradeLevel::where('code', $code)->first();
 
