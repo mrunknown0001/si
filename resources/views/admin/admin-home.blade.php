@@ -16,6 +16,27 @@
         </div>
 
         <div class="row">
+            <div class="col-lg-12">
+                @if(!empty($school_year))
+                <strong>School Year: {{ $school_year->from }} - {{ $school_year->to }} - </strong>
+                    @if(!empty($quarter))
+                        @if($quarter->code == 'first')
+                            <strong>First Quarter</strong>
+                        @elseif($quarter->code == 'second')
+                            <strong>Second Quarter</strong>
+                        @elseif($quarter->code == 'third')
+                            <strong>Third Quarter</strong>
+                        @elseif($quarter->code == 'forth')
+                            <strong>Forth Quarter</strong>
+                        @endif
+                    @else
+                        <strong>No Quarter Selected</strong>
+                    @endif
+                @else
+                <strong>No Active School Year. Please Add One.</strong>
+                @endif
+                <hr/>
+            </div>
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">

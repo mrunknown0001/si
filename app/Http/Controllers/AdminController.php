@@ -12,7 +12,9 @@ use App\User;
 use App\UserLog;
 use App\Subject;
 use App\GradeLevel;
-Use App\ClassBlock;
+use App\ClassBlock;
+use App\SchoolYear;
+use App\QuarterSelect;
 
 class AdminController extends Controller
 {
@@ -36,10 +38,12 @@ class AdminController extends Controller
         $grade_levels = GradeLevel::count();
         // Get count of Grade Block
         $grade_blocks = ClassBlock::count();
+        // Get Active School Year
+        $school_year = SchoolYear::where('status', 1)->where('finish', 0)->first();
+        // Get Active Quarter
+        $quarter = QuarterSelect::where('status', 1)->where('finish', 0)->first();
 
-
-
-    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students, 'subjects' => $subjects, 'grade_levels' => $grade_levels, 'grade_blocks' => $grade_blocks]);
+    	return view('admin.admin-home', ['co_admins' => $co_admins, 'students' => $students, 'subjects' => $subjects, 'grade_levels' => $grade_levels, 'grade_blocks' => $grade_blocks, 'school_year' => $school_year, 'quarter' => $quarter]);
     }
 
 
@@ -802,7 +806,6 @@ class AdminController extends Controller
 
         }
 
-
     }
 
 
@@ -950,6 +953,152 @@ class AdminController extends Controller
         // If something error in saving
         return 'error in updating grade level';
 
+    }
+
+
+    /*
+     * postAddNewSchoolYear() method is use to add new active school year
+     */
+    public function postAddNewSchoolYear(Request $request)
+    {
+
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'from_year' => 'required',
+            'to_year' => 'required'
+            ]);
+
+        // Assign Values to Variables
+        $from = $request['from_year'];
+        $to = $request['to_year'];
+
+        $check_year = SchoolYear::where('from', $from)
+                            ->where('to', $to)
+                            ->where('status', 1)
+                            ->first();
+
+        if(!empty($check_year)) {
+            return redirect()->route('school_year_add')->with('error_msg', 'There is an Active School Year. You Can\'t Add a new one! You can only add another school year if the current school year is finished');
+        }
+
+        $check_active = SchoolYear::where('status', 1)->first();
+        if(!empty($check_active)) {
+            return redirect()->route('school_year_add')->with('error_msg', 'There is an Active School Year. You Can\'t Add a new one! You can only add another school year if the current school year is finished');
+        }
+
+        $check_exists = SchoolYear::where('from', $from)->where('to', $to)->first();
+
+        if(!empty($check_exists)) {
+            return redirect()->route('school_year_add')->with('error_msg', 'This School year has in our database, please select different school year.');
+        }
+
+        $school_year = new SchoolYear();
+
+        $school_year->from = $from;
+        $school_year->to = $to;
+        $school_year->status = 1;
+
+        if($school_year->save()) {
+
+            QuarterSelect::where('finish', 1)
+                        ->update(['status' => 0, 'finish' => 0]);
+
+            // Save log for adding school Year
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Created new school year ' . $from . ' - ' . $to;
+
+            $log->save();
+
+            return redirect()->route('school_year_add')->with('success', 'School Year Successfully Added!');
+
+        }
+
+    }
+
+
+    /*
+     * showQuarterSelect() use to display and select quarters
+     */
+    public function showQuarterSelect()
+    {
+
+
+        $quarter = QuarterSelect::all();
+
+        return view('admin.school-year-select-quarter', ['quarter' => $quarter]);
+    }
+
+
+    /*
+     * selectActiveQuarter() use to select active quarter in school year
+     */
+    public function selectActiveQuarter($id = null)
+    {
+        // Check if there is an active school year 
+        $check_school_year = SchoolYear::where('status', 1)->where('finish', 0)->first();
+
+        if(empty($check_school_year)) {
+
+            return redirect()->route('school_year_select_quarter')->with('error_msg', 'No active school year.');
+        }
+
+        $quarter = QuarterSelect::findorfail($id);
+
+        $quarter->status = 1;
+
+        if($quarter->save()) {
+            // Add user log for activating quarter
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Activated ' . $quarter->code . ' quarter of ' . $check_school_year->from . ' - ' . $check_school_year->to . ' school year';
+            $log->save();
+
+            return redirect()->route('school_year_select_quarter');
+        }
+    }
+
+
+    /*
+     * finishSelectedQuarter() use to finsiehd selected quarter
+     */
+    public function finishSelectedQuarter($id = null)
+    {
+
+        // Check if there is an active school year 
+        $check_school_year = SchoolYear::where('status', 1)->where('finish', 0)->first();
+
+        if(empty($check_school_year)) {
+
+            return redirect()->route('school_year_select_quarter')->with('error_msg', 'No active school year.');
+        }
+
+        if($id == 4) {
+            $end_school_year = SchoolYear::where('status', 1)->where('finish', 0)->first();
+
+            $end_school_year->status = 0;
+            $end_school_year->finish = 1;
+
+            $end_school_year->save();
+        }
+
+        $quarter = QuarterSelect::findorfail($id);
+
+        $quarter->status = 0;
+        $quarter->finish = 1;
+
+        if($quarter->save()) {
+            // Add user log for activating quarter
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Finished ' . $quarter->code . ' quarter of ' . $check_school_year->from . ' - ' . $check_school_year->to . ' school year';
+            $log->save();
+
+            return redirect()->route('school_year_select_quarter');
+        }
     }
 
 

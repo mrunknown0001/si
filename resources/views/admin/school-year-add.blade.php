@@ -18,15 +18,20 @@
 
 		<div class="row">
         	<div class="col-lg-6 col-md-8">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
         		<div class="panel panel-primary">
         			<div class="panel-heading">
         				<strong>Add School Year</strong>
         			</div>
         			<div class="panel-body">
-        				<form action="#" method="POST" class="form-inline">
+        				<form action="{{ route('admin_post_add_new_school_year') }}" method="POST" class="form-inline">
         					<div class="form-group">
 								
-								<select name="start_year" id="start_year" class="form-control">
+								<select name="from_year" id="from_year" class="form-control">
 									<option value="">Select Year</option>
 									<option value="{{ date('Y') }}">{{ date('Y') }}</option>
 								</select>
@@ -37,7 +42,7 @@
         					</div>
         					<div class="form-group">
         						
-        						<select name="end_year" id="end_year" class="form-control">
+        						<select name="to_year" id="to_year" class="form-control">
         							<option value="">Select Year</option>
         							<option value="{{ date('Y') + 1 }}">{{ date('Y') + 1}}</option>
         						</select>

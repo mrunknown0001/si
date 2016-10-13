@@ -50,5 +50,33 @@ class DatabaseSeeder extends Seeder
             'privilege' => '3' // student privilege
             ]);
 
+        /*
+         * Insert only one - Quarters
+         */
+        DB::table('quarter_selects')->insert([
+            'code' => 'first',
+            'status' => 0,
+            'finish' => 0
+            ]);
+
+        DB::table('quarter_selects')->insert([
+            'code' => 'second',
+            'status' => 0,
+            'finish' => 0
+            ]);
+
+        DB::table('quarter_selects')->insert([
+            'code' => 'third',
+            'status' => 0,
+            'finish' => 0
+            ]);
+
+        DB::table('quarter_selects')->insert([
+            'code' => 'forth',
+            'status' => 0,
+            'finish' => 0
+            ]);
+
+
     }
 }

@@ -407,11 +407,43 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 
 
 		/*
-		 * Route to select school quarter
+		 * Route to add an active school year
 		 */
-		Route::get('select-quarter', function () {
-			return view('admin.school-year-select-quarter');
-		})->name('school_year_select_quarter');
+		Route::post('add', [
+			'uses' => 'AdminController@postAddNewSchoolYear',
+			'as' => 'admin_post_add_new_school_year'
+			]);
+
+
+		/*
+		 * Route to show all quarter
+		 */
+		Route::get('select-quarter', [
+			'uses' => 'AdminController@showQuarterSelect'
+			])->name('school_year_select_quarter');
+
+
+		/*
+		 * Route to select quarter
+		 */
+		Route::get('select-quarter/{id}', [
+			'uses' => 'AdminController@selectActiveQuarter',
+			'as' => 'admin_select_active_quarter'
+			]);
+
+
+		/*
+		 * Route to finished selected quarter
+		 */
+		Route::get('finish-quarter/{id}', [
+			'uses' => 'AdminController@finishSelectedQuarter',
+			'as' => 'admin_finish_selected_quarter'
+			]);
+		
+		Route::get('finish-quarter', function () {
+			return redirect()->route('school_year_select_quarter');
+		});
+
 
 	});
 
