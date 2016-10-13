@@ -48,6 +48,9 @@
                         <li>
                             <a href="{{ route('co_admin_view') }}">View All Co-Admin</a>
                         </li>
+                        <li>
+                            <a>Assign Block/Section</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>

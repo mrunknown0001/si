@@ -39,15 +39,15 @@
                 <li>
                     <a href="{{ route('co_admin_home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a><i class="fa fa-book fa-fw"></i> My Subjects<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ route('co_admin_my_subjects') }}">View My Subjects</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+                    
+                </li> -->
                 <li>
                     <a><i class="fa fa-list fa-fw"></i> My Grade Blocks<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

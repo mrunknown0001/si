@@ -296,8 +296,9 @@ class AdminController extends Controller
      */
     public function getAllStudents()
     {
+        $students = User::where('privilege', '3')->where('status', '1')->orderBy('lastname', 'asc')->paginate(15);
 
-    	return view('admin.students-view');
+    	return view('admin.students-view', ['students'=> $students]);
     }
 
 
