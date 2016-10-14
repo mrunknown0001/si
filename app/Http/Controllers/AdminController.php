@@ -15,6 +15,7 @@ use App\GradeLevel;
 use App\ClassBlock;
 use App\SchoolYear;
 use App\QuarterSelect;
+use App\BlockAssign;
 
 class AdminController extends Controller
 {
@@ -1100,6 +1101,99 @@ class AdminController extends Controller
 
             return redirect()->route('school_year_select_quarter');
         }
+    }
+
+
+    /*
+     * postAssignBlock() assign section/block to co-admin/adviser
+     */
+    public function postAssignBlock(Request $request)
+    {
+
+        /*
+         * Input Validation
+         */
+        $this->validate($request, [
+            'co_admin' => 'required',
+            'grade_level' => 'required',
+            'block' => 'required'
+            ]);
+
+        // Assigning Values to Variables
+        $co_admin = $request['co_admin'];
+        $grade_level = $request['grade_level'];
+        $block = $request['block'];
+
+        // Checking Inputs if present in database
+        $check_co_admin = User::find($co_admin);
+        $check_grade_level = GradeLevel::find($grade_level);
+        $check_block = ClassBlock::find($block);
+
+        if(empty($check_co_admin) || empty($check_grade_level) || empty($check_block)) {
+            return redirect()->route('admin_co_admin_assign_block')->with('error_msg', 'System Detected Data Tampering! Please reload this page.');
+        }
+
+        // Check if the assignment in the database
+        $check_exists = BlockAssign::where('co_admin', $co_admin)
+                        ->where('level', $grade_level)
+                        ->where('block', $block)
+                        ->first();
+        if(!empty($check_exists)) {
+            return redirect()->route('admin_co_admin_assign_block')->with('error_msg', 'The Adviser and class already in database.');
+        }
+
+
+        // Check if adviser is available
+        $check_adviser = BlockAssign::where('co_admin', $co_admin)->first();
+
+        if(!empty($check_adviser)) {
+            return redirect()->route('admin_co_admin_assign_block')->with('error_msg', 'The Adviser has already an Assigned Class/Block.');   
+        }
+
+        // Check if the grade level and block is assigned to other
+        $check_assign = BlockAssign::where('co_admin', '!=', $co_admin)
+                        ->where('level', $grade_level)
+                        ->where('block', $block)
+                        ->first();
+        if(!empty($check_assign)) {
+            return redirect()->route('admin_co_admin_assign_block')->with('error_msg', 'The subject/class already assigned.');   
+        }
+
+        // Assign the class to the adviser
+        $assign = new BlockAssign();
+
+        $assign->co_admin = $co_admin;
+        $assign->level = $grade_level;
+        $assign->block = $block;
+
+        if($assign->save()) {
+
+            // Add Admin log
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Assigned Block/Section/Class in Adviser';
+
+            $log->save();
+
+            return redirect()->route('admin_co_admin_assign_block')->with('success', 'Class/Block Assigned Successfully.');
+
+
+        }
+
+
+
+    }
+
+
+    /*
+     * viewBlockAssignment() use toview block assignment
+     */
+    public function viewBlockAssignment()
+    {
+        $adviser = BlockAssign::all();
+
+        return view('admin.co-admin-assign-block-view', ['adviser' => $adviser]);
     }
 
 

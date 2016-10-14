@@ -203,6 +203,29 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return abort(404);
 		});
 
+
+		/*
+		 * Assign Block/Section/Class in co-admi/teacher/adviser
+		 */
+		Route::get('assign-block', function () {
+			return view('admin.co-admin-assign-block');
+		})->name('admin_co_admin_assign_block');
+
+
+		Route::post('assign-block', [
+			'uses' => 'AdminController@postAssignBlock',
+			'as' => 'admin_post_assign_block'
+			]);
+
+
+		/*
+		 * Route to view assigned block/section to co-admin/adiviser
+		 */
+		Route::get('view-block-assignment', [
+			'uses' => 'AdminController@viewBlockAssignment',
+			'as' => 'admin_view_block_assignment'
+			]);
+
 	});
 
 

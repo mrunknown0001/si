@@ -49,7 +49,10 @@
                             <a href="{{ route('co_admin_view') }}">View All Co-Admin</a>
                         </li>
                         <li>
-                            <a>Assign Block/Section</a>
+                            <a href="{{ route('admin_co_admin_assign_block') }}">Assign Block/Section</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin_view_block_assignment') }}">View Block Assignment</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

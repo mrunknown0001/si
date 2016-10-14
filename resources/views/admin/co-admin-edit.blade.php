@@ -47,7 +47,7 @@
 		        				<input type="text" name="birthday" class="form-control" value="{{ $user->birthday }}" placeholder="MM/DD/YYYY" />
 		        			</div>
 		        			<div class="form-group">
-		        				{{ csrf_field() }}
+		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 	        					<input type="hidden" name="id" value="{{ $user->id }}" />
 		        				<button class="btn btn-primary">Update Co-Admin</button>
 		        			</div>

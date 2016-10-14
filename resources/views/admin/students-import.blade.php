@@ -52,7 +52,7 @@
                                 </select>
                             </div>
         					<div class="form-group">
-        						{{ csrf_field() }}
+        						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
         						<button class="btn btn-primary">Import Students</button>
         					</div>
         				</form>

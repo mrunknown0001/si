@@ -38,7 +38,7 @@
 		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Grade Level...">{{ $l->description }}</textarea>
 		        			</div>
 		        			<div class="form-group">
-		        				{{ csrf_field() }}
+		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 		        				<input type="hidden" name="id" value="{{ $l->id }}" />
 		        				<button class="btn btn-primary">Update Grade Level</button>
 		        			</div>
