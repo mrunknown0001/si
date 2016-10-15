@@ -24,12 +24,17 @@
 
         <div class="row">
         	<div class="col-lg-6 col-md-8">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
         		<div class="panel panel-primary">
         			<div class="panel-heading">
         				<strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Import Students List</strong>
         			</div>
         			<div class="panel-body">
-        				<form action="#" method="POST" enctype="multipart/form-data">
+        				<form action="{{ route('admin_import_student') }}" method="POST" enctype="multipart/form-data">
         					<div class="form-group">
 
 								<input type="file" name="students" id="students" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" title="Select Excel Files Only" data-toggle="tooltip" data-placement="bottom" />

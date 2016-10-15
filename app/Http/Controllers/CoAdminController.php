@@ -10,10 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\UserLog;
+use App\BlockAssign;
+use App\SchoolYear;
+use App\QuarterSelect;
 
 class CoAdminController extends Controller
 {
     
+    /*
+     * getInitInfo()
+     */
+    public function getInitInfo()
+    {
+        $school_year = SchoolYear::where('status', 1)->where('finish', 0)->first();
+        // Get Active Quarter
+        $quarter = QuarterSelect::where('status', 1)->where('finish', 0)->first();
+
+        return view('coadmin.co-admin-home', ['school_year' => $school_year, 'quarter' => $quarter]);
+    }
+
+
     /*
      * getProfile() uses to get profile of co-admin
      */
@@ -51,7 +67,10 @@ class CoAdminController extends Controller
      */
     public function getMyGradeBlocks()
     {
-    	return view('coadmin.co-admin-my-grade-blocks');
+        $block = BlockAssign::find(Auth::user()->id);
+
+
+    	return view('coadmin.co-admin-my-grade-blocks', ['block' => $block]);
     }
 
 

@@ -9,11 +9,23 @@
     @include('coadmin.co-admin-menu')
 
     <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">My Grade Blocks</h3>
-        </div>
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <h3 class="page-header">My Grade Blocks</h3>
 
-	</div>
+	        </div>
+
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				@if(!empty($block))
+				<strong>{{ $block->leveltitle->title }} - {{ $block->blockname->name }}</strong>
+				@else
+				<strong>No Assigned Block</strong>
+				@endif
+				<hr/>
+				<strong>List of Students</strong>
+			</div>
+		</div>
 </div>
 @endsection

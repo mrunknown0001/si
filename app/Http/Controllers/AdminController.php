@@ -1178,10 +1178,7 @@ class AdminController extends Controller
 
             return redirect()->route('admin_co_admin_assign_block')->with('success', 'Class/Block Assigned Successfully.');
 
-
         }
-
-
 
     }
 
@@ -1194,6 +1191,50 @@ class AdminController extends Controller
         $adviser = BlockAssign::all();
 
         return view('admin.co-admin-assign-block-view', ['adviser' => $adviser]);
+    }
+
+
+    /*
+     * clearBlockAssign() method is use to clear assigned block to co-admin/adviser
+     */
+    public function clearBlockAssign($id = null)
+    {
+
+        /*
+         * Check if the id is in the database
+         */
+        $assign = BlockAssign::findorfail($id);
+
+        // Remove Assigned block to co-admin in database
+        if($assign->delete()) {
+            // Add log to admin
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Removed Block/Class Assignment in Co-Admin/Adviser';
+            $log->save();
+
+            return redirect()->route('admin_co_admin_assign_block')->with('success', 'Block/Class Assignment Remove Successfully.');
+        }
+
+        return 'Error Occured!';
+
+    }
+
+
+    /*
+     * postImportStudents() use to import list of students per level and section
+     */
+    public function postImportStudents(Request $request)
+    {
+
+        /*
+         * Input Validation
+         */
+        $this->validate($request, [
+            'students' => 'required',
+            'grade_level' => 'required',
+            'class_block' => 'required'
+            ]);
     }
 
 

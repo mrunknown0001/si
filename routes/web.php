@@ -226,6 +226,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			'as' => 'admin_view_block_assignment'
 			]);
 
+
+		/*
+		 * Route to clear block assignment to adviser
+		 */
+		Route::get('clear-block-assign/{id}', [
+			'uses' => 'AdminController@clearBlockAssign',
+			'as' => 'admin_clear_block_assign'
+			]);
+
+		Route::get('clear-block-assign', function () {
+			return abort(404);
+		});
+
 	});
 
 
@@ -248,6 +261,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		Route::get('import', function () {
 			return view('admin.students-import');
 		})->name('students_import');
+
+		Route::post('import', [
+			'uses' => 'AdminController@postImportStudents',
+			'as' => 'admin_import_student'
+			]);
 
 
 		/*
@@ -550,9 +568,9 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 	/*
 	 * Route to co-admin dashboard
 	 */
-	Route::get('dashboard', function () {
-		return view('coadmin.co-admin-home');
-	})->name('co_admin_home');
+	Route::get('dashboard', [
+		'uses' => 'CoAdminController@getInitInfo'
+		])->name('co_admin_home');
 
 	Route::get('/', function () {
 		return redirect()->route('co_admin_home');
