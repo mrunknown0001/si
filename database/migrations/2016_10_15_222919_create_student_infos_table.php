@@ -15,12 +15,11 @@ class CreateStudentInfosTable extends Migration
     {
         Schema::create('student_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id')->unsigned(); // Student ID
-            $table->foreign('student_id')->references('id')->on('users');
+            $table->string('student_id'); // LRN number
             $table->integer('grade_level')->unsigned(); // Grade Level ID
-            $table->foreign('grade_level')->references('id')->on('grade_levels');
+            $table->foreign('grade_level')->references('id')->on('grade_levels')->onDelete('cascade');
             $table->integer('class_block')->unsigned(); // Class Block ID
-            $table->foreign('class_block')->references('id')->on('class_blocks');
+            $table->foreign('class_block')->references('id')->on('class_blocks')->onDelete('cascade');
             $table->timestamps();
         });
     }

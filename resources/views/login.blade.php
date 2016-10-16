@@ -26,7 +26,7 @@
                                 <input class="form-control" placeholder="Password" name="password" type="password" value="">
                             </div>
                             <div class="form-group">
-                                {{ csrf_field() }}
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                 <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>    
                             </div>
                             

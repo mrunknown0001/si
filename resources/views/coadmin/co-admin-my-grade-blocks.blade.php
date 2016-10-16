@@ -24,7 +24,31 @@
 				<strong>No Assigned Block</strong>
 				@endif
 				<hr/>
-				<strong>List of Students</strong>
+				<strong>List of Students - {{ $students->count() }}</strong>
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>LRN</th>
+							<th>Lastname</th>
+							<th>Firstname</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($students as $student)
+						<tr>
+							<td>{{ $student->student_id }}</td>
+							<td>{{ $student->student->lastname }}</td>
+							<td>{{ $student->student->firstname }}</td>
+							<td>
+								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#{{ $student->student_id }}-view">View</button>
+
+							</td>
+						</tr>
+						@include('coadmin.includes.student-view-details-modal')
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 </div>

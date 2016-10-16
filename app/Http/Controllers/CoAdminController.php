@@ -13,6 +13,7 @@ use App\UserLog;
 use App\BlockAssign;
 use App\SchoolYear;
 use App\QuarterSelect;
+use App\StudentInfo;
 
 class CoAdminController extends Controller
 {
@@ -67,10 +68,23 @@ class CoAdminController extends Controller
      */
     public function getMyGradeBlocks()
     {
-        $block = BlockAssign::find(Auth::user()->id);
+        $gblock = BlockAssign::where('co_admin', Auth::user()->id)->first();
+        
+        $students = StudentInfo::where('grade_level', $gblock->level)
+                            ->where('class_block', $gblock->block)
+                            ->get();
 
 
-    	return view('coadmin.co-admin-my-grade-blocks', ['block' => $block]);
+    	return view('coadmin.co-admin-my-grade-blocks', ['block' => $gblock, 'students' => $students]);
+    }
+
+
+    /*
+     * postImportGrades() use to import computed grades of students
+     */
+    public function postImportGrades(Request $request)
+    {
+        return 'Import Students Grades';
     }
 
 

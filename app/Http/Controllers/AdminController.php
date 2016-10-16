@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
 use Illuminate\Support\Facades\Auth;
+use DB;
+use Excel;
+use Illuminate\Support\Facades\Input;
 
 use App\User;
 use App\UserLog;
@@ -16,6 +18,8 @@ use App\ClassBlock;
 use App\SchoolYear;
 use App\QuarterSelect;
 use App\BlockAssign;
+use App\StudentInfo;
+use App\StudentImport;
 
 class AdminController extends Controller
 {
@@ -1235,6 +1239,72 @@ class AdminController extends Controller
             'grade_level' => 'required',
             'class_block' => 'required'
             ]);
+
+        // Assign Values to Variables
+        $grade_level = $request['grade_level'];
+        $class_block = $request['class_block'];
+
+        // Check if block/class is already imported by admin to avoid redundant data/errors
+        $check_import = StudentImport::where('grade_level', $grade_level)
+                                    ->where('class_block', $class_block)
+                                    ->where('status', '1')
+                                    ->first();
+
+        if(!empty($check_import)) {
+            // If already imported
+            return 'Class Block is already imported!';
+        }
+
+        /*
+         * Start of Import Excel in Condition
+         */
+        if(Input::hasFile('students')){
+            $path = Input::file('students')->getRealPath();
+            $data = Excel::selectSheets('Students')->load($path, function($reader) {
+                /*
+                 * More Condition to make specific Operations
+                 */
+            })->get();
+
+            if(!empty($data) && $data->count()){
+                foreach ($data as $value) {
+                    if($value->lrn != null) {
+                        // This will use on users table
+                        $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, 'email' => $value->email, 'mobile' => $value->mobile, 'birthday' => date('Y-m-d', strtotime($value->birthday)), 'password' => bcrypt('0000'), 'privilege' => 3, 'status' => 1];
+                        // This use on student_infos table
+                        $student_info[] = ['student_id' => $value->lrn, 'grade_level' => $grade_level, 'class_block' => $class_block];
+                    }
+                    
+                }
+                if(!empty($insert)){
+                    DB::table('users')->insert($insert);
+                    DB::table('student_infos')->insert($student_info);
+
+                    // Record the the class block is already imported
+                    $student_import = new StudentImport();
+                    $student_import->grade_level = $grade_level;
+                    $student_import->class_block = $class_block;
+                    $student_import->save();
+
+                    // User log for importing students
+                    $log = new UserLog();
+                    $log->user_id = Auth::user()->id;
+                    $log->action = 'Imported Students ' . $grade_level . ' - ' . $class_block;
+                    $log->save();
+
+
+                    dd('Students Import Successful.');
+                }
+                
+            }
+            else {
+                return 'empty response';
+            }
+
+        }
+        else {
+            return 'not imported';
+        }
     }
 
 

@@ -38,17 +38,6 @@ class DatabaseSeeder extends Seeder
             'birthday' => date('Y-m-d', strtotime('10/1/1992'))
             ]);
 
-        // student
-        DB::table('users')->insert([
-            'user_id' => '106330120056',
-            'firstname' => 'Michael Adam',
-            'lastname' => 'Trinidad',
-            'email' => 'adam@adam.com',
-            'mobile' => '09156119134',
-            'birthday' => date('Y-m-d', strtotime('11/1/1992')),
-            'password' => bcrypt('0000'),
-            'privilege' => '3' // student privilege
-            ]);
 
         /*
          * Insert only one - Quarters

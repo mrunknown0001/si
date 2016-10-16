@@ -660,6 +660,15 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 		return view('coadmin.co-admin-import-grades');
 	})->name('co_admin_import_grades');
 
+
+	/*
+	 * Route to import grade of students per subject
+	 */
+	Route::post('import-grades', [
+		'uses' => 'CoAdminController@postImportGrades',
+		'as' => 'co_admin_post_import_grades'
+		]);
+
 });
 
 
