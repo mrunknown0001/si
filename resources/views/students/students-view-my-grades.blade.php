@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') View My Grades - Student - Student Information System @endsection
+@section('title') My Grades - Student Information System @endsection
 
 @section('content')
 {{-- Includes Student's Menu --}}
@@ -8,10 +8,72 @@
 <div class="container-fluid">
 
     <div class="row">
-    	<div class="col-lg-8 col-md-12 col-lg-offset-2">
-            <h3>View My Grades</h3>
-    		
+    	<div id="myGrades" class="col-lg-8 col-md-12 col-lg-offset-2">
+            <div id="info">
+                <p>Student Name: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</p>
+                <p>LRN: {{ Auth::user()->user_id }}</p>
+                <h4 class="text-center">Printable Grades</h4>
+            </div>
+            <h3 id="headtitle">My Grades</h3>
+
+            <table class="table table-hover table-bordered text-center">
+            	<thead>
+            		<tr>
+            			<th style="vertical-align: middle;" rowspan="2" class="text-center">Subject</th>
+            			<th colspan="4" class="text-center">Quarters</th>
+            			<th style="vertical-align: middle;" rowspan="2" class="text-center">Ave</th>
+            		</tr>
+            		<tr>
+            			<th class="text-center">First</th>
+            			<th class="text-center">Second</th>
+            			<th class="text-center">Third</th>
+            			<th class="text-center">Forth</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			@foreach($subjects as $s)
+            			<th class="text-center">{{ $s->subject->title }}</th>
+            			<th class="text-center">
+            				@foreach($first_quarter_grade as $fqg)
+								@if($fqg->subject_id == $s->subject_id)
+									{{ $fqg->grade }}
+								@endif
+            				@endforeach
+            			</th>
+            			<th class="text-center">
+            				@foreach($second_quarter_grade as $sqg)
+								@if($sqg->subject_id == $s->subject_id)
+									{{ $sqg->grade }}
+								@endif
+            				@endforeach
+            			</th>
+            			<th class="text-center">
+            				@foreach($third_quarter_grade as $tqg)
+								@if($tqg->subject_id == $s->subject_id)
+									{{ $tqg->grade }}
+								@endif
+            				@endforeach
+            				
+            			</th>
+            			<th class="text-center">
+            				@foreach($forth_quarter_grade as $fqg)
+								@if($fqg->subject_id == $s->subject_id)
+									{{ $fqg->grade }}
+								@endif
+            				@endforeach
+            			</th>
+            			<th class="text-center"></th>
+						@endforeach
+            		</tr>
+            	</tbody>
+            </table>
+    		<p id="footnote"><i>Note: Some grades are subject for availability in database.</i></p>
     	</div>
+        <div class="col-lg-8 col-md-12 col-lg-offset-2">
+            <a id="printbutton" href="javascript:window.print()" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Print</a>   
+        </div>
+        
     </div>
 
 </div>

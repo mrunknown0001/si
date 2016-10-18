@@ -656,9 +656,9 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 	/*
 	 * route to import grade used by co-admind
 	 */
-	Route::get('import-grades', function () {
-		return view('coadmin.co-admin-import-grades');
-	})->name('co_admin_import_grades');
+	Route::get('import-grades', [
+		'uses' => 'CoAdminController@getImportedSubjects'
+		])->name('co_admin_import_grades');
 
 
 	/*
@@ -731,9 +731,9 @@ Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], functi
 	/*
 	 * Route to filter grades of students options
 	 */
-	Route::get('view-grades', function () {
-		return view('students.students-view-my-grades');
-	})->name('students_view_my_grades');
+	Route::get('view-grades', [
+		'uses' => 'StudentController@getViewGrades'
+		])->name('students_view_my_grades');
 
 
 	/*

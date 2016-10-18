@@ -33,7 +33,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student's Name <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		        		<li><a href="{{ route('students_profile') }}"><i class="fa fa-user fa-fw"></i> My Profile</a>
 		        		<li><a href="{{ route('students_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>

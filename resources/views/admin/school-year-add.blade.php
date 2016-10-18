@@ -49,7 +49,7 @@
 
         					</div>
         					<div class="form-group pull-right">
-        						{{ csrf_field() }}
+        						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
         						<button class="btn btn-primary">Add School Year</button>
         					</div>
         				</form>

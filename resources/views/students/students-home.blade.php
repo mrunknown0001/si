@@ -16,7 +16,7 @@
 		    	@include('includes.success')
 		    	@include('includes.notice')
 
-		    	
+		    	<h3>Home Page of Student Panel</h3>
     		</div>
     	</div>
     	

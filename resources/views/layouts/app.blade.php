@@ -39,9 +39,30 @@
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 
+		<style>
+		    @media print
+		    {
+				#printbutton, #headtitle {
+					display: none;
+				}
+				#info {
+					display: : inherit;
+				}
+		    }
+
+		    @media screen {
+		    	#info, #footnote {
+		    		display: none;
+		    	}
+		    }
+	    </style>
+
 	</head>
 	<body>
 		@yield('content')
+
+		{{-- Custome JS Function Print --}}
+		<script src="{{ URL::asset('js/print.js') }}"></script>
 
 		{{-- jQuery --}}
 	    <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>

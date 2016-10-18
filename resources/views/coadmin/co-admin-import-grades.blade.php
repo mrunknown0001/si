@@ -54,6 +54,43 @@
         				</form>
         			</div>
         		</div>
+                <hr/>
+
+                <table class="table table-hover table-bordered">
+                    <caption><strong>Imported Subjects</strong></caption>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Quarter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($first_quarter as $q)
+                        <tr>
+                            <td>{{ $q->subject->title }}</td>
+                            <td>First Quarter</td>
+                        </tr>
+                        @endforeach
+                        @foreach($second_quarter as $q)
+                        <tr>
+                            <td>{{ $q->subject->title }}</td>
+                            <td>Second Quarter</td>
+                        </tr>
+                        @endforeach
+                        @foreach($third_quarter as $q)
+                        <tr>
+                            <td>{{ $q->subject->title }}</td>
+                            <td>Third Quarter</td>
+                        </tr>
+                        @endforeach
+                        @foreach($forth_quarter as $q)
+                        <tr>
+                            <td>{{ $q->subject->title }}</td>
+                            <td>Forth Quarter</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
         	</div>
         </div>
 
