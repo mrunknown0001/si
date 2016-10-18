@@ -1,3 +1,23 @@
+/*full image background*/
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    background: none;
+}
+
+.full {
+  background: url('/uploads/bg/bg.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#welcome {
+  color: #ffffff;
+  text-shadow: 2px 2px 15px #000000;
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;

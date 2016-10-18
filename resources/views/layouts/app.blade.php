@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>
 			@yield('title')
@@ -60,9 +60,6 @@
 	</head>
 	<body>
 		@yield('content')
-
-		{{-- Custome JS Function Print --}}
-		<script src="{{ URL::asset('js/print.js') }}"></script>
 
 		{{-- jQuery --}}
 	    <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
