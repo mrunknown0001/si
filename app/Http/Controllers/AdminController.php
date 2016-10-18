@@ -1292,18 +1292,19 @@ class AdminController extends Controller
                     $log->action = 'Imported Students ' . $grade_level . ' - ' . $class_block;
                     $log->save();
 
-
-                    dd('Students Import Successful.');
+                    // dd('Students Import Successful.');
+                    return redirect()->route('admin.students-import')->with('success', 'Students Import Successful.');
                 }
                 
             }
             else {
-                return 'empty response';
+                
+                return redirect()->route('admin.students-import')->with('error', 'Error. Empy Responce. Please go to Home Page');
             }
 
         }
         else {
-            return 'not imported';
+            return redirect()->route('admin.students-import')->with('error', 'Students Not Imported!');
         }
     }
 

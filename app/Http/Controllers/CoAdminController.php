@@ -172,17 +172,17 @@ class CoAdminController extends Controller
                     $log->save();
 
 
-                    dd('Grades Import Successful.');
+                    return redirect()->route('co_admin_post_import_grades')->with('success', 'Grades Imported Successfully');
                 }
                 
             }
             else {
-                return 'empty response';
+               return redirect()->route('co_admin_post_import_grades')->with('error', 'Error. Empy Responce. Please go to Home Page');
             }
 
         }
         else {
-            return 'not imported';
+            return redirect()->route('co_admin_post_import_grades')->with('error', 'Grades Not Imported!');
         }
 
 
