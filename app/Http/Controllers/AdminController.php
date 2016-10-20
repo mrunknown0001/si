@@ -308,6 +308,141 @@ class AdminController extends Controller
 
 
     /*
+     * editStudentInfo() method is use to edit info of the students
+     */
+    public function editStudentInfo($lrn = null)
+    {
+        // Get the student User info
+        $student = User::where('user_id', $lrn)->first();
+
+        // Check if the stuent lrn is existing or not
+        if(empty($student)) {
+            return abort(404);
+        }
+
+        return view('admin.students-edit', ['s' => $student]);
+    }
+
+
+    /*
+     * postUpdateStudentInfo() use to udpate editted student info
+     */
+    public function postUpdateStudentInfo(Request $request)
+    {
+
+        /*
+         * Input Validation
+         */
+        $this->validate($request, [
+            'lrn' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'birthday' => 'required'
+            ]);
+
+        // Assigning Values to variables
+        $lrn = $request['lrn'];
+        $firstname = $request['firstname'];
+        $lastname = $request['lastname'];
+        $email = $request['email'];
+        $mobile = $request['mobile'];
+        $birthday = $request['birthday'];
+        // ID of Student from users table
+        $id = $request['id'];
+
+        // Get the all the information of the student
+        // If new, this will check if the lrn is available or not
+        $student = User::findorfail($id);
+
+        // Check if the lrn is new or just the same
+        if($student->user_id != $lrn) {
+            // LRN check availability if new
+            $check_lrn = StudentInfo::where('student_id', $lrn)->first();
+
+            if(!empty($check_lrn)) {
+                return redirect()->route('admin_get_edit_student_info', $student->user_id)->with('error_msg', 'LRN ' . $lrn .' is already used!');
+            }
+        }
+
+        // Check if the email is new or just the same
+        // If new, this will check the email is available or not
+        if($student->email != $email) {
+            // Email check availability if new
+            $check_email = User::where('email', $email)->first();
+
+            if(!empty($check_email)) {
+                return redirect()->route('admin_get_edit_student_info', $student->user_id)->with('error_msg', 'Email ' . $email .' is already used!');
+            }
+
+        }
+
+        // Start of Saving update details of students
+        $student->user_id = $lrn;
+        $student->firstname = $firstname;
+        $student->lastname = $lastname;
+        $student->email = $email;
+        $student->mobile = $mobile;
+        $student->birthday = date('Y-m-d', strtotime($birthday));
+
+        if($student->save()) {
+            // User/admin log in updating student
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Updated Student Details';
+            $log->save();
+
+            return redirect()->route('students_view')->with('success', 'Student Detail Updated Successfully');
+        }
+
+    }
+
+
+    /*
+     * studentSearch() method is use to search students by their lrn or name
+     */
+    public function studentSearch(Request $request)
+    {
+
+        // Input Validation
+        $this->validate($request,[
+            'keyword' => 'required'
+            ]);
+
+        $keyword = $request['keyword'];
+
+        /*
+         * Check if lrn and search for student owning it
+         */
+        $result = User::where('user_id', $keyword)->where('privilege', 3)->where('status', 1)->first();
+        // If lrn is the database
+        if(!empty($result)) {
+            return view('admin.student-view-lrn-search', ['s' => $result]);
+        }
+
+        /*
+         * Check if the keyword is firstname or lastname, then search for it in database
+         */
+        $result = User::where('lastname', 'like', "%$keyword%")
+                        ->where('status', 1)
+                        ->where('privilege', 3)
+                        ->paginate(10);
+
+        // The query returns a result
+        if($result->count() > 1) {
+            return view('admin.student-view-keyword-result', ['students' => $result]);
+        }
+
+        // if the to operation no work, meaning the keyword/lrn has no match in database
+        return redirect()->route('students_view')->with('notice', 'Your search keyword has no matching result on records.');
+
+
+
+    }
+
+
+    /*
      * This getAllSubjects() methods is use to get all info of subjects
      */
     public function getAllSubjects()

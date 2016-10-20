@@ -42,12 +42,15 @@
 		<style>
 		    @media print
 		    {
+		    	@page { margin: 0; }
+				body { margin: 1.6cm; }
 				#printbutton, #headtitle {
 					display: none;
 				}
 				#info {
 					display: : inherit;
 				}
+
 		    }
 
 		    @media screen {

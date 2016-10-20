@@ -278,6 +278,36 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 
 
 		/*
+		 * Route to student search by lrn or by name
+		 */
+		Route::get('search', [
+			'uses' => 'AdminController@studentSearch'
+			])->name('student_search');
+
+
+		/*
+		 * Route to view edit information of the sdtudents
+		 */
+		Route::get('edit/{lrn}', [
+			'uses' => 'AdminController@editStudentInfo',
+			'as' => 'admin_get_edit_student_info'
+			]);
+
+		Route::get('edit', function () {
+			return redirect()->route('students_view');
+		});
+
+
+		/*
+		 * Route to update student details
+		 */
+		Route::post('edit', [
+			'uses' => 'AdminController@postUpdateStudentInfo',
+			'as' => 'admin_post_update_student_info'
+			]);
+
+
+		/*
 		 * Route to students filter/search
 		 */
 		Route::get('fiter-search', function () {

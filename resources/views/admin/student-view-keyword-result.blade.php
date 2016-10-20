@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') View All Students - Admin - Student Information System @endsection
+@section('title') Search Result - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
 	<div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View All Students</h3>
+                <h3 class="page-header">Search Result</h3>
             </div>          
         </div>
 
@@ -30,11 +30,11 @@
                 </form>
             </div>
             <div class="col-lg-12 col-md-12">
-                {{-- Includes errors and session flash message display container --}}
-                @include('includes.errors')
-                @include('includes.error')
-                @include('includes.success')
-                @include('includes.notice')
+                <div class="alert alert-success text-center fade in top-space">
+                    <a href="javascript:void(0)" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <b>Showing the matched keyword in records</b>
+                </div>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -67,6 +67,7 @@
 
                 <!-- Page Number render() -->
                 <div class="text-center"> {{ $students->links() }}</div>
+                
             </div>
         </div>
     </div>

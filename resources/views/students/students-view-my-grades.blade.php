@@ -10,18 +10,20 @@
     <div class="row">
     	<div id="myGrades" class="col-lg-8 col-md-12 col-lg-offset-2">
             <div id="info">
+                <h4 class="text-center">Bamban National High School - San Clemente, Tarlac</h4>
                 <p>Student Name: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</p>
                 <p>LRN: {{ Auth::user()->user_id }}</p>
                 <h4 class="text-center">Printable Grades</h4>
             </div>
-            <h3 id="headtitle">My Grades</h3>
+            <strong id="headtitle">My Grades</strong>
 
-            <table class="table table-hover table-bordered text-center">
+            <table class="table table-hover table-bordered text-center" style="border: 3px solid #dddddd !important">
             	<thead>
             		<tr>
             			<th style="vertical-align: middle;" rowspan="2" class="text-center">Subject</th>
             			<th colspan="4" class="text-center">Quarters</th>
-            			<th style="vertical-align: middle;" rowspan="2" class="text-center">Ave</th>
+                        <th style="vertical-align: middle;" rowspan="2" class="text-center">Final Grade</th>
+                        <!-- <th style="vertical-align: middle;" rowspan="2" class="text-center">Remarks</th> -->
             		</tr>
             		<tr>
             			<th class="text-center">First</th>
@@ -63,9 +65,16 @@
 								@endif
             				@endforeach
             			</th>
-            			<th class="text-center"></th>
+                        <th class="text-center"></th>
+                        <!-- <th class="text-center"></th> -->
 						@endforeach
             		</tr>
+                    <tr>
+                        <td style="visibility: hidden !important;"></td>
+                        <td colspan="4" class="text-center"><strong>General Average</strong></td>
+                        <td></td>
+                        
+                    </tr>
             	</tbody>
             </table>
     		<p id="footnote"><i>Note: Some grades are subject for availability in database.</i></p>
