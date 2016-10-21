@@ -94,7 +94,6 @@ class CoAdminController extends Controller
          * Input Validation
          */
         $this->validate($request, [
-            'students' => 'required',
             'subject' => 'required'
             ]);
 
@@ -108,14 +107,14 @@ class CoAdminController extends Controller
         $quarter = QuarterSelect::where('status', 1)->first();
         // Check if there is a quarter selected
         if(empty($quarter)) {
-            return 'No Selected Quarter. Report to Admin';
+            return redirect()->route('co_admin_post_import_grades')->with('error_msg', 'No Selected Quarter. Report to Admin');
         }
 
         // Get school Year
         $school_year = SchoolYear::where('status', 1)->first();
         // Check if there is a school year selected
         if(empty($school_year)) {
-            return 'No Selected School Year. Report to Admin';
+            return redirect()->route('co_admin_post_import_grades')->with('error_msg', 'No Selected School Year. Report to Admin');
         }
 
 
@@ -130,7 +129,7 @@ class CoAdminController extends Controller
                                         ->first();
 
         if(!empty($check_subject_import)) {
-            return 'Subject is already imported for this block, quarter and school year.';
+            return redirect()->route('co_admin_post_import_grades')->with('error_msg', 'Subject is already imported for this block, quarter and school year.');
         }
 
         /*
@@ -138,7 +137,7 @@ class CoAdminController extends Controller
          */
         if(Input::hasFile('students')){
             $path = Input::file('students')->getRealPath();
-            $data = Excel::selectSheetsByIndex(0)->load($path, function($reader) {
+            $data = Excel::selectSheetsByIndex($quarter->id - 1)->load($path, function($reader) {
                 /*
                  * More Condition to make specific Operations
                  */
@@ -177,12 +176,12 @@ class CoAdminController extends Controller
                 
             }
             else {
-               return redirect()->route('co_admin_post_import_grades')->with('error', 'Error. Empy Responce. Please go to Home Page');
+               return redirect()->route('co_admin_post_import_grades')->with('error_msg', 'Error. Empy Responce. Please go to Home Page');
             }
 
         }
         else {
-            return redirect()->route('co_admin_post_import_grades')->with('error', 'Grades Not Imported!');
+            return redirect()->route('co_admin_post_import_grades')->with('error_msg', 'Grades Not Imported!');
         }
 
 

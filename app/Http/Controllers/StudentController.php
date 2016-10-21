@@ -265,10 +265,13 @@ class StudentController extends Controller
         $subjects = Grade::distinct()->select('subject_id')
                             ->where('student_id', $student->user_id)
                             ->get();
+                            
         $first_quarter_grade = Grade::where('quarter_id', 1)->where('student_id', $student->user_id)->get();
         $second_quarter_grade = Grade::where('quarter_id', 2)->where('student_id', $student->user_id)->get();
         $third_quarter_grade = Grade::where('quarter_id', 3)->where('student_id', $student->user_id)->get();
         $forth_quarter_grade = Grade::where('quarter_id', 4)->where('student_id', $student->user_id)->get();
+
+        // return $third_quarter_grade;
 
         return view('students.students-view-my-grades', ['subjects' => $subjects, 'first_quarter_grade' => $first_quarter_grade, 'second_quarter_grade' => $second_quarter_grade, 'third_quarter_grade' => $third_quarter_grade, 'forth_quarter_grade' => $forth_quarter_grade]);
 

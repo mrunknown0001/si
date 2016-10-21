@@ -62,6 +62,6 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest('login')->with('error_msg', 'You need to login first!');
+        return redirect()->guest('/')->with('error_msg', 'You need to login first!');
     }
 }

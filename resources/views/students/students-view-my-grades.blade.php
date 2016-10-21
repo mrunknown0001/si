@@ -39,21 +39,21 @@
             			<th class="text-center">
             				@foreach($first_quarter_grade as $fqg)
 								@if($fqg->subject_id == $s->subject_id)
-									{{ $fqg->grade }}
+                                    {{ $fi = $fqg->grade }}
 								@endif
             				@endforeach
             			</th>
             			<th class="text-center">
             				@foreach($second_quarter_grade as $sqg)
 								@if($sqg->subject_id == $s->subject_id)
-									{{ $sqg->grade }}
+                                    {{ $se = $sqg->grade }}
 								@endif
             				@endforeach
             			</th>
             			<th class="text-center">
             				@foreach($third_quarter_grade as $tqg)
-								@if($tqg->subject_id == $s->subject_id)
-									{{ $tqg->grade }}
+								@if($tqg->subject_id)
+                                    {{ $t = $tqg->grade }}
 								@endif
             				@endforeach
             				
@@ -61,20 +61,24 @@
             			<th class="text-center">
             				@foreach($forth_quarter_grade as $fqg)
 								@if($fqg->subject_id == $s->subject_id)
-									{{ $fqg->grade }}
+                                    {{ $fo = $fqg->grade }}
 								@endif
             				@endforeach
             			</th>
-                        <th class="text-center"></th>
+                        <th class="text-center">
+                            @if(!empty($fi) && !empty($se) && !empty($t) && !empty($fo))
+                                {{ ($fi + $se + $t + $fo)/4 }}
+                            @endif
+                        </th>
                         <!-- <th class="text-center"></th> -->
 						@endforeach
-            		</tr>
+            		</tr><!-- 
                     <tr>
                         <td style="visibility: hidden !important;"></td>
                         <td colspan="4" class="text-center"><strong>General Average</strong></td>
                         <td></td>
                         
-                    </tr>
+                    </tr> -->
             	</tbody>
             </table>
     		<p id="footnote"><i>Note: Some grades are subject for availability in database.</i></p>

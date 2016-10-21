@@ -1387,7 +1387,7 @@ class AdminController extends Controller
 
         if(!empty($check_import)) {
             // If already imported
-            return 'Class Block is already imported!';
+            return redirect()->route('admin.students-import')->with('error', 'Students Imported already.');
         }
 
         /*
@@ -1439,7 +1439,7 @@ class AdminController extends Controller
 
         }
         else {
-            return redirect()->route('admin.students-import')->with('error', 'Students Not Imported!');
+            return redirect()->route('admin.students-import')->with('error', 'Students Not Imported! Make sure youre excel file has Students Tab where the list of students located.');
         }
     }
 
