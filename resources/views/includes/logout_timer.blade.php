@@ -16,9 +16,9 @@ function timerIncrement() {
     idleTime = idleTime + 1;
     if (idleTime > 1) { // 20 minutes
         // window.location.reload();
-        $.get('http://localhost:8000/logout');
+        $.get('http://http://104.236.28.90//logout');
         alert('Session Expired! You need to Login again.');
-        window.location = 'http://localhost:8000';
+        window.location = 'http://http://104.236.28.90/';
     }
 }
 </script>
