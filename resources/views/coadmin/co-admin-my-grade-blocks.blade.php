@@ -20,9 +20,6 @@
 			<div class="col-lg-12">
 				@if(!empty($block))
 				<strong>{{ $block->leveltitle->title }} - {{ $block->blockname->name }}</strong>
-				@else
-				<strong>No Assigned Block</strong>
-				@endif
 				<hr/>
 				<strong>List of Students - {{ $students->count() }}</strong>
 				<table class="table table-hover table-striped">
@@ -49,6 +46,10 @@
 						@endforeach
 					</tbody>
 				</table>
+				@else
+				<strong>No Assigned Block</strong>
+				@endif
+				
 			</div>
 		</div>
 </div>
