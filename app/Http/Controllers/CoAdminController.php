@@ -74,8 +74,13 @@ class CoAdminController extends Controller
     public function getMyGradeBlocks()
     {
         $gblock = BlockAssign::where('co_admin', Auth::user()->id)->first();
+
         
-        $students = StudentInfo::where('grade_level', $gblock->level)
+        /*
+         * Unknown Notice/Error
+         * Added Suppressor @
+         */
+        @$students = StudentInfo::where('grade_level', $gblock->level)
                             ->where('class_block', $gblock->block)
                             ->get();
 
