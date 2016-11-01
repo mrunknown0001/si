@@ -13,6 +13,7 @@ use App\StudentLog;
 use App\PasswordChange;
 use App\Grade;
 use App\StudentInfo;
+use App\StudentData;
 
 class StudentController extends Controller
 {
@@ -275,6 +276,26 @@ class StudentController extends Controller
 
         return view('students.students-view-my-grades', ['subjects' => $subjects, 'first_quarter_grade' => $first_quarter_grade, 'second_quarter_grade' => $second_quarter_grade, 'third_quarter_grade' => $third_quarter_grade, 'forth_quarter_grade' => $forth_quarter_grade]);
 
+    }
+
+
+    /*
+     * viewFullProfileData() use to view full profile data of the students
+     */
+    public function viewFullProfileData()
+    {
+        $lrn = Auth::user()->user_id;
+
+        // Find details in users and student_datas
+        $student = User::where('user_id', $lrn)->first();
+
+        // Student Data
+        $student_d = StudentData::where('student_id', $lrn)->first();
+
+        // Student Info
+        $student_info = StudentInfo::where('student_id', $lrn)->first();
+
+        return view('students.students-view-full-profile-data', ['s' => $student, 'd' => $student_d, 'i' => $student_info]);
     }
 
 }

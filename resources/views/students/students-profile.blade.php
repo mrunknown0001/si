@@ -29,6 +29,7 @@
                     </ul>
                 </div>
             </div>
+            <p class="center"><a href="{{ route('students_view_full_profole_data') }}">View Full Profile Data</a></p>
     	</div>
     </div>
 

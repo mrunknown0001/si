@@ -20,6 +20,7 @@ class CreateStudentInfosTable extends Migration
             $table->foreign('grade_level')->references('id')->on('grade_levels')->onDelete('cascade');
             $table->integer('class_block')->unsigned(); // Class Block ID
             $table->foreign('class_block')->references('id')->on('class_blocks')->onDelete('cascade');
+            $table->string('status')->default('1');
             $table->timestamps();
         });
     }

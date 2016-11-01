@@ -10,4 +10,5 @@ class StudentInfo extends Model
     {
     	return $this->belongsTo('App\User', 'student_id' , 'user_id')->orderBy('lastname');
     }
+    
 }

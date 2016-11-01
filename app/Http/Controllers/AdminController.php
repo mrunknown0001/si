@@ -1387,7 +1387,7 @@ class AdminController extends Controller
 
         if(!empty($check_import)) {
             // If already imported
-            return redirect()->route('admin.students-import')->with('error', 'Students Imported already.');
+            return redirect()->route('students_import')->with('error', 'Students Imported already.');
         }
 
         /*
@@ -1408,12 +1408,16 @@ class AdminController extends Controller
                         $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, 'email' => $value->email, 'mobile' => $value->mobile, 'birthday' => date('Y-m-d', strtotime($value->birthday)), 'password' => bcrypt('0000'), 'privilege' => 3, 'status' => 1];
                         // This use on student_infos table
                         $student_info[] = ['student_id' => $value->lrn, 'grade_level' => $grade_level, 'class_block' => $class_block];
+
+                        // This will use on student data reference
+                        $student_data[] = ['student_id' => $value->lrn];
                     }
                     
                 }
                 if(!empty($insert)){
                     DB::table('users')->insert($insert);
                     DB::table('student_infos')->insert($student_info);
+                    DB::table('student_datas')->insert($student_data);
 
                     // Record the the class block is already imported
                     $student_import = new StudentImport();
@@ -1428,18 +1432,18 @@ class AdminController extends Controller
                     $log->save();
 
                     // dd('Students Import Successful.');
-                    return redirect()->route('admin.students-import')->with('success', 'Students Import Successful.');
+                    return redirect()->route('students_import')->with('success', 'Students Import Successful.');
                 }
                 
             }
             else {
                 
-                return redirect()->route('admin.students-import')->with('error', 'Error. Empy Responce. Please go to Home Page');
+                return redirect()->route('students_import')->with('error', 'Error. Empy Responce. Please go to Home Page');
             }
 
         }
         else {
-            return redirect()->route('admin.students-import')->with('error', 'Students Not Imported! Make sure youre excel file has Students Tab where the list of students located.');
+            return redirect()->route('students_import')->with('error', 'Students Not Imported! Make sure youre excel file has Students Tab where the list of students located.');
         }
     }
 
