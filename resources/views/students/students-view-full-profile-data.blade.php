@@ -189,19 +189,19 @@
                     <li>Specific Activity of Interest which you desire to participate in:</li>
                     <li>Hobbies (3)
                         <ol>
-                            <li>Hobby1</li>
-                            <li>Hobby2</li>
-                            <li>Hobby3</li>
+                            <li><strong><u>{{ $d->hobbies1 }}</u></strong></li>
+                            <li><strong><u>{{ $d->hobbies2 }}</u></strong></li>
+                            <li><strong><u>{{ $d->hobbies3 }}</u></strong></li>
                         </ol>
                     </li>
                 </ol>
                 <h4>IV. Activities-Achievement Data</h4>
                 <p>Activities in different year level: High School</p>
                 <ol type="1">
-                    <li>First Year</li>
-                    <li>Second Year</li>
-                    <li>Third Year</li>
-                    <li>Forth Year</li>
+                    <li>First Year: <strong><u>{{ $d->aa_data1 }}</u></strong></li>
+                    <li>Second Year: <strong><u>{{ $d->aa_data2 }}</u></strong></li>
+                    <li>Third Year: <strong><u>{{ $d->aa_data3 }}</u></strong></li>
+                    <li>Forth Year: <strong><u>{{ $d->aa_data4 }}</u></strong></li>
                 </ol>
     		</div>
     	</div>

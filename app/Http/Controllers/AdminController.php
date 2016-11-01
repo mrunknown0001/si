@@ -20,6 +20,7 @@ use App\QuarterSelect;
 use App\BlockAssign;
 use App\StudentInfo;
 use App\StudentImport;
+use App\StudentData;
 
 class AdminController extends Controller
 {
@@ -301,7 +302,9 @@ class AdminController extends Controller
      */
     public function getAllStudents()
     {
-        $students = User::where('privilege', '3')->where('status', '1')->orderBy('lastname', 'asc')->paginate(15);
+        $students = DB::table('users')->where('privilege', '3')->where('status', '1')->orderBy('lastname', 'asc')
+                ->join('student_datas', 'users.user_id', '=', 'student_datas.student_id')
+                ->paginate(15);
 
     	return view('admin.students-view', ['students'=> $students]);
     }

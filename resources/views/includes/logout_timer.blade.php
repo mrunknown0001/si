@@ -14,12 +14,12 @@ $(document).ready(function () {
 
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 1) { // 20 minutes
-        // window.location.reload();
+    if (idleTime > 1) {
         var base_url = window.location.origin;
         $.get(base_url + '/logout');
         alert('Session Expired! You need to Login again.');
         window.location = base_url;
+        window.location.reload();
     }
 }
 </script>
