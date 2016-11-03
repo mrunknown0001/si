@@ -16,7 +16,7 @@
 		    	@include('includes.success')
 		    	@include('includes.notice')
 
-		    	<h3>Full Profile Data <a href="#"><i class="fa fa-pencil"></i></a></h3>
+		    	<h3>Full Profile Data <a href="{{ route('students_show_edit_profile_data') }}"><i class="fa fa-pencil"></i></a></h3>
                 <hr/>
                 <h4>I. Perosonal Data</h4>
                 <ol type="1">
@@ -26,7 +26,7 @@
                     <li>Religion: <strong><u>{{ $d->religion }}</u></strong></li>
                     <li>Place of Birth: <strong><u>{{ $d->place_of_birth }}</u></strong></li>
                     <li>Home Address: <strong><u>{{ $d->home_address }}</u></strong></li>
-                    <li>Course, Yr and Section: <strong><u>{{ $d->course }} / {{ $i->grade_level }} / {{ $i->class_block }}</u></strong></li>
+                    <li>Course, Yr and Section: <strong><u>{{ $d->course }} / {{ $i->grade->code }} / {{ $i->block->name }}</u></strong></li>
                     <li>Education
                         <ol type="a">
                             <li>

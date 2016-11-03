@@ -298,4 +298,17 @@ class StudentController extends Controller
         return view('students.students-view-full-profile-data', ['s' => $student, 'd' => $student_d, 'i' => $student_info]);
     }
 
+
+    /*
+     * showEditProfileData() use to modify the current profile data of the students
+     */
+    public function showEditProfileData()
+    {
+        $student = User::find(Auth::user()->id);
+        $data = StudentData::where('student_id', Auth::user()->user_id)->first();
+        $info = StudentInfo::where('student_id', Auth::user()->user_id)->first();
+
+        return view('students.students-show-edit-profile-data', ['s' => $student, 'd' => $data, 'i' => $info]);
+    }
+
 }

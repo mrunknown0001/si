@@ -783,9 +783,18 @@ Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], functi
 	/*
 	 * Route to view full student profile data
 	 */
-	Route::get('full-profle-data', [
+	Route::get('full-profile-data', [
 		'uses' => 'StudentController@viewFullProfileData',
 		'as' => 'students_view_full_profole_data'
+		]);
+
+
+	/*
+	 * Route to edit full student data to update
+	 */
+	Route::get('full-profile-data/edit',[
+		'uses' => 'StudentController@showEditProfileData',
+		'as' => 'students_show_edit_profile_data'
 		]);
 
 });
