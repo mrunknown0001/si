@@ -107,6 +107,70 @@
                             <input type="text" name="fathers_highest_educational_attainment" value="{{ $d->fathers_hea }}" class="form-control" placeholder="Father's Highest Educational Attainment" />
                         </div>
 
+                        <strong>Mothers's Info</strong>
+                        
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_name" value="{{ $d->mothers_name }}" class="form-control" placeholder="Mother's Firstname" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_age" value="{{ $d->mothers_age }}" class="form-control" placeholder="Mothers's Age" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_place_of_birth" value="{{ $d->mothers_pob }}" class="form-control" placeholder="Mother's Place of Birth" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_home_address" value="{{ $d->mothers_home_address }}" class="form-control" placeholder="Mother's Home Address" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_highest_educational_attainment" value="{{ $d->mothers_hea }}" class="form-control" placeholder="Mother's Highest Educational Attainment" />
+                        </div>
+
+                        <strong>Guardian's Info</strong>
+                        
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_name" value="{{ $d->guardians_name }}" class="form-control" placeholder="Guardian's Firstname" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_age" value="{{ $d->guardians_age }}" class="form-control" placeholder="Guardian's Age" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_place_of_birth" value="{{ $d->guardians_pob }}" class="form-control" placeholder="Guardian's Place of Birth" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_home_address" value="{{ $d->guardians_home_address }}" class="form-control" placeholder="Guardian's Home Address" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_highest_educational_attainment" value="{{ $d->guardians_hea }}" class="form-control" placeholder="Guardian's Highest Educational Attainment" />
+                        </div>
+
+                        <strong>Siblings</strong>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="first_sibling_name" value="" class="form-control" placeholder="First Sibling Name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="first_sibling_age" value="" class="form-control" placeholder="Age" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="first_sibling_occupation" value="" class="form-control" placeholder="Occupation" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+
                         <div class="form-group" style="width: 50%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <button class="btn btn-primary">Update My Data</button>
