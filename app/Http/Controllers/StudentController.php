@@ -403,9 +403,25 @@ class StudentController extends Controller
         $subject_like_least2 = $request['subject_least_2'];
         $subject_like_least3 = $request['subject_least_3'];
 
-        
+        $special_activities = $request['special_activities'];
 
-        return $subject_like_most3;
+        $hobby1 = $request['hobbies1'];
+        $hobby2 = $request['hobbies2'];
+        $hobby3 = $request['hobbies3'];
+
+        $first_year_achievement = $request['first_year_achievement'];
+        $second_year_achievement = $request['second_year_achievement'];
+        $third_year_achievement = $request['third_year_achievement'];
+        $forth_year_achievement = $request['forth_year_achievement'];
+
+        /*
+         * Find Student in users and student_datas table
+         */
+        $student = User::find(Auth::user()->id);
+
+        $student_data = StudentData::where('student_id', Auth::user()->user_id)->first();
+
+        return $student_data;
     }
 
 }

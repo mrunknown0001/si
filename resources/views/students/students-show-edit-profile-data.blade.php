@@ -271,7 +271,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="hobbies1" value="{{ $d->hobbies3 }}" class="form-control" placeholder="Hobby 3" />
+                                <input type="text" name="hobbies3" value="{{ $d->hobbies3 }}" class="form-control" placeholder="Hobby 3" />
                             </div>
 
                         </div>
