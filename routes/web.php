@@ -797,4 +797,12 @@ Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], functi
 		'as' => 'students_show_edit_profile_data'
 		]);
 
+	/*
+	 * Route to Update Student Data
+	 */
+	Route::post('full-profile-data', [
+		'uses' => 'StudentController@postUpdateStudentData',
+		'as' =>'students_post_update_data'
+		]);
+
 });

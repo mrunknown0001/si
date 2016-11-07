@@ -311,4 +311,101 @@ class StudentController extends Controller
         return view('students.students-show-edit-profile-data', ['s' => $student, 'd' => $data, 'i' => $info]);
     }
 
+
+    /*
+     * postUpdateStudentData() use to update student data
+     */
+    public function postUpdateStudentData(Request $request)
+    {
+        /*
+         * Input validation on some Data in the form
+         */
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'birthday' => 'required'
+            ]);
+
+
+        /*
+         * Get all the values from form
+         */
+        $firstname = $request['firstname'];
+        $lastname = $request['lastname'];
+        $birthday = $request['birthday'];
+
+        $sex = $request['sex'];
+        $religion = $request['religion'];
+        $place_of_birth = $request['place_of_birth'];
+        $home_address = $request['home_address'];
+
+        $elem_school = $request['elem_school'];
+        $elem_address = $request['elem_school_address'];
+        $elem_grad_sy = $request['elem_grad_sy'];
+
+        $hs_school = $request['hs_school'];
+        $hs_address = $request['hs_address'];
+        $hs_grad_sy = $request['hs_grad_sy'];
+
+        $skill_talent_1 = $request['skill_talent_1'];
+        $skill_talent_2 = $request['skill_talent_2'];
+        $skill_talent_3 = $request['skill_talent_3'];
+
+        $fathers_name = $request['fathers_name'];
+        $fathers_age = $request['fathers_age'];
+        $fathers_pob = $request['fathers_place_of_birth'];
+        $fathers_home_address = $request['fathers_home_address'];
+        $fathers_hea = $request['fathers_highest_educational_attainment'];
+
+        $mothers_name = $request['mothers_name'];
+        $mothers_age = $request['mothers_age'];
+        $mothers_pob = $request['mothers_place_of_birth'];
+        $mothers_home_address = $request['mothers_home_address'];
+        $mothers_hea = $request['mothers_highest_educational_attainment'];
+
+        $guardians_name = $request['guardians_name'];
+        $guardians_age = $request['guardians_age'];
+        $guardians_pob = $request['guardians_place_of_birth'];
+        $guardians_home_address = $request['guardians_home_address'];
+        $guardians_hea = $request['guardians_highest_educational_attainment'];
+
+        // Siblings
+        $sibling1_name = $request['first_sibling_name'];
+        $sibling1_age = $request['first_sibling_age'];
+        $sibling1_occupation = $request['first_sibling_occupation'];
+
+        $sibling2_name = $request['second_sibling_name'];
+        $sibling2_age = $request['second_sibling_age'];
+        $sibling2_occupation = $request['second_sibling_occupation'];
+
+        $sibling3_name = $request['third_sibling_name'];
+        $sibling3_age = $request['third_sibling_age'];
+        $sibling3_occupation = $request['third_sibling_occupation'];
+
+        $sibling4_name = $request['forth_sibling_name'];
+        $sibling4_age = $request['forth_sibling_age'];
+        $sibling4_occupation = $request['forth_sibling_occupation'];
+
+        $sibling5_name = $request['fifth_sibling_name'];
+        $sibling5_age = $request['fifth_sibling_age'];
+        $sibling5_occupation = $request['fifth_sibling_occupation'];
+
+        $number_of_romms = $request['number_of_romms'];
+        $econ_status = $request['econ_status'];
+        $anual_income = $request['anual_income'];
+        $income_source = $request['income_source'];
+
+        $subject_like_most1 = $request['subject_most_1'];
+        $subject_like_most2 = $request['subject_most_2'];
+        $subject_like_most3 = $request['subject_most_3'];
+
+        $subject_like_least1 = $request['subject_least_1'];
+        $subject_like_least2 = $request['subject_least_2'];
+        $subject_like_least3 = $request['subject_least_3'];
+
+        
+
+        return $subject_like_most3;
+    }
+
 }

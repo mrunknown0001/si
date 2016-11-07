@@ -18,7 +18,7 @@
 
 		    	<h3>Edit Full Profile Data</h3>
                 <hr/>
-                <form action="#" method="POST">
+                <form action="{{ route('students_post_update_data') }}" method="POST">
                     <h4>I. Personal Data</h4>
                         <div class="row form-group">
                             <div class="col-lg-6">
@@ -147,34 +147,157 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="first_sibling_name" value="" class="form-control" placeholder="First Sibling Name" />
+                                    <input type="text" name="first_sibling_name" value="{{ $d->sibling1_name }}" class="form-control" placeholder="First Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="first_sibling_age" value="" class="form-control" placeholder="Age" />
+                                    <input type="text" name="first_sibling_age" value="{{ $d->sibling1_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="first_sibling_occupation" value="" class="form-control" placeholder="Occupation" />
+                                    <input type="text" name="first_sibling_occupation" value="{{ $d->sibling1_occupation }}" class="form-control" placeholder="Occupation" />
                                 </div>
                             </div>
                             
                         </div>
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="second_sibling_name" value="{{ $d->sibling2_name }}" class="form-control" placeholder="Second Sibling Name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="second_sibling_age" value="{{ $d->sibling2_age }}" class="form-control" placeholder="Age" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="second_sibling_occupation" value="{{ $d->sibling2_occupation }}" class="form-control" placeholder="Occupation" />
+                                </div>
+                            </div>
                             
                         </div>
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="third_sibling_name" value="{{ $d->sibling3_name }}" class="form-control" placeholder="Third Sibling Name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="third_sibling_age" value="{{ $d->sibling3_age }}" class="form-control" placeholder="Age" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="third_sibling_occupation" value="{{ $d->sibling3_occupation }}" class="form-control" placeholder="Occupation" />
+                                </div>
+                            </div>
                             
                         </div>
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="forth_sibling_name" value="{{ $d->sibling4_name }}" class="form-control" placeholder="Forth Sibling Name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="forth_sibling_age" value="{{ $d->sibling4_age }}" class="form-control" placeholder="Age" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="forth_sibling_occupation" value="{{ $d->sibling4_occupation }}" class="form-control" placeholder="Occupation" />
+                                </div>
+                            </div>
                             
                         </div>
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="fifth_sibling_name" value="{{ $d->sibling5_name }}" class="form-control" placeholder="Fifth Sibling Name" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="fifth_sibling_age" value="{{ $d->sibling5_age }}" class="form-control" placeholder="Age" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" name="fifth_sibling_occupation" value="{{ $d->sibling5_occupation }}" class="form-control" placeholder="Occupation" />
+                                </div>
+                            </div>
                             
+                        </div>
+                        <hr/>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="number_of_romms" value="{{ $d->number_of_romms }}" class="form-control" placeholder="Number of Rooms in the House" />
+                        </div>
+
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="econ_status" value="{{ $d->econ_status }}" class="form-control" placeholder="Economic Status of the Family" />
+                        </div>
+
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="anual_income" value="{{ $d->anual_income }}" class="form-control" placeholder="Average Gross Anual Income" />
+                        </div>
+
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="income_source" value="{{ $d->source_of_income }}" class="form-control" placeholder="Source of Income" />
+                        </div>
+                        
+                        <h4>III. Interest, Activities and Recreation</h4>
+
+                        <h5>Subject You Like Most</h5>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_most_1" value="{{ $d->subject_like_1 }}" class="form-control" placeholder="Subject 1" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_most_2" value="{{ $d->subject_like_2 }}" class="form-control" placeholder="Subject 3" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_most_3" value="{{ $d->subject_like_3 }}" class="form-control" placeholder="Subject 3" />
+                        </div>
+
+                        <h5>Subject You Like Least</h5>
+
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_least_1" value="{{ $d->subject_least_1 }}" class="form-control" placeholder="Subject 1" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_least_2" value="{{ $d->subject_least_2 }}" class="form-control" placeholder="Subject 3" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="subject_least_3" value="{{ $d->subject_least_3 }}" class="form-control" placeholder="Subject 3" />
+                        </div>
+                        <hr/>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="special_activities" value="{{ $d->special_activities }}" class="form-control" placeholder="Specific Activity of Interest which you desire to participate in" />
+                        </div>
+
+                        <div class="form-group" style="width: 50%;">
+                            <h5>Hobbies</h5>
+                            <div class="form-group">
+                                <input type="text" name="hobbies1" value="{{ $d->hobbies1 }}" class="form-control" placeholder="Hobby 1" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="hobbies2" value="{{ $d->hobbies2 }}" class="form-control" placeholder="Hobby 2" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="hobbies1" value="{{ $d->hobbies3 }}" class="form-control" placeholder="Hobby 3" />
+                            </div>
+
+                        </div>
+
+                        <h4>IV. Activies-Achievement Data</h4>
+
+                        <h5>Activities in Different Year Level: High School</h5>
+
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="first_year_achievement" value="{{ $d->aa_data1 }}" class="form-control" placeholder="First Year Achievement" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="second_year_achievement" value="{{ $d->aa_data2 }}" class="form-control" placeholder="Second Year Achievement" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="third_year_achievement" value="{{ $d->aa_data3 }}" class="form-control" placeholder="Thrid Year Achievement" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="forth_year_achievement" value="{{ $d->aa_data4 }}" class="form-control" placeholder="Forth Year Achievement" />
                         </div>
 
                         <div class="form-group" style="width: 50%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <button class="btn btn-primary">Update My Data</button>
                         </div>
+
                 </form>
     		</div>
     	</div>

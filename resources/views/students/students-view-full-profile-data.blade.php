@@ -186,7 +186,7 @@
                         </div>
                         
                     </li>
-                    <li>Specific Activity of Interest which you desire to participate in:</li>
+                    <li>Specific Activity of Interest which you desire to participate in: <strong><u>{{ $d->special_activities }}</u></strong></li>
                     <li>Hobbies (3)
                         <ol>
                             <li><strong><u>{{ $d->hobbies1 }}</u></strong></li>
