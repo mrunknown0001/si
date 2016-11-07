@@ -106,6 +106,15 @@
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="fathers_highest_educational_attainment" value="{{ $d->fathers_hea }}" class="form-control" placeholder="Father's Highest Educational Attainment" />
                         </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="fathers_occupation" value="{{ $d->fathers_occupation }}" class="form-control" placeholder="Father's Occupation" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="fathers_language" value="{{ $d->fathers_language }}" class="form-control" placeholder="Father's Language" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="fathers_religion" value="{{ $d->fathers_religion }}" class="form-control" placeholder="Father's Religion" />
+                        </div>
 
                         <strong>Mothers's Info</strong>
                         
@@ -124,6 +133,15 @@
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="mothers_highest_educational_attainment" value="{{ $d->mothers_hea }}" class="form-control" placeholder="Mother's Highest Educational Attainment" />
                         </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_occupation" value="{{ $d->mothers_occupation }}" class="form-control" placeholder="Mother's Occupation" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_language" value="{{ $d->mothers_language }}" class="form-control" placeholder="Mother's Language" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="mothers_religion" value="{{ $d->mothers_religion }}" class="form-control" placeholder="Mother's Religion" />
+                        </div>
 
                         <strong>Guardian's Info</strong>
                         
@@ -141,6 +159,15 @@
                         </div>
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="guardians_highest_educational_attainment" value="{{ $d->guardians_hea }}" class="form-control" placeholder="Guardian's Highest Educational Attainment" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_occupation" value="{{ $d->guardians_occupation }}" class="form-control" placeholder="Guardian's Occupation" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_language" value="{{ $d->guardians_language }}" class="form-control" placeholder="Guardian's Language" />
+                        </div>
+                        <div class="form-group" style="width: 50%;">
+                            <input type="text" name="guardians_religion" value="{{ $d->guardians_religion }}" class="form-control" placeholder="Guardian's Religion" />
                         </div>
 
                         <strong>Siblings</strong>

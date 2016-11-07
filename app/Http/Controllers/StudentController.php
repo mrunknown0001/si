@@ -356,18 +356,27 @@ class StudentController extends Controller
         $fathers_pob = $request['fathers_place_of_birth'];
         $fathers_home_address = $request['fathers_home_address'];
         $fathers_hea = $request['fathers_highest_educational_attainment'];
+        $fathers_occupation = $request['fathers_occupation'];
+        $fathers_language = $request['fathers_language'];
+        $fathers_religion = $request['fathers_religion'];
 
         $mothers_name = $request['mothers_name'];
         $mothers_age = $request['mothers_age'];
         $mothers_pob = $request['mothers_place_of_birth'];
         $mothers_home_address = $request['mothers_home_address'];
         $mothers_hea = $request['mothers_highest_educational_attainment'];
+        $mothers_occupation = $request['mothers_occupation'];
+        $mothers_language = $request['mothers_language'];
+        $mothers_religion = $request['mothers_religion'];
 
         $guardians_name = $request['guardians_name'];
         $guardians_age = $request['guardians_age'];
         $guardians_pob = $request['guardians_place_of_birth'];
         $guardians_home_address = $request['guardians_home_address'];
         $guardians_hea = $request['guardians_highest_educational_attainment'];
+        $guardians_occupation = $request['guardians_occupation'];
+        $guardians_language = $request['guardians_language'];
+        $guardians_religion = $request['guardians_religion'];
 
         // Siblings
         $sibling1_name = $request['first_sibling_name'];
@@ -419,9 +428,106 @@ class StudentController extends Controller
          */
         $student = User::find(Auth::user()->id);
 
-        $student_data = StudentData::where('student_id', Auth::user()->user_id)->first();
+        $s_data = StudentData::where('student_id', Auth::user()->user_id)->first();
 
-        return $student_data;
+        /*
+         * Setting and Saving Changes
+         */
+        $student->firstname  = $firstname;
+        $student->lastname = $lastname;
+        $student->birthday = date('Y-m-d', strtotime($birthday));
+
+        $s_data->sex = $sex;
+        $s_data->religion = $religion;
+        $s_data->home_address = $home_address;
+        $s_data->place_of_birth = $place_of_birth;
+
+        $s_data->elem_school = $elem_school;
+        $s_data->elem_address = $elem_address;
+        $s_data->elem_grad_sy = $elem_grad_sy;
+
+        $s_data->hs_school = $hs_school;
+        $s_data->hs_address = $hs_address;
+        $s_data->hs_grad_sy = $hs_grad_sy;
+
+        $s_data->skill_talent_1 = $skill_talent_1;
+        $s_data->skill_talent_2 = $skill_talent_2;
+        $s_data->skill_talent_3 = $skill_talent_3;
+
+        $s_data->fathers_name = $fathers_name;
+        $s_data->fathers_age = $fathers_age;
+        $s_data->fathers_pob = $fathers_pob;
+        $s_data->fathers_home_address = $fathers_home_address;
+        $s_data->fathers_hea = $fathers_hea;
+        $s_data->fathers_occupation = $fathers_occupation;
+        $s_data->fathers_language = $fathers_language;
+        $s_data->fathers_religion = $fathers_religion;
+
+        $s_data->mothers_name = $mothers_name;
+        $s_data->mothers_age = $mothers_age;
+        $s_data->mothers_pob = $mothers_pob;
+        $s_data->mothers_home_address = $mothers_home_address;
+        $s_data->mothers_hea = $mothers_hea;
+        $s_data->mothers_occupation = $mothers_occupation;
+        $s_data->mothers_language = $mothers_language;
+        $s_data->mothers_religion = $mothers_religion;
+
+        $s_data->guardians_name = $guardians_name;
+        $s_data->guardians_age = $guardians_age;
+        $s_data->guardians_pob = $guardians_pob;
+        $s_data->guardians_home_address = $guardians_home_address;
+        $s_data->guardians_hea = $guardians_hea;
+        $s_data->guardians_occupation = $guardians_occupation;
+        $s_data->guardians_language = $guardians_language;
+        $s_data->guardians_religion = $guardians_religion;
+
+        $s_data->sibling1_name = $sibling1_name;
+        $s_data->sibling1_age = $sibling1_age;
+        $s_data->sibling1_occupation = $sibling1_occupation;
+
+        $s_data->sibling2_name = $sibling2_name;
+        $s_data->sibling2_age = $sibling2_age;
+        $s_data->sibling2_occupation = $sibling2_occupation;
+
+        $s_data->sibling3_name = $sibling3_name;
+        $s_data->sibling3_age = $sibling3_age;
+        $s_data->sibling3_occupation = $sibling3_occupation;
+
+        $s_data->sibling4_name = $sibling4_name;
+        $s_data->sibling4_age = $sibling4_age;
+        $s_data->sibling4_occupation = $sibling4_occupation;
+
+        $s_data->sibling5_name = $sibling5_name;
+        $s_data->sibling5_age = $sibling5_age;
+        $s_data->sibling5_occupation = $sibling5_occupation;
+
+        $s_data->number_of_romms = $number_of_romms;
+        $s_data->econ_status = $econ_status;
+        $s_data->anual_income = $anual_income;
+        $s_data->source_of_income = $income_source;
+
+        $s_data->subject_like_1 = $subject_like_most1;
+        $s_data->subject_like_2 = $subject_like_most2;
+        $s_data->subject_like_3 = $subject_like_most3;
+
+        $s_data->subject_least_1 = $subject_like_least1;
+        $s_data->subject_least_2 = $subject_like_least2;
+        $s_data->subject_least_3 = $subject_like_least3;
+
+        $s_data->special_activities = $special_activities;
+
+        $s_data->hobbies1 = $hobby1;
+        $s_data->hobbies2 = $hobby2;
+        $s_data->hobbies3 = $hobby3;
+
+        if($student->save() && $s_data->save()) {
+            // return 'Data Successfully Saved!';
+            return redirect()->route('students_show_edit_profile_data')->with('success','Data Successfully Updated!');
+        }
+
+        // return 'Whoops There is something wrong!';
+        return redirect()->route('students_show_edit_profile_data')->with('error_msg', 'Whoops there is something wrong. Please try again later or double check your data');
+
     }
 
 }
