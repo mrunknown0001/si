@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h3 class="text-center">Bamban Nation High School Student Information System</h3>
+    <h3 class="text-center">Bamban National High School Student Information System</h3>
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4">

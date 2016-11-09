@@ -521,6 +521,12 @@ class StudentController extends Controller
         $s_data->hobbies3 = $hobby3;
 
         if($student->save() && $s_data->save()) {
+            // Add student log
+            $log = new StudentLog();
+            $log->student = Auth::user()->id;
+            $log->action = 'Updated My Information';
+            $log->save();
+
             // return 'Data Successfully Saved!';
             return redirect()->route('students_show_edit_profile_data')->with('success','Data Successfully Updated!');
         }

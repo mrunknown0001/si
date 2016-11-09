@@ -33,7 +33,7 @@
     </head>
     <body>
         <div class="container">
-            <h2 id="welcome" class="text-center">Welcome to Bamban Nation High School Student Information System</h2>
+            <h2 id="welcome" class="text-center">Welcome to Bamban National High School Student Information System</h2>
             <br/><br/>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">

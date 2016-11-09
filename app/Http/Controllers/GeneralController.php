@@ -91,15 +91,15 @@ class GeneralController extends Controller
 
     		// Successfully Change Password
     		if(Auth::user()->privilege == 3) {
-	    		return redirect()->route('students_settings')->with('success', 'Your Password Has Been Successfully Changed!');
+	    		return redirect()->route('students_home')->with('success', 'Your Password Has Been Successfully Changed!');
 	    	}
 	    	// for co-admin
 	    	else if(Auth::user()->privilege == 2) {
-	    		return redirect()->route('co_admin_settings')->with('success', 'Your Password Has Been Successfully Changed!');
+	    		return redirect()->route('co_admin_home')->with('success', 'Your Password Has Been Successfully Changed!');
 	    	}
 	    	// for admin
 	    	else if(Auth::user()->privilege == 1) {
-	    		return redirect()->route('admin_settings')->with('success', 'Your Password Has Been Successfully Changed!');
+	    		return redirect()->route('admin_home')->with('success', 'Your Password Has Been Successfully Changed!');
 	    	}
 	    	// if error occured
 	    	else {

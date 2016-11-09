@@ -20,5 +20,10 @@ class StudentInfo extends Model
     {
     	return $this->belongsTo('App\ClassBlock', 'class_block', 'id');
     }
+
+    public function data()
+    {
+        return $this->belongsTo('App\StudentData', 'student_id', 'student_id');
+    }
     
 }

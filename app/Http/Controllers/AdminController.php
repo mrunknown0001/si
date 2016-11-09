@@ -1441,7 +1441,7 @@ class AdminController extends Controller
             }
             else {
                 
-                return redirect()->route('students_import')->with('error', 'Error. Empy Responce. Please go to Home Page');
+                return redirect()->route('students_import')->with('error', 'Error. Empty Responce. Please go to Home Page');
             }
 
         }
