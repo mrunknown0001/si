@@ -1451,4 +1451,68 @@ class AdminController extends Controller
     }
 
 
+    /*
+     * 
+     * Student Filter function
+     */
+    public function studentFilter(Request $request)
+    {
+
+        /*
+         * Input Validation
+         */
+        $this->validate($request, [
+            'filter_by' => 'required'
+            ]);
+
+        /*
+         * Filter by Category
+         */
+        $filter_by = $request['filter_by'];
+
+        // Get value if not empty
+        if($filter_by == 'age') {
+            $age = $request['age_value'];
+
+            if(empty($age)) {
+                return redirect()->route('students_filter')->with('error_msg', 'Age is required.');
+            }
+
+            // Get Year to select (subtract the age)
+            $year = date('Y') - $age;
+
+
+            // Select all students with age value
+            $students_age = User::where('privilege', 3)
+                            ->whereYear('birthday', $year)
+                            ->orderBy('lastname', 'asc')
+                            ->paginate('15');
+
+            // Return the Value of the Students
+            return view('admin.students-filter-age', ['students' => $students_age, 'age' => $age]);
+        }
+        else if ($filter_by == 'gender') {
+            $gender = $request['gender_value'];
+
+            // Select all students with selected gender
+            $students_g = DB::table('student_datas')
+                        ->join('users', 'student_datas.student_id', '=', 'users.user_id')
+                        ->where('student_datas.sex', $gender)
+                        ->where('users.privilege', 3)
+                        ->where('users.status', 1)
+                        ->paginate(15);
+
+            return view('admin.students-filter-gender', ['students' => $students_g, 'gender' => $gender]);
+        }
+        else if ($filter_by == 'passed') {
+            return 'All Passed Students at the end of the school year';
+        }
+        else if ($filter_by == 'failed') {
+            return 'All Failed Students at the end of the school year';
+        }
+
+        return 'Error';
+    }
+
+
 } // End of AdminController Class

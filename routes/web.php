@@ -310,9 +310,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Route to students filter/search
 		 */
-		Route::get('fiter-search', function () {
+		Route::get('filter-search', function () {
 			return view('admin.students-filter');
 		})->name('students_filter');
+
+
+		/*
+		 * Route to filter students
+		 */
+		Route::post('filter-search', [
+			'uses' => 'AdminController@studentFilter',
+			'as' => 'admin_students_filter'
+			]);
 
 	});
 

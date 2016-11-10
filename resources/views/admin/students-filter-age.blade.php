@@ -50,6 +50,37 @@
             
         </div>
        
+        <hr />
+        <h4>Age Filter: <small>Students with age of {{ $age }}</small></h4>
+        <h4>Total: {{ $students->count() }}</h4>
+        <hr />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>LRN</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($students as $s)
+                <tr>
+                    <td>{{ $s->user_id }}</td>
+                    <td>{{ $s->lastname }}</td>
+                    <td>{{ $s->firstname }}</td>
+                    <td>View</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <!-- Count and Total count() of total() -->
+        <p class="text-center"><strong>{{ $students->count() + $students->perPage() * ($students->currentPage() - 1) }} of {{ $students->total() }}</strong></p>
+
+        <!-- Page Number render() -->
+        <div class="text-center"> {{ $students->links() }}</div>
+
     </div>
 
 </div>
