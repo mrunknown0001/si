@@ -1011,7 +1011,7 @@ class AdminController extends Controller
             $log->action = 'Remove Grade Level';
             $log->save();
 
-            return redirect()->route('')->with('success', 'Grade Level Removed Successfully!');
+            return redirect()->route('grade_levels_view')->with('success', 'Grade Level Removed Successfully!');
 
         }
 
