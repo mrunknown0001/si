@@ -16,7 +16,18 @@
 		    	@include('includes.success')
 		    	@include('includes.notice')
 
-		    	<h3>Home Page of Student Panel</h3>
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <strong><i class="fa fa-user fa-lg" aria-hidden="true"></i> Your Basic Details</strong>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li class="profile">LRN: {{ Auth::user()->user_id }}</li>
+                        <li class="profile">Name: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</li>
+                        <li class="profile">Grade &amp; Section: {{ Auth::user()->student_info->block->name }} - {{ Auth::user()->student_info->grade->title }}</li>
+                    </ul>
+                </div>
+            </div>
     		</div>
     	</div>
     	
