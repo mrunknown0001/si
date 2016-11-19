@@ -719,9 +719,9 @@ Route::group(['prefix' => 's', 'middleware' => ['auth', 'checkstudent']], functi
 	/*
 	 * Route to students
 	 */
-	Route::get('panel', function () {
-		return view('students.students-home');
-	})->name('students_home');
+	Route::get('panel', [
+		'uses' => 'StudentController@home',
+		])->name('students_home');
 
 	Route::get('/', function () {
 		return redirect()->route('students_home');

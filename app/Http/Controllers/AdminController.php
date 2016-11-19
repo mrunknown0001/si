@@ -1408,7 +1408,7 @@ class AdminController extends Controller
                 foreach ($data as $value) {
                     if($value->lrn != null) {
                         // This will use on users table
-                        $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, /*'email' => $value->email, 'mobile' => $value->mobile, 'birthday' => date('Y-m-d', strtotime($value->birthday)),*/ 'password' => bcrypt('0000'), 'privilege' => 3, 'status' => 1];
+                        $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, /*'email' => $value->email, 'mobile' => $value->mobile, */ 'birthday' => null, 'password' => bcrypt('0000'), 'privilege' => 3, 'status' => 1];
                         // This use on student_infos table
                         $student_info[] = ['student_id' => $value->lrn, 'grade_level' => $grade_level, 'class_block' => $class_block];
 

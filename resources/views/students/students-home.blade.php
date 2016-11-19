@@ -25,6 +25,13 @@
                         <li class="profile">LRN: {{ Auth::user()->user_id }}</li>
                         <li class="profile">Name: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</li>
                         <li class="profile">Grade &amp; Section: {{ Auth::user()->student_info->block->name }} - {{ Auth::user()->student_info->grade->title }}</li>
+                        <li class="profile">Age: 
+                        @if(Auth::user()->birthday == Null)
+                        <i>Null</i>
+                        @else
+                        {{ date('Y') - date('Y', strtotime(Auth::user()->birthday)) }}
+                        @endif
+                        </li>
                     </ul>
                 </div>
             </div>

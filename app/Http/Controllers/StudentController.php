@@ -17,6 +17,12 @@ use App\StudentData;
 
 class StudentController extends Controller
 {
+
+
+    public function home()
+    {
+        return view('students.students-home');
+    }
     
     /*
      * studentLogin() Method use to login students
