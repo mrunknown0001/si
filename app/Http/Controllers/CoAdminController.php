@@ -142,7 +142,7 @@ class CoAdminController extends Controller
          */
         if(Input::hasFile('students')){
             $path = Input::file('students')->getRealPath();
-            $data = Excel::selectSheetsByIndex($quarter->id - 1)->load($path, function($reader) {
+            $data = Excel::selectSheetsByIndex($quarter->id)->load($path, function($reader) {
                 /*
                  * More Condition to make specific Operations
                  */
@@ -152,11 +152,46 @@ class CoAdminController extends Controller
                 foreach ($data as $value) {
                     if($value->lrn != null) {
                         
-                        $grade[] = ['student_id' => $value->lrn, 'grade' => $value->grade ,'subject_id' => $subject, 'block_id' => $block->block, 'grade_level_id' => $block->level, 'quarter_id' => $quarter->id, 'school_year_id' => $school_year->id];
+                        $grade[] = ['student_id' => $value->lrn, 
+                                'w1' => $value->w1,
+                                'w2' => $value->w2,
+                                'w3' => $value->w3,
+                                'w4' => $value->w4,
+                                'w5' => $value->w5,
+                                'w6' => $value->w6,
+                                'w7' => $value->w7,
+                                'w8' => $value->w8,
+                                'w9' => $value->w9,
+                                'w10' => $value->w10,
+                                'wtotal' => $value->wtotal,
+                                'wps' => $value->wps,
+                                'wws' => $value->wws,
+                                'grade' => $value->qg,
+                                'p1' => $value->p1,
+                                'p2' => $value->p2,
+                                'p3' => $value->p3,
+                                'p4' => $value->p4,
+                                'p5' => $value->p5,
+                                'p6' => $value->p6,
+                                'p7' => $value->p7,
+                                'p8' => $value->p8,
+                                'p9' => $value->p9,
+                                'p10' => $value->p10,
+                                'ptotal' => $value->ptotal,
+                                'pps' => $value->pps,
+                                'pws' => $value->pws,
+                                'q' => $value->q,
+                                'qps' => $value->qps,
+                                'qws' => $value->qws,
+                                'initial' => $value->initial,
+                                'grade' => $value->qg,
+                                'subject_id' => $subject, 'block_id' => $block->block, 'grade_level_id' => $block->level, 'quarter_id' => $quarter->id, 'school_year_id' => $school_year->id];
                         
                     }
                     
                 }
+
+                // return $grade;
                 if(!empty($grade)){
                     DB::table('grades')->insert($grade);
 

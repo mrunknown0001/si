@@ -39,21 +39,26 @@
             			<th class="text-center">
             				@foreach($first_quarter_grade as $fqg)
 								@if($fqg->subject_id == $s->subject_id)
-                                    {{ $fi = $fqg->grade }}
-								@endif
+                                    <button class="btn btn-link" data-toggle="modal" data-target="#first">{{ $fi = $fqg->grade }}</button>
+                                    @include('students.includes.first-raw-grade')							
+                                @endif
             				@endforeach
             			</th>
             			<th class="text-center">
             				@foreach($second_quarter_grade as $sqg)
 								@if($sqg->subject_id == $s->subject_id)
-                                    {{ $se = $sqg->grade }}
+                                    <button class="btn btn-link" data-toggle="modal" data-target="#second">
+                                    {{ $se = $sqg->grade }}</button>
+                                    @include('students.includes.second-raw-grade')
 								@endif
             				@endforeach
             			</th>
             			<th class="text-center">
             				@foreach($third_quarter_grade as $tqg)
 								@if($tqg->subject_id)
-                                    {{ $t = $tqg->grade }}
+                                    <button class="btn btn-link" data-toggle="modal" data-target="#third">
+                                    {{ $t = $tqg->grade }}</button>
+                                    @include('students.includes.third-raw-grade')
 								@endif
             				@endforeach
             				
@@ -61,7 +66,9 @@
             			<th class="text-center">
             				@foreach($forth_quarter_grade as $fqg)
 								@if($fqg->subject_id == $s->subject_id)
-                                    {{ $fo = $fqg->grade }}
+                                    <button class="btn btn-link" data-toggle="modal" data-target="#forth">
+                                    {{ $fo = $fqg->grade }}</button>
+                                    @include('students.includes.forth-raw-grade')
 								@endif
             				@endforeach
             			</th>

@@ -31,7 +31,7 @@
                         <div class="form-group" style="width: 50%;">
                             <select name="sex" id="sex" class="form-control">
                                 <option value="Male">Male</option>
-                                <option value="Femail">Female</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                         <div class="form-group" style="width: 50%;">
