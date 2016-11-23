@@ -73,6 +73,9 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
+                    <a href="{{ route('admin_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
+                </li>
+                <li>
                     <a><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>

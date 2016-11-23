@@ -21,6 +21,8 @@ use App\BlockAssign;
 use App\StudentInfo;
 use App\StudentImport;
 use App\StudentData;
+use App\GradeImport;
+use App\Grade;
 
 class AdminController extends Controller
 {
@@ -1514,5 +1516,138 @@ class AdminController extends Controller
         return 'Error';
     }
 
+
+    /*
+     * getExportView() use to view export page
+     */
+    public function getExportView()
+    {
+        $level = GradeLevel::all();
+        $class_block = ClassBlock::all();
+        $subject = Subject::all();
+        $year = SchoolYear::where('status', 1)->first();
+
+        return view('admin.grade-export', ['levels' => $level, 'class_block' => $class_block, 'subjects' => $subject, 'year' => $year]);
+    }
+
+
+    /*
+     * exportGrade() method is use to export grades
+     */
+    public function exportGrade(Request $request)
+    {
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'level' => 'required',
+            'block' => 'required',
+            'subject' => 'required',
+            'quarter' => 'required'
+            ]);
+
+
+        // Assign values to vaariables
+        $level = $request['level'];
+        $block = $request['block'];
+        $subject = $request['subject'];
+        $quarter = $request['quarter'];
+
+        // Current School Year
+        $sy = SchoolYear::where('status', 1)->first();
+
+        /*
+         * Find in import record
+         */
+        $import_rec = GradeImport::where('school_year_id', $sy->id)
+                            ->where('grade_level_id', $level)
+                            ->where('block_id', $block)
+                            ->where('subject_id', $subject)
+                            ->where('quarter_id', $quarter)
+                            ->first();
+
+        // This Will return if there is no match in the database
+        if(empty($import_rec)) {
+            return redirect()->route('admin_export_grade')->with('error_msg', 'No Imported Grade or Block not exists in the Grade Level.');
+        }
+
+        // Create Filename of the excel file to be export
+        $gl = GradeLevel::find($level);
+        $cb = ClassBlock::find($block);
+        $subj = Subject::find($subject);
+        $quar = QuarterSelect::find($quarter);
+
+        // This is the file name of the file that will be exported
+        $filename = $subj->title . ' - ' . $gl->title . '-' . $cb->name . ' ' . strtoupper($quar->code) . ' Quarter ' . $sy->from . '-' . $sy->to;
+
+
+        // Select specific Grades in grades table
+        $student_grades = Grade::where('school_year_id', $sy->id)
+                            ->where('grade_level_id', $level)
+                            ->where('block_id', $block)
+                            ->where('subject_id', $subject)
+                            ->where('quarter_id', $quarter)
+                            ->get();
+
+        foreach($student_grades as $sg) {
+            $data[] = [
+                'LRN' => $sg->student_id,
+                'LastName' => $sg->student->lastname,
+                'FirstName' => $sg->student->firstname,
+                'W1' => $sg->w1,
+                'W2' => $sg->w2,
+                'W3' => $sg->w3,
+                'W4' => $sg->w4,
+                'W5' => $sg->w5,
+                'W6' => $sg->w6,
+                'W7' => $sg->w7,
+                'W8' => $sg->w8,
+                'W9' => $sg->w9,
+                'W10' => $sg->w10,
+                'WTotal' => $sg->wtotal,
+                'WPS' => $sg->wps,
+                'WWS' => $sg->wws,
+                'P1' => $sg->p1,
+                'P2' => $sg->p2,
+                'P3' => $sg->p3,
+                'P4' => $sg->p4,
+                'P5' => $sg->p5,
+                'P6' => $sg->p6,
+                'P7' => $sg->p7,
+                'P8' => $sg->p8,
+                'P9' => $sg->p9,
+                'P10' => $sg->p10,
+                'PTotal' => $sg->ptotal,
+                'PPS' => $sg->pps,
+                'PWS' => $sg->pws,
+                'Q' => $sg->q,
+                'QPS' => $sg->qps,
+                'QWS' => $sg->qws,
+                'Initial' => $sg->initial,
+                'Grade' => $sg->grade
+                ];
+        }
+
+        return Excel::create($filename, function($excel) use ($data) {
+            $excel->sheet('Grades', function($sheet) use ($data)
+            {
+                $sheet->setBorder('A1:AH101', 'thin');
+
+                $sheet->cells('A1:AH1', function ($cells) {
+                    $cells->setValignment('center');
+                    $cells->setAlignment('center');
+                    $cells->setFontWeight('bold');
+                });
+
+                $sheet->cell('A2:AH101', function ($cells) {
+                    $cells->setValignment('center');
+                    $cells->setAlignment('center');
+                });
+
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
+
+    }
 
 } // End of AdminController Class

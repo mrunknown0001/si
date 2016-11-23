@@ -595,6 +595,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 
 	});
 
+
+	/*
+	 * Route to Export Grades (view)
+	 */
+	Route::get('export', [
+		'uses' => 'AdminController@getExportView'
+		])->name('admin_export_grade');
+
+	Route::post('export', [
+		'uses' => 'AdminController@exportGrade',
+		'as' => 'admin_post_export_grade'
+		]);
+
 });
 
 

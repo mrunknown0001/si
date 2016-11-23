@@ -10,4 +10,9 @@ class Grade extends Model
     {
     	return $this->belongsTo('App\Subject');
     }
+
+    public function student()
+    {
+    	return $this->belongsTo('App\User','student_id', 'user_id');
+    }
 }
