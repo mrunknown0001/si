@@ -721,6 +721,20 @@ Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']],
 		'as' => 'co_admin_post_import_grades'
 		]);
 
+
+	/*
+	 * Route to export grade in co-admin
+	 */
+	Route::get('export', [
+		'uses' => 'CoAdminController@getExportView',
+		'as' => 'co_admin_view_export_grade'
+		]);
+
+	Route::post('export', [
+		'uses' => 'CoAdminController@postExportGrade',
+		'as' => 'co_admin_post_export_grade'
+		]);
+
 });
 
 

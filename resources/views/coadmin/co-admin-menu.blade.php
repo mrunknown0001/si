@@ -60,6 +60,9 @@
                 <li>
                     <a href="{{ route('co_admin_import_grades') }}"><span class="glyphicon glyphicon-import"></span> Import Grades</a>
                 </li>
+                <li>
+                    <a href="{{ route('co_admin_view_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
+                </li>
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
