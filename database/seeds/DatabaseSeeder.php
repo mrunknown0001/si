@@ -42,29 +42,36 @@ class DatabaseSeeder extends Seeder
         /*
          * Insert only one - Quarters
          */
-        // DB::table('quarter_selects')->insert([
-        //     'code' => 'first',
-        //     'status' => 0,
-        //     'finish' => 0
-        //     ]);
+        DB::table('quarter_selects')->insert([
+            'code' => 'first',
+            'status' => 0,
+            'finish' => 0
+            ]);
 
-        // DB::table('quarter_selects')->insert([
-        //     'code' => 'second',
-        //     'status' => 0,
-        //     'finish' => 0
-        //     ]);
+        DB::table('quarter_selects')->insert([
+            'code' => 'second',
+            'status' => 0,
+            'finish' => 0
+            ]);
 
-        // DB::table('quarter_selects')->insert([
-        //     'code' => 'third',
-        //     'status' => 0,
-        //     'finish' => 0
-        //     ]);
+        DB::table('quarter_selects')->insert([
+            'code' => 'third',
+            'status' => 0,
+            'finish' => 0
+            ]);
 
-        // DB::table('quarter_selects')->insert([
-        //     'code' => 'forth',
-        //     'status' => 0,
-        //     'finish' => 0
-        //     ]);
+        DB::table('quarter_selects')->insert([
+            'code' => 'forth',
+            'status' => 0,
+            'finish' => 0
+            ]);
+
+
+
+        /*
+         * For Local Development Only::: start here
+         */
+
 
         // /*
         //  * Grade Levels
