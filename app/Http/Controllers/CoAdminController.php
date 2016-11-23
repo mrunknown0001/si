@@ -426,7 +426,7 @@ class CoAdminController extends Controller
 
         // This Will return if there is no match in the database
         if(empty($import_rec)) {
-            return redirect()->route('admin_export_grade')->with('error_msg', 'No Imported Grade or Block not exists in the Grade Level.');
+            return redirect()->route('co_admin_view_export_grade')->with('error_msg', 'No Imported Grade or Block not exists in the Grade Level.');
         }
 
         // Create Filename of the excel file to be export
