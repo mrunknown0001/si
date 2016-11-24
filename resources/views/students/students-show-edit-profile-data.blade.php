@@ -95,7 +95,7 @@
                             <input type="text" name="fathers_name" value="{{ $d->fathers_name }}" class="form-control" placeholder="Father's Firstname" />
                         </div>
                         <div class="form-group" style="width: 50%;">
-                            <input type="text" name="fathers_age" value="{{ $d->fathers_age }}" class="form-control" placeholder="Father's Age" />
+                            <input type="number" name="fathers_age" value="{{ $d->fathers_age }}" class="form-control" placeholder="Father's Age" />
                         </div>
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="fathers_place_of_birth" value="{{ $d->fathers_pob }}" class="form-control" placeholder="Father's Place of Birth" />
@@ -122,7 +122,7 @@
                             <input type="text" name="mothers_name" value="{{ $d->mothers_name }}" class="form-control" placeholder="Mother's Firstname" />
                         </div>
                         <div class="form-group" style="width: 50%;">
-                            <input type="text" name="mothers_age" value="{{ $d->mothers_age }}" class="form-control" placeholder="Mothers's Age" />
+                            <input type="number" name="mothers_age" value="{{ $d->mothers_age }}" class="form-control" placeholder="Mothers's Age" />
                         </div>
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="mothers_place_of_birth" value="{{ $d->mothers_pob }}" class="form-control" placeholder="Mother's Place of Birth" />
@@ -149,7 +149,7 @@
                             <input type="text" name="guardians_name" value="{{ $d->guardians_name }}" class="form-control" placeholder="Guardian's Firstname" />
                         </div>
                         <div class="form-group" style="width: 50%;">
-                            <input type="text" name="guardians_age" value="{{ $d->guardians_age }}" class="form-control" placeholder="Guardian's Age" />
+                            <input type="number" name="guardians_age" value="{{ $d->guardians_age }}" class="form-control" placeholder="Guardian's Age" />
                         </div>
                         <div class="form-group" style="width: 50%;">
                             <input type="text" name="guardians_place_of_birth" value="{{ $d->guardians_pob }}" class="form-control" placeholder="Guardian's Place of Birth" />
@@ -177,7 +177,7 @@
                                     <input type="text" name="first_sibling_name" value="{{ $d->sibling1_name }}" class="form-control" placeholder="First Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="first_sibling_age" value="{{ $d->sibling1_age }}" class="form-control" placeholder="Age" />
+                                    <input type="number" name="first_sibling_age" value="{{ $d->sibling1_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="text" name="first_sibling_occupation" value="{{ $d->sibling1_occupation }}" class="form-control" placeholder="Occupation" />
@@ -191,7 +191,7 @@
                                     <input type="text" name="second_sibling_name" value="{{ $d->sibling2_name }}" class="form-control" placeholder="Second Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="second_sibling_age" value="{{ $d->sibling2_age }}" class="form-control" placeholder="Age" />
+                                    <input type="number" name="second_sibling_age" value="{{ $d->sibling2_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="text" name="second_sibling_occupation" value="{{ $d->sibling2_occupation }}" class="form-control" placeholder="Occupation" />
@@ -205,7 +205,7 @@
                                     <input type="text" name="third_sibling_name" value="{{ $d->sibling3_name }}" class="form-control" placeholder="Third Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="third_sibling_age" value="{{ $d->sibling3_age }}" class="form-control" placeholder="Age" />
+                                    <input type="number" name="third_sibling_age" value="{{ $d->sibling3_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="text" name="third_sibling_occupation" value="{{ $d->sibling3_occupation }}" class="form-control" placeholder="Occupation" />
@@ -219,7 +219,7 @@
                                     <input type="text" name="forth_sibling_name" value="{{ $d->sibling4_name }}" class="form-control" placeholder="Forth Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="forth_sibling_age" value="{{ $d->sibling4_age }}" class="form-control" placeholder="Age" />
+                                    <input type="number" name="forth_sibling_age" value="{{ $d->sibling4_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="text" name="forth_sibling_occupation" value="{{ $d->sibling4_occupation }}" class="form-control" placeholder="Occupation" />
@@ -233,7 +233,7 @@
                                     <input type="text" name="fifth_sibling_name" value="{{ $d->sibling5_name }}" class="form-control" placeholder="Fifth Sibling Name" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" name="fifth_sibling_age" value="{{ $d->sibling5_age }}" class="form-control" placeholder="Age" />
+                                    <input type="number" name="fifth_sibling_age" value="{{ $d->sibling5_age }}" class="form-control" placeholder="Age" />
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="text" name="fifth_sibling_occupation" value="{{ $d->sibling5_occupation }}" class="form-control" placeholder="Occupation" />

@@ -17,7 +17,7 @@ class CreateStudentLogsTable extends Migration
             $table->increments('id');
             $table->integer('student')->unsigned();
             $table->foreign('student')->references('id')->on('users');
-            $table->string('action');
+            $table->string('action', 30);
             $table->timestamps();
         });
     }

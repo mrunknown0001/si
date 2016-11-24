@@ -329,7 +329,15 @@ class StudentController extends Controller
         $this->validate($request, [
             'firstname' => 'required',
             'lastname' => 'required',
-            'birthday' => 'required'
+            'birthday' => 'required',
+            'fathers_age' => 'numeric',
+            'mothers_age' => 'numeric',
+            'guardians_age' => 'numeric',
+            'first_sibling_age' => 'numeric',
+            'second_sibling_age' => 'numeric',
+            'third_sibling_age' => 'numeric',
+            'forth_sibling_age' => 'numeric',
+            'fifth_sibling_age' => 'numeric'
             ]);
 
 

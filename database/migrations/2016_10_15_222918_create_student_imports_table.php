@@ -17,7 +17,7 @@ class CreateStudentImportsTable extends Migration
             $table->increments('id');
             $table->integer('grade_level')->unsined();
             $table->integer('class_block')->unsined();
-            $table->string('status')->default('1');
+            $table->string('status', 30)->default('1');
             $table->timestamps();
         });
     }

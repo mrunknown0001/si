@@ -15,9 +15,9 @@ class CreateGradeLevelsTable extends Migration
     {
         Schema::create('grade_levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');  // Grade 7, 8, 9, 10, 11 and 12 and 13 or Graduated
-            $table->string('title');
-            $table->string('description')->nullable();
+            $table->string('code', 20);  // Grade 7, 8, 9, 10, 11 and 12 and 13 or Graduated
+            $table->string('title', 20);
+            $table->string('description', 20)->nullable();
             $table->timestamps();
         });
     }
