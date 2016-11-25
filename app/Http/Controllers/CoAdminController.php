@@ -436,7 +436,7 @@ class CoAdminController extends Controller
         $quar = QuarterSelect::find($quarter);
 
         // This is the file name of the file that will be exported
-        $filename = $subj->title . ' - ' . $gl->title . '-' . $cb->name . ' ' . strtoupper($quar->code) . ' Quarter ' . $sy->from . '-' . $sy->to;
+        $filename = $subj->title . ' - ' . $gl->title . '-' . $cb->name . ' ' . strtoupper($quar->code) . ' Quarter ' . $sy->from . '-' . $sy->to . ' - (UNOFFICIAL)';
 
 
         // Select specific Grades in grades table

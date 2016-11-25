@@ -15,7 +15,7 @@
                 <p>LRN: {{ Auth::user()->user_id }}</p>
                 <h4 class="text-center">Printable Grades</h4>
             </div>
-            <strong id="headtitle">My Grades</strong>
+            <p><strong id="headtitle">My Grades</strong></p>
 
             <table class="table table-hover table-bordered text-center" style="border: 3px solid #dddddd !important">
             	<thead>
@@ -88,6 +88,7 @@
                     </tr> -->
             	</tbody>
             </table>
+            <p class="text-center"><strong>System Generated. Not Official copy of Report of Grades</strong></p>
     		<p id="footnote"><i>Note: Some grades are subject for availability in database.</i></p>
     	</div>
         <div class="col-lg-8 col-md-12 col-lg-offset-2">

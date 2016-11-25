@@ -435,7 +435,7 @@ class AdminController extends Controller
                         ->paginate(10);
 
         // The query returns a result
-        if($result->count() > 1) {
+        if($result->count() > 0) {
             return view('admin.student-view-keyword-result', ['students' => $result]);
         }
 
@@ -1578,7 +1578,7 @@ class AdminController extends Controller
         $quar = QuarterSelect::find($quarter);
 
         // This is the file name of the file that will be exported
-        $filename = $subj->title . ' - ' . $gl->title . '-' . $cb->name . ' ' . strtoupper($quar->code) . ' Quarter ' . $sy->from . '-' . $sy->to;
+        $filename = $subj->title . ' - ' . $gl->title . '-' . $cb->name . ' ' . strtoupper($quar->code) . ' Quarter ' . $sy->from . '-' . $sy->to . ' - (UNOFFICIAL)';
 
 
         // Select specific Grades in grades table
