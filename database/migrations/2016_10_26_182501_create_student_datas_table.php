@@ -38,7 +38,7 @@ class CreateStudentDatasTable extends Migration
             // Family/Cultural Background
             // Father
             $table->string('fathers_name', 30)->nullable();
-            $table->integer('fathers_age')->nullable();
+            $table->string('fathers_age', 5)->nullable();
             $table->string('fathers_pob', 30)->nullable();  // Place Of Birth
             $table->string('fathers_home_address', 30)->nullable();
             $table->string('fathers_hea', 30)->nullable(); // Highest Educational Attainment
@@ -47,7 +47,7 @@ class CreateStudentDatasTable extends Migration
             $table->string('fathers_religion', 30)->nullable();
             // Mother
             $table->string('mothers_name', 30)->nullable();
-            $table->integer('mothers_age')->nullable();
+            $table->string('mothers_age', 5)->nullable();
             $table->string('mothers_pob', 30)->nullable(); // Place of Birth
             $table->string('mothers_home_address', 30)->nullable();
             $table->string('mothers_hea', 30)->nullable(); // Highest Educational Attainment
@@ -56,7 +56,7 @@ class CreateStudentDatasTable extends Migration
             $table->string('mothers_religion', 30)->nullable();
             // Guardian
             $table->string('guardians_name', 30)->nullable();
-            $table->integer('guardians_age')->nullable();
+            $table->string('guardians_age', 5)->nullable();
             $table->string('guardians_pob', 30)->nullable(); // Place of Birth
             $table->string('guardians_home_address', 30)->nullable();
             $table->string('guardians_hea', 30)->nullable(); // Highest Educational Attainment
@@ -65,30 +65,30 @@ class CreateStudentDatasTable extends Migration
             $table->string('guardians_religion', 30)->nullable();
             // Siblings
             $table->string('sibling1_name', 50)->nullable();
-            $table->integer('sibling1_age')->nullable();
+            $table->string('sibling1_age', 5)->nullable();
             $table->string('sibling1_occupation', 30)->nullable();
 
             $table->string('sibling2_name', 50)->nullable();
-            $table->integer('sibling2_age')->nullable();
+            $table->string('sibling2_age', 5)->nullable();
             $table->string('sibling2_occupation', 30)->nullable();
 
             $table->string('sibling3_name', 50)->nullable();
-            $table->integer('sibling3_age')->nullable();
+            $table->string('sibling3_age', 5)->nullable();
             $table->string('sibling3_occupation', 30)->nullable();
 
             $table->string('sibling4_name', 50)->nullable();
-            $table->integer('sibling4_age')->nullable();
+            $table->string('sibling4_age', 5)->nullable();
             $table->string('sibling4_occupation', 30)->nullable();
 
             $table->string('sibling5_name', 50)->nullable();
-            $table->integer('sibling5_age')->nullable();
+            $table->string('sibling5_age', 5)->nullable();
             $table->string('sibling5_occupation', 30)->nullable();
 
-            $table->integer('number_of_romms')->nullable();
+            $table->string('number_of_romms', 5)->nullable();
 
             $table->string('econ_status', 30)->nullable();
 
-            $table->integer('anual_income')->nullable();
+            $table->string('anual_income', 5)->nullable();
 
             $table->string('source_of_income', 30)->nullable();
             // Interest, Activities and Recreatons

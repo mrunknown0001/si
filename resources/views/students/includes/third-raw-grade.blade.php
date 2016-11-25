@@ -91,7 +91,7 @@
                 <table class="table table-bordered text-center">
                     <thead>
                         <tr>
-                            <th colspan="3" class="text-center">Quarterly Assesment</th>
+                            <th colspan="3" class="text-center">Quarterly Assessment</th>
                         </tr>
                         <tr>
                             <th class="text-center">1</th>
