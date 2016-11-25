@@ -110,7 +110,7 @@
 
                 <strong>Initial Grade: {{ $fqg->initial }}</strong>
                 <br/>
-                <strong>Forth Quarter Grade: {{ $fqg->grade }}</strong>
+                <strong>Fourth Quarter Grade: {{ $fqg->grade }}</strong>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

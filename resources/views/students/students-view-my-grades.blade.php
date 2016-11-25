@@ -29,7 +29,7 @@
             			<th class="text-center">First</th>
             			<th class="text-center">Second</th>
             			<th class="text-center">Third</th>
-            			<th class="text-center">Forth</th>
+            			<th class="text-center">Fourth</th>
             		</tr>
             	</thead>
             	<tbody>
