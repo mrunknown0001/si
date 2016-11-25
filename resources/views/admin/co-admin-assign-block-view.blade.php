@@ -10,7 +10,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View Block Assignemnt to Adviser</h3>
+                <h3 class="page-header">View Block Assignment to Adviser</h3>
             </div>
             
         </div>
