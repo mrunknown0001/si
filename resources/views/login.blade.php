@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="{{ route('home') }}" class="btn btn-primary btn-xs"> Back to Home Page</a></p>
+                    <p class="text-center"><a href="{{ route('home') }}" class="btn btn-primary btn-xs">Student Login</a></p>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Assgin Block</h3>
+                <h3 class="page-header">Assign Block</h3>
             </div>
             
         </div>
