@@ -49,7 +49,7 @@
                             <form role="form" action="{{ route('admin_post_login') }}" method="POST" autocomplete="off">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Enter TIN" name="id" type="text" autofocus>
+                                        <input class="form-control" placeholder="Employee Number" name="id" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" value="">

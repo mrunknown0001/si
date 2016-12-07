@@ -362,11 +362,12 @@ class CoAdminController extends Controller
      */
     public function getImportedSubjects()
     {
+        $b = BlockAssign::where('co_admin', Auth::user()->id)->first();
 
-        $fq = GradeImport::where('quarter_id', 1)->get();
-        $sq = GradeImport::where('quarter_id', 2)->get();
-        $tq = GradeImport::where('quarter_id', 3)->get();
-        $foq = GradeImport::where('quarter_id', 4)->get();
+        $fq = GradeImport::where('quarter_id', 1)->where('block_id', $b->id)->get();
+        $sq = GradeImport::where('quarter_id', 2)->where('block_id', $b->id)->get();
+        $tq = GradeImport::where('quarter_id', 3)->where('block_id', $b->id)->get();
+        $foq = GradeImport::where('quarter_id', 4)->where('block_id', $b->id)->get();
 
 
         return view('coadmin.co-admin-import-grades', ['first_quarter' => $fq, 'second_quarter' => $sq, 'third_quarter' => $tq, 'forth_quarter' => $foq]);
@@ -378,12 +379,14 @@ class CoAdminController extends Controller
      */
     public function getExportView()
     {
-        $level = GradeLevel::all();
-        $class_block = ClassBlock::all();
+        $block_assign = BlockAssign::where('co_admin', Auth::user()->id)->first();
+
+        $level = GradeLevel::find($block_assign->level);
+        $class_block = ClassBlock::find($block_assign->block);
         $subject = Subject::all();
         $year = SchoolYear::where('status', 1)->first();
 
-        return view('coadmin.co-admin-grade-export', ['levels' => $level, 'class_block' => $class_block, 'subjects' => $subject, 'year' => $year]);
+        return view('coadmin.co-admin-grade-export', ['level' => $level, 'class_block' => $class_block, 'subjects' => $subject, 'year' => $year]);
     }
 
 

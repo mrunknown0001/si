@@ -99,7 +99,7 @@ class AdminController extends Controller
         $user_id_check = User::where('user_id', $user_id)->first();
 
         if(!empty($user_id_check)) {
-            return redirect()->route('co_admin_add')->with('error_msg', 'This TIN: ' . $user_id . ' is already in use.');
+            return redirect()->route('co_admin_add')->with('error_msg', 'This Employee Number: ' . $user_id . ' is already in use.');
         }
 
         // Check email availability
@@ -128,11 +128,11 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Added Co-Admin with User TIN: ' . $user_id;
+            $log->action = 'Added Co-Admin with User Employee Number: ' . $user_id;
 
             $log->save();
 
-            return redirect()->route('co_admin_add')->with('success', 'Co-Admin Added with User TIN: ' . $user_id);
+            return redirect()->route('co_admin_add')->with('success', 'Adviser Added: ' . $firstname . ' ' . $lastname);
 
         }
 
@@ -216,7 +216,7 @@ class AdminController extends Controller
             $user_id_check = User::where('user_id', $user_id)->first();
 
             if($user_id_check == True) {
-                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'TIN already in use.');
+                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'Employee Number already in use.');
             }
         }
 
@@ -250,7 +250,7 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Updated Co-Admin Profile Details TIN: ' . $user_id;
+            $log->action = 'Updated Co-Admin Profile Details Employee Number: ' . $user_id;
 
             $log->save();
 
@@ -287,7 +287,7 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Removed Co-Admin with TIN: ' . $user_id;
+            $log->action = 'Removed Co-Admin with Employee Number: ' . $user_id;
 
             $log->save();
 
@@ -1410,7 +1410,7 @@ class AdminController extends Controller
                 foreach ($data as $value) {
                     if($value->lrn != null) {
                         // This will use on users table
-                        $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, /*'email' => $value->email, 'mobile' => $value->mobile, */ 'birthday' => null, 'password' => bcrypt('0000'), 'privilege' => 3, 'status' => 1];
+                        $insert[] = ['user_id' => $value->lrn, 'firstname' => $value->firstname, 'lastname' => $value->lastname, /*'email' => $value->email, 'mobile' => $value->mobile, */ 'birthday' => null, 'password' => bcrypt(strtolower($value->lastname)), 'privilege' => 3, 'status' => 1];
                         // This use on student_infos table
                         $student_info[] = ['student_id' => $value->lrn, 'grade_level' => $grade_level, 'class_block' => $class_block];
 

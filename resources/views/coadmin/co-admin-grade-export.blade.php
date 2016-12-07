@@ -25,20 +25,9 @@
         		
                 <form action="{{ route('co_admin_post_export_grade') }}" method="POST">
                     <div class="form-group">
-                        <select name="level" id="" style="width: 50%;" class="form-control">
-                            <option value="">Select Grade Level</option>
-                            @foreach($levels as $l)
-                                <option value="{{ $l->id }}">{{ $l->title }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="block" id="" style="width: 50%;" class="form-control">
-                            <option value="">Select Block</option>
-                            @foreach($class_block as $cb)
-                                <option value="{{ $cb->id }}">{{ $cb->name }}</option>
-                            @endforeach
-                        </select>
+                        <span class="text-capitalize">{{ $level->title }} - {{ $class_block->name }}</span>
+                        <input type="hidden" name="level" value="{{ $level->id }}" />
+                        <input type="hidden" name="block" value="{{ $class_block->id }}" />
                     </div>
                     <div class="form-group">
                         <select name="subject" id="" style="width: 50%;" class="form-control">

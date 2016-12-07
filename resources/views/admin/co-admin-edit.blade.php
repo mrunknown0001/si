@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Edit Co-Admin</h3>
+                <h3 class="page-header">Edit Adviser</h3>
             </div>
             
         </div>
@@ -24,12 +24,12 @@
                 @include('includes.notice')
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Co-Admin Details</strong>
+	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Adviser Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_update_co_admin_profile') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="tin" class="form-control" value="{{ $user->user_id }}" placeholder="Tax Identification Number" />
+	        					<input type="text" name="tin" class="form-control" value="{{ $user->user_id }}" placeholder="Employee Number" />
 	        				</div>
 		        			<div class="form-group">
 		        				<input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}" placeholder="First Name" />
@@ -49,7 +49,7 @@
 		        			<div class="form-group">
 		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 	        					<input type="hidden" name="id" value="{{ $user->id }}" />
-		        				<button class="btn btn-primary">Update Co-Admin</button>
+		        				<button class="btn btn-primary">Update Adviser</button>
 		        			</div>
 		        		</form>
 	        		</div>

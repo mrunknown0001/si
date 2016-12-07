@@ -11,7 +11,7 @@
 	<div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View All Co-Admins</h3>
+                <h3 class="page-header">View All Advisers</h3>
             </div>
             
         </div>
@@ -25,7 +25,7 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>TIN</th>
+        					<th>Employee Number</th>
         					<th>Full Name</th>
         					<th>Email</th>
         					<th>Actions</th>

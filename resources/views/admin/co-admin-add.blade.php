@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Add New Co-Admin</h3>
+                <h3 class="page-header">Add New Adviser</h3>
             </div>
             
         </div>
@@ -24,12 +24,12 @@
                 @include('includes.notice')
 	        	<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Co-Admin Details</strong>
+	        			<strong><i class="fa fa-users fa-lg" aria-hidden="true"></i> Adviser Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_add_co_admin') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="number" name="tin" class="form-control" placeholder="Tax Identification Number" />
+	        					<input type="number" name="tin" class="form-control" placeholder="Employee Number" />
 	        				</div>
 		        			<div class="form-group">
 		        				<input type="text" name="firstname" class="form-control text-capitalize" placeholder="First Name" />
@@ -48,7 +48,7 @@
 		        			</div>
 		        			<div class="form-group">
 		        				{{ csrf_field() }}
-		        				<button class="btn btn-primary">Add Co-Admin</button>
+		        				<button class="btn btn-primary">Add Adviser</button>
 		        			</div>
 		        		</form>
 	        		</div>

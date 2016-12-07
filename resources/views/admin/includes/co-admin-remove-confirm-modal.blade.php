@@ -8,7 +8,7 @@
                 <h4 class="modal-title">Co-Admin Removal Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to remove co-admin with TIN: <strong>{{ $c->user_id }}</strong>?</p>
+                <p>Are you sure you want to remove co-admin with Employee Number: <strong>{{ $c->user_id }}</strong>?</p>
                
             </div>
             <div class="modal-footer">

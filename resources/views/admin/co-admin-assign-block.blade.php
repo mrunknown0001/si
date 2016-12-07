@@ -31,7 +31,7 @@
                 @include('includes.notice')
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Assign Block/Section to Co-Admin</strong>
+                        <strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Assign Block/Section to Adviser</strong>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('admin_post_assign_block') }}" method="POST">

@@ -40,13 +40,13 @@
                     <a href="{{ route('admin_home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a><i class="fa fa-users fa-fw"></i> Co-Admins<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-users fa-fw"></i> Adivsers<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('co_admin_add') }}">Add New Co-Admin</a>
+                            <a href="{{ route('co_admin_add') }}">Add New Adviser</a>
                         </li>
                         <li>
-                            <a href="{{ route('co_admin_view') }}">View All Co-Admin</a>
+                            <a href="{{ route('co_admin_view') }}">View All Adviser</a>
                         </li>
                         <li>
                             <a href="{{ route('admin_co_admin_assign_block') }}">Assign Block/Section</a>
@@ -56,6 +56,14 @@
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a><i class="fa fa-users fa-fw"></i> Teachers<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#">Add Teacher</a></li>
+                        <li><a href="#">View All Teachers</a></li>
+                        <li><a href="#">Assign Subject Loads</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>

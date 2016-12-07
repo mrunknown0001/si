@@ -33,6 +33,84 @@ Route::get('/', function () {
 Route::get('login', function () {
 	return view('login');
 })->name('login');
+Route::get('a', function () {
+	return redirect()->route('login');
+});
+Route::get('b', function () {
+	return redirect()->route('login');
+});
+Route::get('c', function () {
+	return redirect()->route('login');
+});
+Route::get('d', function () {
+	return redirect()->route('login');
+});
+Route::get('e', function () {
+	return redirect()->route('login');
+});
+Route::get('f', function () {
+	return redirect()->route('login');
+});
+Route::get('g', function () {
+	return redirect()->route('login');
+});
+Route::get('h', function () {
+	return redirect()->route('login');
+});
+Route::get('i', function () {
+	return redirect()->route('login');
+});
+Route::get('j', function () {
+	return redirect()->route('login');
+});
+Route::get('k', function () {
+	return redirect()->route('login');
+});
+Route::get('l', function () {
+	return redirect()->route('login');
+});
+Route::get('m', function () {
+	return redirect()->route('login');
+});
+Route::get('n', function () {
+	return redirect()->route('login');
+});
+Route::get('o', function () {
+	return redirect()->route('login');
+});
+Route::get('p', function () {
+	return redirect()->route('login');
+});
+Route::get('q', function () {
+	return redirect()->route('login');
+});
+Route::get('r', function () {
+	return redirect()->route('login');
+});
+Route::get('s', function () {
+	return redirect()->route('login');
+});
+Route::get('t', function () {
+	return redirect()->route('login');
+});
+Route::get('u', function () {
+	return redirect()->route('login');
+});
+Route::get('v', function () {
+	return redirect()->route('login');
+});
+Route::get('w', function () {
+	return redirect()->route('login');
+});
+Route::get('x', function () {
+	return redirect()->route('login');
+});
+Route::get('y', function () {
+	return redirect()->route('login');
+});
+Route::get('z', function () {
+	return redirect()->route('login');
+});
 
 Route::post('login', [
 	'uses' => 'UserController@postLogin',
