@@ -32,10 +32,10 @@
 	        					<input type="text" name="code" class="form-control text-uppercase" placeholder="Subject Code" />
 	        				</div>
 		        			<div class="form-group">
-		        				<input type="text" name="title" class="form-control" placeholder="Subject Title" />
+		        				<input type="text" name="title" class="form-control text-capitalize" placeholder="Subject Title" />
 		        			</div>
 		        			<div class="form-group">
-		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Subject..."></textarea>
+		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control text-capitalize" placeholder="Description of the Subject..."></textarea>
 		        			</div>
 		        			<div class="form-group">
 		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />

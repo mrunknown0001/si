@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('co_admin_home') }}">Co-Admin Panel</a>
+        <a class="navbar-brand" href="{{ route('co_admin_home') }}">Adviser Panel</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -18,11 +18,11 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-message">
-                <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  Co-Admin Profile</a>
+                <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  Adviser Profile</a>
                 </li>
                 <li><a href="{{ route('co_admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> Co-Admin Log</a></li>
+                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> Adviser Log</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>

@@ -30,13 +30,13 @@
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_add_grade_block') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="code" class="form-control" placeholder="Grade Block Code" />
+	        					<input type="text" name="code" class="form-control text-uppercase" placeholder="Grade Block Code" />
 	        				</div>
 	        				<div class="form-group">
-	        					<input type="text" name="title" class="form-control" placeholder="Grade Block Title" />
+	        					<input type="text" name="title" class="form-control text-capitalize" placeholder="Grade Block Title" />
 	        				</div>
 		        			<div class="form-group">
-		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description of the Grade Block..."></textarea>
+		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control text-capitalize" placeholder="Description of the Grade Block..."></textarea>
 		        			</div>
 		        			<div class="form-group">
 		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />

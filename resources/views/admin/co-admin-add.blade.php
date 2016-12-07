@@ -29,16 +29,16 @@
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_add_co_admin') }}" method="POST" autocomplete="off">
 	        				<div class="form-group">
-	        					<input type="text" name="tin" class="form-control" placeholder="Tax Identification Number" />
+	        					<input type="number" name="tin" class="form-control" placeholder="Tax Identification Number" />
 	        				</div>
 		        			<div class="form-group">
-		        				<input type="text" name="firstname" class="form-control" placeholder="First Name" />
+		        				<input type="text" name="firstname" class="form-control text-capitalize" placeholder="First Name" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+		        				<input type="text" name="lastname" class="form-control text-capitalize" placeholder="Last Name" />
 		        			</div>
 		        			<div class="form-group">
-		        				<input type="text" name="email" class="form-control" placeholder="Email Address" />
+		        				<input type="email" name="email" class="form-control" placeholder="Email Address" />
 		        			</div>
 		        			<div class="form-group">
 		        				<input type="text" name="mobile" class="form-control" placeholder="11 Digit Mobile Number" />

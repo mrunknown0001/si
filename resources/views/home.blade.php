@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="{{ route('login') }}" class="welcome btn btn-primary btn-xs">Admin &amp; Co-Admin Login</a></p>
+                    <p class="text-center"><a href="{{ route('login') }}" class="welcome btn btn-primary btn-xs">Admin &amp; Advisers/Teachers</a></p>
                 </div>
             </div>
         </div>

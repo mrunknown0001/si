@@ -30,13 +30,13 @@
                     <div class="panel-body">
                         <form action="{{ route('admin_post_profile_update') }}" method="POST" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" name="firstname" class="form-control" value="{{ $admin->firstname }}" placeholder="First Name" autofocus="" />
+                                <input type="text" name="firstname" class="form-control text-capitalize" value="{{ $admin->firstname }}" placeholder="First Name" autofocus="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="lastname" class="form-control" value="{{ $admin->lastname }}" placeholder="Last Name" />
+                                <input type="text" name="lastname" class="form-control text-capitalize" value="{{ $admin->lastname }}" placeholder="Last Name" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="email" class="form-control" value="{{ $admin->email }}" placeholder="Email Address" />
+                                <input type="email" name="email" class="form-control" value="{{ $admin->email }}" placeholder="Email Address" />
                             </div>
                             <div class="form-group">
                                 <input type="text" name="mobile" class="form-control" value="{{ $admin->mobile }}" placeholder="11 Digit Mobile Number" />

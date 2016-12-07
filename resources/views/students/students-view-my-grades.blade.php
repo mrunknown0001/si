@@ -13,7 +13,7 @@
                 <h4 class="text-center">Bamban National High School - San Clemente, Tarlac</h4>
                 <p>Student Name: {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</p>
                 <p>LRN: {{ Auth::user()->user_id }}</p>
-                <h4 class="text-center">Printable Grades</h4>
+                <h4 class="text-center">Report of Grades</h4>
             </div>
             <p><strong id="headtitle">My Grades</strong></p>
 

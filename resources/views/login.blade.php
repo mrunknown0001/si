@@ -2,7 +2,7 @@
 <html class="full" lang="en">
     <head>
         <title>
-            Admin - Student Information System
+            Admin &amp; Adviser/Teacher's Login - Student Information System
         </title>
 
         <meta charset="utf-8" />
@@ -42,7 +42,7 @@
                     @include('includes.error')
                     <div class="login-panel panel panel-primary">
                         <div class="panel-heading">
-                            <strong><i class="fa fa-user fa-lg"></i> Admin &amp; Co-Admin Login</strong>
+                            <strong><i class="fa fa-user fa-lg"></i> Admin &amp; Advisers/Teachers Login</strong>
                         
                         </div>
                         <div class="panel-body">

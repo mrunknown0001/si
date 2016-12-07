@@ -261,8 +261,8 @@ class CoAdminController extends Controller
             ]);
 
         // Assign to varaibles
-        $firstname = $request['firstname'];
-        $lastname = $request['lastname'];
+        $firstname = ucwords($request['firstname']);
+        $lastname = ucwords($request['lastname']);
         $email = $request['email'];
         $mobile = $request['mobile'];
         $birthday = date('Y-m-d', strtotime($request['birthday']));
