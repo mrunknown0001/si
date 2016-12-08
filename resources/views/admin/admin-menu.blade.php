@@ -54,6 +54,12 @@
                         <li>
                             <a href="{{ route('admin_view_block_assignment') }}">View Block Assignment</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin_assign_subject') }}">Assign Subject Load</a>
+                        </li>
+                        <li>
+                            <a href="#">View Subject Assignment*</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>

@@ -314,6 +314,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return abort(404);
 		});
 
+
+		/*
+		 * Route to Assign Subject to Teacher/Adviser
+		 */
+		Route::get('assign-subject', function () {
+			return view('admin.co-admin-assign-subject');
+		})->name('admin_assign_subject');
+
 	});
 
 
