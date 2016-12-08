@@ -362,15 +362,15 @@ class CoAdminController extends Controller
      */
     public function getImportedSubjects()
     {
-        $b = BlockAssign::where('co_admin', Auth::user()->id)->first();
+        // $b = BlockAssign::where('co_admin', Auth::user()->id)->first();
 
-        $fq = GradeImport::where('quarter_id', 1)->where('block_id', $b->id)->get();
-        $sq = GradeImport::where('quarter_id', 2)->where('block_id', $b->id)->get();
-        $tq = GradeImport::where('quarter_id', 3)->where('block_id', $b->id)->get();
-        $foq = GradeImport::where('quarter_id', 4)->where('block_id', $b->id)->get();
+        // $fq = GradeImport::where('quarter_id', 1)->where('block_id', $b->id)->get();
+        // $sq = GradeImport::where('quarter_id', 2)->where('block_id', $b->id)->get();
+        // $tq = GradeImport::where('quarter_id', 3)->where('block_id', $b->id)->get();
+        // $foq = GradeImport::where('quarter_id', 4)->where('block_id', $b->id)->get();
 
 
-        return view('coadmin.co-admin-import-grades', ['first_quarter' => $fq, 'second_quarter' => $sq, 'third_quarter' => $tq, 'forth_quarter' => $foq]);
+        return view('coadmin.co-admin-import-grades'/*, ['first_quarter' => $fq, 'second_quarter' => $sq, 'third_quarter' => $tq, 'forth_quarter' => $foq]*/);
     }
 
 
