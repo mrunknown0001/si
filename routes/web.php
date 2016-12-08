@@ -87,9 +87,6 @@ Route::get('q', function () {
 Route::get('r', function () {
 	return redirect()->route('login');
 });
-Route::get('s', function () {
-	return redirect()->route('login');
-});
 Route::get('t', function () {
 	return redirect()->route('login');
 });
@@ -693,7 +690,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
  * Route Group co-admin
  * middleware auth and checkcoadmin
  */
-Route::group(['prefix' => 'co-admin', 'middleware' => ['auth', 'checkcoadmin']], function () {
+Route::group(['prefix' => 'ca', 'middleware' => ['auth', 'checkcoadmin']], function () {
 
 	/*
 	 * Route to co-admin dashboard

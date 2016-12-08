@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Acivity Log - Adviser - Student Information System @endsection
+@section('title') Acivity Log - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">

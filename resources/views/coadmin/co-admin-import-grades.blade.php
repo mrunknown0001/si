@@ -7,7 +7,7 @@
 
 @extends('layouts.app')
 
-@section('title') Import Grades - Co-Admin - Student Information System @endsection
+@section('title') Import Grades - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">

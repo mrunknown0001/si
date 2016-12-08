@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') My Profile - Co-Admin - Student Information System @endsection
+@section('title') My Profile - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -24,7 +24,7 @@
                 @include('includes.notice')
         		<div class="panel panel-primary">
 	        		<div class="panel-heading">
-	        			<strong><i class="fa fa-user fa-lg" aria-hidden="true"></i> Co-Admin Details</strong>
+	        			<strong><i class="fa fa-user fa-lg" aria-hidden="true"></i> {{ !empty($ba)? 'Adviser' : 'Teacher' }} Details</strong>
 	        		</div>
 	        		<div class="panel-body">
 		        		<ul>

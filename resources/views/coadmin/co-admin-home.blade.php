@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Adviser Dashboard - Student Information System @endsection
+@section('title') Dashboard - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -16,6 +16,7 @@
 
 		</div>
 		<div class="row">
+            @if(!empty($ba))
 			<div class="col-lg-12">
                 @if(!empty($school_year))
                 <strong>School Year: {{ $school_year->from }} - {{ $school_year->to }} - </strong>
@@ -81,6 +82,7 @@
                     </a>
                 </div>
             </div>
+            @endif
 		</div>
 
 </div>

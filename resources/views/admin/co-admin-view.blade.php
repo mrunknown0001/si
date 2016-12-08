@@ -11,7 +11,7 @@
 	<div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View All Advisers</h3>
+                <h3 class="page-header">View All Teachers</h3>
             </div>
             
         </div>

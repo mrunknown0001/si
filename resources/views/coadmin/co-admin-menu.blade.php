@@ -1,3 +1,7 @@
+<?php
+    $ba = App\BlockAssign::where('co_admin', Auth::user()->id)->first();
+?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -7,7 +11,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('co_admin_home') }}">Adviser Panel</a>
+        <a class="navbar-brand" href="{{ route('co_admin_home') }}">{{ !empty($ba)? 'Adviser' : 'Teacher' }} Panel</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -18,11 +22,11 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-message">
-                <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  Adviser Profile</a>
+                <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  {{ !empty($ba)? 'Adviser' : 'Teacher' }} Profile</a>
                 </li>
                 <li><a href="{{ route('co_admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> Adviser Log</a></li>
+                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> {{ !empty($ba)? 'Adviser' : 'Teacher' }} Log</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
@@ -48,6 +52,7 @@
                     </ul>
                     
                 </li> -->
+                @if(!empty($ba))
                 <li>
                     <a><i class="fa fa-list fa-fw"></i> My Grade Blocks<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -57,12 +62,15 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                @endif
                 <li>
                     <a href="{{ route('co_admin_import_grades') }}"><span class="glyphicon glyphicon-import"></span> Import Grades</a>
                 </li>
+                @if(!empty($ba))
                 <li>
                     <a href="{{ route('co_admin_view_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
                 </li>
+                @endif
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

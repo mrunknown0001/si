@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header modal-header-success">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Co-Admin Details</h4>
+                <h4 class="modal-title">Adviser/Teacher Details</h4>
             </div>
             <div class="modal-body">
                 <p>Employee Number: {{ $c->user_id }}</p>

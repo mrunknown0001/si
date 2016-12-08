@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Settings - Co-Admin - Student Information System @endsection
+@section('title') Settings - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">

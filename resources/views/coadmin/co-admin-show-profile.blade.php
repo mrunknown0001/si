@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Update Profile - Co-Admin - Student Information System @endsection
+@section('title') Update Profile - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Update Co-Admin Profile</h3>
+                <h3 class="page-header">Update {{ !empty($ba)? 'Adviser' : 'Teacher' }} Profile</h3>
             </div>
             
         </div>

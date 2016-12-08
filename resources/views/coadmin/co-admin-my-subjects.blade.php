@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') My Subjects - Co-Admin - Student Information System @endsection
+@section('title') My Subjects - Adviser - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">

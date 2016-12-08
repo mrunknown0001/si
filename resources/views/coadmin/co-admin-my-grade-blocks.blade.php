@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') My Grade Blocks - Co-Admin - Student Information System @endsection
+@section('title') My Grade Blocks - Adviserw - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
