@@ -23,6 +23,7 @@ use App\StudentImport;
 use App\StudentData;
 use App\GradeImport;
 use App\Grade;
+use App\SubjectAssign;
 
 class AdminController extends Controller
 {
@@ -1648,6 +1649,41 @@ class AdminController extends Controller
             });
         })->download('xlsx');
 
+    }
+
+
+    /*
+     * postAssignSubject() Method use to assign subject to a teacher
+     */
+    public function postAssignSubject(Request $request)
+    {
+        /*
+         * Input validation
+         */
+        $this->validate($request, [
+            'teacher' => 'required',
+            'level' => 'required',
+            'block' => 'required',
+            'subject' => 'required'
+            ]);
+
+        // Assign Valudes to Variables
+        $teacher = $request['teacher'];
+        $level = $request['level'];
+        $block = $request['block'];
+        $subject = $request['subject'];
+
+        $sa = SubjectAssign::where('user_id', $teacher)
+                        ->where('subject_id', $subject)
+                        ->where('block_id', $block)
+                        ->where('level_id', $level)
+                        ->first();
+
+        if(empty($sa)) {
+            // Add Subject to teacher
+        }
+
+        return 'You can\'t Assign this subject';
     }
 
 } // End of AdminController Class

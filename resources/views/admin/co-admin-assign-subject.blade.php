@@ -25,14 +25,20 @@
 
         <div class="row">
             <div class="col-md-6">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
+                
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <strong>Assign Subject</strong>
                     </div>
                     <div class="panel-body">
-                        <form action="#" method="POST">
+                        <form action="{{ route('admin_post_assign_subject') }}" method="POST">
                             <div class="form-group">
-                                <select name="ca" class="form-control">
+                                <select name="teacher" class="form-control">
                                     <option value="">Select Teacher</option>
                                     @foreach($co_admin as $ca)
                                     <option value="{{ $ca->id }}">{{ $ca->user_id }} - {{ $ca->firstname }} {{ $ca->lastname }}</option>

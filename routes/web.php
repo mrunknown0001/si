@@ -322,6 +322,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			return view('admin.co-admin-assign-subject');
 		})->name('admin_assign_subject');
 
+		Route::post('assign-subject',[
+			'uses' => 'AdminController@postAssignSubject',
+			'as' => 'admin_post_assign_subject'
+			]);
+
 	});
 
 
