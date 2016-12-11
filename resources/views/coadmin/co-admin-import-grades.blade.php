@@ -1,6 +1,7 @@
 <?php
 
 	$subjects = App\SubjectAssign::where('user_id', Auth::user()->id)->get();
+    $imports = App\GradeImport::where('user_id', Auth::user()->id)->get();
 
 ?>
 
@@ -36,11 +37,14 @@
         				<form action="{{ route('co_admin_post_import_grades') }}" method="POST" enctype="multipart/form-data">
                             
                             <div class="form-group">
-                            	<select name="subject" class="form-control">
+                            	<select name="assigned_subject" class="form-control text-capitalize">
                             		@if(count($subjects) < 1)
                                     <option>No Assigned Subject</option>
                                     @else
                                     <option value="">Select Assigned Subject</option>
+                                    @foreach($subjects as $s)
+                                    <option value="{{ $s->id }}">{{ $s->subject->title }} - {{ $s->block->name }} - {{ $s->level->title }}</option>
+                                    @endforeach
                                     @endif
 
                             	</select>
@@ -60,6 +64,41 @@
         			</div>
         		</div>
                 <hr/>
+                @if(!empty($imports))
+                <table class="table table-hover table-bordered">
+                    <caption><strong>Your Imported Subjects</strong></caption>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Quarter</th>
+                            <th>Grade/Year Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($imports as $i)
+                        <tr>
+                            <td class="text-capitalize">{{ $i->subject->title }}</td>
+                            <td>
+                                @if($i->quarter_id == 1)
+                                1st
+                                @elseif($i->quarter_id == 2)
+                                2nd
+                                @elseif($i->quarter_id == 3)
+                                3rd
+                                @elseif($i->quarter_id == 4)
+                                4th
+                                @endif
+                            </td>
+                            <td class="text-capitalize">
+                                {{ $i->block->name }}/{{ $i->level->title }}
+                            </td>
+                        </tr>
+                       @endforeach
+                    </tbody>
+                </table>
+                @else
+                <h4>You haven't imported grades yet.</h4>
+                @endif
                 
         	</div>
         </div>

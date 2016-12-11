@@ -15,6 +15,7 @@ class CreateGradeImportsTable extends Migration
     {
         Schema::create('grade_imports', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id'); // ID of the user/Teacher who imported the grades
             $table->integer('subject_id')->unsigned();
             $table->integer('block_id')->unsigned();
             $table->integer('grade_level_id')->unsigned();

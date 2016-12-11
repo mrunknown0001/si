@@ -1673,17 +1673,50 @@ class AdminController extends Controller
         $block = $request['block'];
         $subject = $request['subject'];
 
+        // Check if subject selected is assigned with the same teacher
         $sa = SubjectAssign::where('user_id', $teacher)
                         ->where('subject_id', $subject)
                         ->where('block_id', $block)
                         ->where('level_id', $level)
                         ->first();
 
-        if(empty($sa)) {
-            // Add Subject to teacher
+        if(!empty($sa)) {
+            // Message that the subject in the class selected is assigned to the same teacher selected
+            return 'Subject Assigned to the same Teacher!';
         }
 
-        return 'You can\'t Assign this subject';
+
+        // Check if subject in the class selected is assigned in other teacher
+        $se = SubjectAssign::where('subject_id', $subject)
+                        ->where('block_id', $block)
+                        ->where('level_id', $level)
+                        ->first();
+
+        if(!empty($se)) {
+            // The subject in the class selected is assigned to other teacher
+            return 'Subject Assigned to other Teacher!';
+        }
+
+        // If the top condition is failed to pass you can now assign subject to the selected teacher
+        $assign = new SubjectAssign();
+
+        $assign->user_id = $teacher;
+        $assign->subject_id = $subject;
+        $assign->block_id = $block;
+        $assign->level_id = $level;
+
+        if($assign->save()) {
+            // Add Admin Log in Assigning Subject to the teacher selected
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Assigned Subject to a Teacher';
+            $log->save();
+
+            return 'Successfully Assigned Subject to teacher.';
+        }
+
+
+        return 'Something went wrong. Please try again later.';
     }
 
 } // End of AdminController Class

@@ -22,6 +22,7 @@ use App\GradeImport;
 use App\GradeLevel;
 use App\ClassBlock;
 use App\Subject;
+use App\SubjectAssign;
 
 class CoAdminController extends Controller
 {
@@ -35,7 +36,18 @@ class CoAdminController extends Controller
         // Get Active Quarter
         $quarter = QuarterSelect::where('status', 1)->where('finish', 0)->first();
 
-        return view('coadmin.co-admin-home', ['school_year' => $school_year, 'quarter' => $quarter]);
+        $b = BlockAssign::where('co_admin', Auth::user()->id)->first();
+
+        if(empty($b)) {
+            return view('coadmin.co-admin-home', ['school_year' => $school_year, 'quarter' => $quarter]);
+        }
+
+        $fq = GradeImport::where('quarter_id', 1)->where('block_id', $b->id)->get();
+        $sq = GradeImport::where('quarter_id', 2)->where('block_id', $b->id)->get();
+        $tq = GradeImport::where('quarter_id', 3)->where('block_id', $b->id)->get();
+        $foq = GradeImport::where('quarter_id', 4)->where('block_id', $b->id)->get();
+
+        return view('coadmin.co-admin-home', ['school_year' => $school_year, 'quarter' => $quarter, 'first_quarter' => $fq, 'second_quarter' => $sq, 'third_quarter' => $tq, 'forth_quarter' => $foq, 'b' => $b]);
     }
 
 
@@ -102,14 +114,14 @@ class CoAdminController extends Controller
          * Input Validation
          */
         $this->validate($request, [
-            'subject' => 'required'
+            'assigned_subject' => 'required'
             ]);
 
         // Assign Values to Variables
-        $subject = $request['subject'];
+        $subject = $request['assigned_subject'];
 
-        // Block Assignment of the Adviser
-        $block = BlockAssign::where('co_admin', Auth::user()->id)->first();
+        // Subject Assignment of the Adviser
+        $sa = SubjectAssign::findorfail($subject);
 
         // Get selected quarter
         $quarter = QuarterSelect::where('status', 1)->first();
@@ -129,11 +141,12 @@ class CoAdminController extends Controller
         /*
          * Check subject for this class if already imported
          */
-        $check_subject_import = GradeImport::where('subject_id', $subject)
-                                        ->where('block_id', $block->block)
-                                        ->where('grade_level_id', $block->level)
+        $check_subject_import = GradeImport::where('subject_id', $sa->subject_id)
+                                        ->where('block_id', $sa->block_id)
+                                        ->where('grade_level_id', $sa->level_id)
                                         ->where('quarter_id', $quarter->id)
                                         ->where('school_year_id', $school_year->id)
+                                        ->where('user_id', $sa->user_id)
                                         ->first();
 
         if(!empty($check_subject_import)) {
@@ -188,7 +201,7 @@ class CoAdminController extends Controller
                                 'qws' => $value->qws,
                                 'initial' => $value->initial,
                                 'grade' => $value->qg,
-                                'subject_id' => $subject, 'block_id' => $block->block, 'grade_level_id' => $block->level, 'quarter_id' => $quarter->id, 'school_year_id' => $school_year->id];
+                                'subject_id' => $subject, 'block_id' => $sa->block_id, 'grade_level_id' => $sa->level_id, 'quarter_id' => $quarter->id, 'school_year_id' => $school_year->id];
                         
                     }
                     
@@ -200,9 +213,10 @@ class CoAdminController extends Controller
 
                     // Grade Import Log
                     $gim = new GradeImport();
-                    $gim->subject_id = $subject;
-                    $gim->block_id = $block->block;
-                    $gim->grade_level_id = $block->level;
+                    $gim->user_id = Auth::user()->id;
+                    $gim->subject_id = $sa->subject_id;
+                    $gim->block_id = $sa->block_id;
+                    $gim->grade_level_id = $sa->level_id;
                     $gim->quarter_id = $quarter->id;
                     $gim->school_year_id = $school_year->id;
                     $gim->save();

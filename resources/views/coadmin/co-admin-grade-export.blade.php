@@ -30,7 +30,7 @@
                         <input type="hidden" name="block" value="{{ $class_block->id }}" />
                     </div>
                     <div class="form-group">
-                        <select name="subject" id="" style="width: 50%;" class="form-control">
+                        <select name="subject" id="" style="width: 50%;" class="form-control text-capitalize">
                             <option value="">Select Subject</option>
                             @foreach($subjects as $s)
                                 <option value="{{ $s->id }}">{{ $s->title }}</option>

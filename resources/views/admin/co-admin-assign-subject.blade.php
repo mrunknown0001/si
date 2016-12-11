@@ -38,7 +38,7 @@
                     <div class="panel-body">
                         <form action="{{ route('admin_post_assign_subject') }}" method="POST">
                             <div class="form-group">
-                                <select name="teacher" class="form-control">
+                                <select name="teacher" class="form-control text-capitalize">
                                     <option value="">Select Teacher</option>
                                     @foreach($co_admin as $ca)
                                     <option value="{{ $ca->id }}">{{ $ca->user_id }} - {{ $ca->firstname }} {{ $ca->lastname }}</option>
@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="level" class="form-control">
+                                <select name="level" class="form-control text-capitalize">
                                     <option value="">Select Grade Level</option>
                                     @foreach($grade_level as $l)
                                     <option value="{{ $l->id }}">{{ $l->title }}</option>
@@ -54,7 +54,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="block" class="form-control">
+                                <select name="block" class="form-control text-capitalize">
                                     <option value="">Select Class Block</option>
                                     @foreach($block as $b)
                                     <option value="{{ $b->id }}">{{ $b->name }}</option>
@@ -62,7 +62,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="subject" class="form-control">
+                                <select name="subject" class="form-control text-capitalize">
                                     <option value="">Select Subject</option>
                                     @foreach($subjects as $s)
                                     <option value="{{ $s->id }}">{{ $s->title }}</option>

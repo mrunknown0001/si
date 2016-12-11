@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				@if(!empty($block))
-					<strong>{{ $block->leveltitle->title }} - {{ $block->blockname->name }}</strong>
+					<strong class="text-capitalize">{{ $block->leveltitle->title }} - {{ $block->blockname->name }}</strong>
 					<hr/>
 					<strong>List of Students - {{ $students->count() }}</strong>
 					<table class="table table-hover table-striped">

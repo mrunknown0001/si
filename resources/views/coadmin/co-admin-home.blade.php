@@ -16,7 +16,7 @@
 
 		</div>
 		<div class="row">
-            @if(!empty($ba))
+            @if(!empty($b))
 			<div class="col-lg-12">
                 @if(!empty($school_year))
                 <strong>School Year: {{ $school_year->from }} - {{ $school_year->to }} - </strong>
@@ -82,6 +82,50 @@
                     </a>
                 </div>
             </div>
+            <div class="row" style="width: 50%;">
+                <div class="col-lg-12">
+                    <table class="table table-hover table-bordered">
+                        <caption><strong>Imported Subjects on You Advisory Class</strong></caption>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Quarter</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-capitalize">
+                            @foreach($first_quarter as $q)
+                            <tr>
+                                <td>{{ $q->subject->title }}</td>
+                                <td>First Quarter</td>
+                                <td>{{ $q->teacher->firstname }} {{ $q->teacher->lastname }}</td>
+                            </tr>
+                            @endforeach
+                            @foreach($second_quarter as $q)
+                            <tr>
+                                <td>{{ $q->subject->title }}</td>
+                                <td>Second Quarter</td>
+                                <td>{{ $q->teacher->firstname }} {{ $q->teacher->lastname }}</td>
+                            </tr>
+                            @endforeach
+                            @foreach($third_quarter as $q)
+                            <tr>
+                                <td>{{ $q->subject->title }}</td>
+                                <td>Third Quarter</td>
+                                <td>{{ $q->teacher->firstname }} {{ $q->teacher->lastname }}</td>
+                            </tr>
+                            @endforeach
+                            @foreach($forth_quarter as $q)
+                            <tr>
+                                <td>{{ $q->subject->title }}</td>
+                                <td>Forth Quarter</td>
+                                <td>{{ $q->teacher->firstname }} {{ $q->teacher->lastname }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
             @else
             <div class="col-lg-12">
                 @if(!empty($school_year))
@@ -103,47 +147,6 @@
                 <strong>No Active School Year. Please Add One.</strong>
                 @endif
                 <hr/>
-            </div>
-            <div class="col-lg-4">
-                <h4>Imported Grades</h4>
-
-                {{--
-                <table class="table table-hover table-bordered">
-                    <caption><strong>Imported Subjects</strong></caption>
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Quarter</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($first_quarter as $q)
-                        <tr>
-                            <td>{{ $q->subject->title }}</td>
-                            <td>First Quarter</td>
-                        </tr>
-                        @endforeach
-                        @foreach($second_quarter as $q)
-                        <tr>
-                            <td>{{ $q->subject->title }}</td>
-                            <td>Second Quarter</td>
-                        </tr>
-                        @endforeach
-                        @foreach($third_quarter as $q)
-                        <tr>
-                            <td>{{ $q->subject->title }}</td>
-                            <td>Third Quarter</td>
-                        </tr>
-                        @endforeach
-                        @foreach($forth_quarter as $q)
-                        <tr>
-                            <td>{{ $q->subject->title }}</td>
-                            <td>Forth Quarter</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                --}}
             </div>
             @endif
 		</div>
