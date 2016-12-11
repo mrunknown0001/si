@@ -35,9 +35,9 @@
         			<tbody>
                         @foreach($blocks as $block)
         				<tr>
-        					<td>{{ $block->code }}</td>
-        					<td>{{ $block->name }}</td>
-        					<td>{{ $block->description }}</td>
+        					<td class="text-capitalize">{{ $block->code }}</td>
+        					<td class="text-capitalize">{{ $block->name }}</td>
+        					<td class="text-capitalize">{{ $block->description }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
 									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $block->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>

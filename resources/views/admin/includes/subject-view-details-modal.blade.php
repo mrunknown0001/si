@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <p>Subject Code: <span class="text-uppercase">{{ $subject->code }}</span></p>
                 <p>Subject Title: <span class="text-capitalize">{{ $subject->title }}</span></p>
-                <p>Description: <i>{{ $subject->description }}</i></p>
+                <p class="text-capitalize">Description: <i>{{ $subject->description }}</i></p>
             </div>
             <div class="modal-footer">
             

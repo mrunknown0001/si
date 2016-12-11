@@ -25,7 +25,7 @@
 
                 <form action="{{ route('admin_post_export_grade') }}" method="POST">
                     <div class="form-group">
-                        <select name="level" id="" style="width: 50%;" class="form-control">
+                        <select name="level" id="" style="width: 50%;" class="form-control text-capitalize">
                             <option value="">Select Grade Level</option>
                             @foreach($levels as $l)
                                 <option value="{{ $l->id }}">{{ $l->title }}</option>
@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="block" id="" style="width: 50%;" class="form-control">
+                        <select name="block" id="" style="width: 50%;" class="form-control text-capitalize">
                             <option value="">Select Block</option>
                             @foreach($class_block as $cb)
                                 <option value="{{ $cb->id }}">{{ $cb->name }}</option>
@@ -41,7 +41,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="subject" id="" style="width: 50%;" class="form-control">
+                        <select name="subject" id="" style="width: 50%;" class="form-control text-capitalize">
                             <option value="">Select Subject</option>
                             @foreach($subjects as $s)
                                 <option value="{{ $s->id }}">{{ $s->title }}</option>
@@ -49,7 +49,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="quarter" id="" style="width: 50%;" class="form-control">
+                        <select name="quarter" id="" style="width: 50%;" class="form-control text-capitalize">
                             <option value="">Select Quarter</option>
                             <option value="1">First Quarter</option>
                             <option value="2">Second Quarter</option>

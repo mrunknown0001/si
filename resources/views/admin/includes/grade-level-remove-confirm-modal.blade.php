@@ -8,7 +8,7 @@
                 <h4 class="modal-title">Grade Level Confirmation Removal</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to remove this grade level: <strong>{{ $l->title }}</strong>?</p>
+                <p>Are you sure you want to remove this grade level: <strong class="text-capitalize">{{ $l->title }}</strong>?</p>
             </div>
             <div class="modal-footer">
                  {{-- Form Deletion --}}

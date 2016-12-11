@@ -1682,7 +1682,7 @@ class AdminController extends Controller
 
         if(!empty($sa)) {
             // Message that the subject in the class selected is assigned to the same teacher selected
-            return redirect()->route('admin_assign_subjec')->with('Subject Assigned to the same Teacher!');
+            return redirect()->route('admin_assign_subject')->with('error_msg', 'Subject Assigned to the same Teacher!');
         }
 
 
@@ -1694,7 +1694,7 @@ class AdminController extends Controller
 
         if(!empty($se)) {
             // The subject in the class selected is assigned to other teacher
-            return 'Subject Assigned to other Teacher!';
+            return redirect()->route('admin_assign_subject')->with('error_msg', 'Subject Assigned to other Teacher!');
         }
 
         // If the top condition is failed to pass you can now assign subject to the selected teacher
@@ -1712,11 +1712,51 @@ class AdminController extends Controller
             $log->action = 'Assigned Subject to a Teacher';
             $log->save();
 
-            return 'Successfully Assigned Subject to teacher.';
+            return redirect()->route('admin_assign_subject')->with('success', 'Successfully Assigned Subject to teacher.');
         }
 
 
         return 'Something went wrong. Please try again later.';
     }
+
+
+    /*
+     * getSubjectAssignments() shows all assignments of subject to all teachers
+     */
+    public function getSubjectAssignments()
+    {
+        $assigns = SubjectAssign::paginate(15);
+
+        return view('admin.co-admin-view-subject-assignment', ['assigns' => $assigns]);
+    }
+
+
+    /*
+     * getSubjectAssignRemove() remove assignemnt of subject to a teacher
+     */
+    public function getSubjectAssignRemove($id = null)
+    {
+        if($id == null) {
+            return 'Please Try Again Later!';
+        }
+
+        // Find the assigned subject using ID
+        $assign = SubjectAssign::find($id);
+
+        // Delete the assigned subject
+        if($assign->delete()) {
+
+            $log = new UserLog();
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Remove Subject Assignment to a Teacher';
+            $log->save();
+
+            return redirect()->route('admin_get_subject_assignments')->with('success', 'Successfully Remove Subject Assignment.');
+        }
+
+        return redirect()->route('admin_get_subject_assignments')->with('error_msg', 'Failure in Removing Subject Assignment. Please Try Again Later');
+
+    }
+
 
 } // End of AdminController Class

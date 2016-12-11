@@ -35,8 +35,8 @@
                         @foreach($levels as $l)
         				<tr>
         					<td class="text-uppercase">{{ $l->code }}</td>
-        					<td>{{ $l->title }}</td>
-        					<td>{{ $l->description }}</td>
+        					<td class="text-capitalize">{{ $l->title }}</td>
+        					<td class="text-capitalize">{{ $l->description }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
 									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $l->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>

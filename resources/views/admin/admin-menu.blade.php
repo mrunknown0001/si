@@ -58,7 +58,7 @@
                             <a href="{{ route('admin_assign_subject') }}">Assign Subject Load</a>
                         </li>
                         <li>
-                            <a href="#">View Subject Assignment*</a>
+                            <a href="{{ route('admin_get_subject_assignments') }}">View Subject Assignment</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

@@ -331,7 +331,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Route to Show all assigned subejct to teachers
 		 */
-		
+		Route::get('subject-assignments', [
+			'uses' => 'AdminController@getSubjectAssignments',
+			'as' => 'admin_get_subject_assignments'
+			]);
+
+
+		/*
+		 * Route to remove subject assignments in a teacher
+		 */
+		Route::get('subject-assign-remove/{id}', [
+			'uses' => 'AdminController@getSubjectAssignRemove',
+			'as' => 'admin_get_subject_assign_remove'
+			]);
 
 	});
 

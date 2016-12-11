@@ -9,8 +9,8 @@
             </div>
             <div class="modal-body">
                 <p class="text-uppercase">Grade Level Code: {{ $l->code }}</p>
-                <p>Grade Level Title: {{ $l->title }}</p>
-                <p>Description: <i>{{ $l->description }}</i></p>
+                <p class="text-capitalize">Grade Level Title: {{ $l->title }}</p>
+                <p class="text-capitalize">Description: <i>{{ $l->description }}</i></p>
             </div>
             <div class="modal-footer">
             

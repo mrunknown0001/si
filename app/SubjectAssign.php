@@ -20,4 +20,9 @@ class SubjectAssign extends Model
     {
     	return $this->belongsTo('App\GradeLevel');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
