@@ -128,22 +128,22 @@
                 </li>
                 @else
                 <li>
-                    <a disabled><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
+                    <a style="color: grey;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
                 </li>
                 <li>
-                    <a><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
                 </li>
                 @endif
                 <li>
