@@ -327,6 +327,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 			'as' => 'admin_post_assign_subject'
 			]);
 
+
+		/*
+		 * Route to Show all assigned subejct to teachers
+		 */
+		
+
 	});
 
 

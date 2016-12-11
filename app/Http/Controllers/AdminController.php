@@ -1682,7 +1682,7 @@ class AdminController extends Controller
 
         if(!empty($sa)) {
             // Message that the subject in the class selected is assigned to the same teacher selected
-            return 'Subject Assigned to the same Teacher!';
+            return redirect()->route('admin_assign_subjec')->with('Subject Assigned to the same Teacher!');
         }
 
 
