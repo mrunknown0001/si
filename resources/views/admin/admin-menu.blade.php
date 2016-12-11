@@ -1,3 +1,11 @@
+<?php
+    /*
+     * Check if School Year and Quarter is Added and Selected
+     */
+    $year = App\SchoolYear::where('status', 1)->first();
+    $quarter = App\QuarterSelect::where('status', 1)->first();
+?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -39,6 +47,7 @@
                 <li>
                     <a href="{{ route('admin_home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
+                @if(!empty($year) && !empty($quarter))
                 <li>
                     <a><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -117,6 +126,26 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                @else
+                <li>
+                    <a disabled><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
+                </li>
+                <li>
+                    <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
+                </li>
+                <li>
+                    <a><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
+                </li>
+                <li>
+                    <a><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
+                </li>
+                <li>
+                    <a><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
+                </li>
+                <li>
+                    <a><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
+                </li>
+                @endif
                 <li>
                     <a><i class="fa fa-university fa-fw"></i> School Year<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

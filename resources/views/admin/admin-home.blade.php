@@ -1,3 +1,11 @@
+<?php
+    /*
+     * Check if School Year and Quarter is Added and Selected
+     */
+    $year = App\SchoolYear::where('status', 1)->first();
+    $quarter = App\QuarterSelect::where('status', 1)->first();
+?>
+
 @extends('layouts.app')
 
 @section('title') Admin Dashboard - Student Information System @endsection
@@ -30,13 +38,14 @@
                             <strong>Forth Quarter</strong>
                         @endif
                     @else
-                        <strong>No Quarter Selected</strong>
+                        <strong>No Quarter Selected. <a href="{{ route('school_year_select_quarter') }}">Click here to Select</a></strong>
                     @endif
                 @else
-                <strong>No Active School Year. Please Add One.</strong>
+                <strong><span style="color: red;">No Active School Year. Please Add One. <a href="{{ route('school_year_add') }}">Click here to Add</a></span></strong>
                 @endif
                 <hr/>
             </div>
+            @if(!empty($year) && !empty($quarter))
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -150,7 +159,123 @@
                         </div>
                     </a>
                 </div>
-            </div>            
+            </div>
+            @else
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-users fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $co_admins }}</div>
+                                <div>Advisers/Teachers</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+             <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-graduation-cap fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $students }}</div>
+                                <div>Students</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-book fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $subjects }}</div>
+                                <div>Subjects</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-list fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $grade_blocks }}</div>
+                                <div>Grade Block</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-list-alt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $grade_levels }}</div>
+                                <div>Grade Level</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endif          
 	    </div>
     </div>
 

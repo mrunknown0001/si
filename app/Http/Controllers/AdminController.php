@@ -1160,7 +1160,7 @@ class AdminController extends Controller
 
             $log->save();
 
-            return redirect()->route('school_year_add')->with('success', 'School Year Successfully Added!');
+            return redirect()->route('school_year_add')->with('success', 'School Year Successfully Added! You can now select a First Quarter');
 
         }
 
