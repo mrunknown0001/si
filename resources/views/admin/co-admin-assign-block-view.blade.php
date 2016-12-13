@@ -34,9 +34,9 @@
                     <tbody>
                         @foreach($adviser as $a)
                         <tr>
-                            <td>{{ $a->adviser->firstname }}  {{ $a->adviser->lastname }}</td>
-                            <td>{{ $a->blockname->name }}</td>
-                            <td>{{ $a->leveltitle->title }}</td>
+                            <td class="text-capitalize">{{ $a->adviser->firstname }}  {{ $a->adviser->lastname }}</td>
+                            <td class="text-capitalize">{{ $a->blockname->name }}</td>
+                            <td class="text-capitalize">{{ $a->leveltitle->title }}</td>
                             <td>
                                 <div class="btn-group btn-group-xs">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#{{ $a->id }}-view"> <i class="fa fa-eye" aria-hidden="true"></i></button>

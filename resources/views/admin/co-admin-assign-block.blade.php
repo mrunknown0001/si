@@ -36,7 +36,7 @@
                     <div class="panel-body">
                         <form action="{{ route('admin_post_assign_block') }}" method="POST">
                             <div class="form-group">
-                                <select name="co_admin" class="form-control">
+                                <select name="co_admin" class="form-control text-capitalize">
                                     <option value="">Select Co-Admin</option>
                                     @foreach($co_admin as $c)
                                     <option value="{{ $c->id }}">{{ $c->user_id }} - {{ $c->firstname }} {{ $c->lastname }}</option>
@@ -44,7 +44,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="grade_level" class="form-control">
+                                <select name="grade_level" class="form-control text-capitalize">
                                     <option value="">Select Grade Level</option>
                                     @foreach($grade_level as $l)
                                     <option value="{{ $l->id }}">{{ $l->title }}</option>
@@ -52,7 +52,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="block" class="form-control">
+                                <select name="block" class="form-control text-capitalize">
                                     <option value="">Select Block/Class</option>
                                     @foreach($block as $b)
                                     <option value="{{ $b->id }}">{{ $b->name }}</option>

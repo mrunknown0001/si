@@ -41,7 +41,7 @@
 
         					</div>
                             <div class="form-group">
-                                <select name="grade_level" class="form-control">
+                                <select name="grade_level" class="form-control text-capitalize">
                                     <option value="">Select Grade Level</option>
                                     @foreach($level as $l)
                                     <option value="{{ $l->id }}">{{ $l->title }}</option>
@@ -49,7 +49,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="class_block" class="form-control">
+                                <select name="class_block" class="form-control text-capitalize">
                                     <option value="">Select Class Block</option>
                                     @foreach($block as $b)
                                     <option value="{{ $b->id }}">{{ $b->name }}</option>
