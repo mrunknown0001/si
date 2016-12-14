@@ -397,7 +397,7 @@ class CoAdminController extends Controller
 
         $level = GradeLevel::find($block_assign->level);
         $class_block = ClassBlock::find($block_assign->block);
-        $subject = Subject::all();
+        $subject = Subject::where('level_id', $level->id)->get();
         $year = SchoolYear::where('status', 1)->first();
 
         return view('coadmin.co-admin-grade-export', ['level' => $level, 'class_block' => $class_block, 'subjects' => $subject, 'year' => $year]);

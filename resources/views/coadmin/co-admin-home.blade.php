@@ -155,6 +155,29 @@
                 <strong>No Active School Year. Please Add One.</strong>
                 @endif
                 <hr/>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <span class="glyphicon glyphicon-import" id="dashboard-icon"></span>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"></div>
+                                <div>Import Grades</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('co_admin_import_grades') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
             </div>
             @endif
 		</div>
