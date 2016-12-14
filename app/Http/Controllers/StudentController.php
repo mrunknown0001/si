@@ -23,11 +23,8 @@ class StudentController extends Controller
     public function home()
     {
 
-        $si = StudentInfo::where('student_id', Auth::user()->user_id)->first();
+        return view('students.students-home');
 
-        $subjects = Subject::where('level_id', $si->grade_level)->get();
-
-        return view('students.students-home', ['subjects' => $subjects]);
     }
     
     /*
@@ -272,6 +269,10 @@ class StudentController extends Controller
 
         $student = User::find(Auth::user()->id);
 
+        $si = StudentInfo::where('student_id', Auth::user()->user_id)->first();
+
+        $all_subjects = Subject::where('level_id', $si->grade_level)->get();
+
         /*
          * Get all Subjects and grade
          */
@@ -286,7 +287,7 @@ class StudentController extends Controller
 
         // return $third_quarter_grade;
 
-        return view('students.students-view-my-grades', ['subjects' => $subjects, 'first_quarter_grade' => $first_quarter_grade, 'second_quarter_grade' => $second_quarter_grade, 'third_quarter_grade' => $third_quarter_grade, 'forth_quarter_grade' => $forth_quarter_grade]);
+        return view('students.students-view-my-grades', ['subjects' => $subjects, 'first_quarter_grade' => $first_quarter_grade, 'second_quarter_grade' => $second_quarter_grade, 'third_quarter_grade' => $third_quarter_grade, 'forth_quarter_grade' => $forth_quarter_grade, 'all_subjects' => $all_subjects]);
 
     }
 

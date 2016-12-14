@@ -33,59 +33,57 @@
             		</tr>
             	</thead>
             	<tbody>
-            		<tr>
-            			@foreach($subjects as $s)
-            			<th class="text-center">{{ $s->subject->title }}</th>
-            			<th class="text-center">
-            				@foreach($first_quarter_grade as $fqg)
-								@if($fqg->subject_id == $s->subject_id)
+                    @foreach($all_subjects as $as)
+                    <tr>
+                        <th class="text-center text-capitalize">{{ $as->title }}</th>
+
+                        @foreach($subjects as $s)
+                        <th class="text-center">
+                            @foreach($first_quarter_grade as $fqg)
+                                @if($fqg->subject_id == $as->id)
                                     <button class="btn btn-link" data-toggle="modal" data-target="#first">{{ $fi = $fqg->grade }}</button>
-                                    @include('students.includes.first-raw-grade')							
+                                    @include('students.includes.first-raw-grade')                           
                                 @endif
-            				@endforeach
-            			</th>
-            			<th class="text-center">
-            				@foreach($second_quarter_grade as $sqg)
-								@if($sqg->subject_id == $s->subject_id)
+                            @endforeach
+                        </th>
+                        <th class="text-center">
+                            @foreach($second_quarter_grade as $sqg)
+                                @if($sqg->subject_id == $as->id)
                                     <button class="btn btn-link" data-toggle="modal" data-target="#second">
                                     {{ $se = $sqg->grade }}</button>
                                     @include('students.includes.second-raw-grade')
-								@endif
-            				@endforeach
-            			</th>
-            			<th class="text-center">
-            				@foreach($third_quarter_grade as $tqg)
-								@if($tqg->subject_id)
+                                @endif
+                            @endforeach
+                        </th>
+                        <th class="text-center">
+                            @foreach($third_quarter_grade as $tqg)
+                                @if($tqg->subject_id == $as->id)
                                     <button class="btn btn-link" data-toggle="modal" data-target="#third">
                                     {{ $t = $tqg->grade }}</button>
                                     @include('students.includes.third-raw-grade')
-								@endif
-            				@endforeach
-            				
-            			</th>
-            			<th class="text-center">
-            				@foreach($forth_quarter_grade as $fqg)
-								@if($fqg->subject_id == $s->subject_id)
+                                @endif
+                            @endforeach
+                            
+                        </th>
+                        <th class="text-center">
+                            @foreach($forth_quarter_grade as $fqg)
+                                @if($fqg->subject_id == $as->id)
                                     <button class="btn btn-link" data-toggle="modal" data-target="#forth">
                                     {{ $fo = $fqg->grade }}</button>
                                     @include('students.includes.forth-raw-grade')
-								@endif
-            				@endforeach
-            			</th>
+                                @endif
+                            @endforeach
+                        </th>
                         <th class="text-center">
                             @if(!empty($fi) && !empty($se) && !empty($t) && !empty($fo))
                                 {{ ($fi + $se + $t + $fo)/4 }}
                             @endif
                         </th>
                         <!-- <th class="text-center"></th> -->
-						@endforeach
-            		</tr><!-- 
-                    <tr>
-                        <td style="visibility: hidden !important;"></td>
-                        <td colspan="4" class="text-center"><strong>General Average</strong></td>
-                        <td></td>
-                        
-                    </tr> -->
+                        @endforeach
+                    </tr>
+                    @endforeach
+                    
             	</tbody>
             </table>
             <p class="text-center"><strong>System Generated. Not Official copy of Report of Grades</strong></p>

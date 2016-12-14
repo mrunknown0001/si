@@ -36,22 +36,6 @@
                     </div>
                 </div>
 
-                <h4>My Subjects</h4>
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <th>Subject Code</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </thead>
-                    <tbody>
-                        @foreach($subjects as $s)
-                        <td class="text-uppercase">{{ $s->code }}</td>
-                        <td class="text-capitalize">{{ $s->title }}</td>
-                        <td class="text-capitalize"><i>{{ $s->description }}</i></td>
-                        @endforeach
-                    </tbody>
-                </table>
-
     		</div>
 
     	</div>
