@@ -1,3 +1,9 @@
+<?php
+
+	$level = App\GradeLevel::all();
+
+?>
+
 @extends('layouts.app')
 
 @section('title') Edit Subject - Admin - Student Information System @endsection
@@ -28,6 +34,14 @@
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_subject_update') }}" method="POST" autocomplete="off">
+	        				<div class="form-group">
+	        					<select name="level" class="form-control text-capitalize">
+	        						<option value="{{ $subject->level->id }}">{{ $subject->level->title }}</option>
+	        						@foreach($level as $l)
+									<option value="{{ $l->id }}">{{ $l->title }}</option>
+	        						@endforeach
+	        					</select>
+	        				</div>
 	        				<div class="form-group">
 	        					<input type="text" name="code" class="form-control text-uppercase" value="{{ $subject->code }}" placeholder="Subject Code" />
 	        				</div>

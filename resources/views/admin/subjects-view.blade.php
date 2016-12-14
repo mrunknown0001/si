@@ -25,6 +25,7 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
+                            <th>Subject For</th>
         					<th>Subject Code</th>
         					<th>Subject Title</th>
         					<th>Actions</th>
@@ -33,6 +34,7 @@
         			<tbody>
                         @foreach($subjects as $subject)
         				<tr>
+                            <td class="text-capitalize">{{ $subject->level->title }}</td>
         					<td class="text-uppercase">{{ $subject->code }}</td>
         					<td class="text-capitalize">{{ $subject->title }}</td>
         					<td>

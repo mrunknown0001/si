@@ -469,18 +469,21 @@ class AdminController extends Controller
          * Validate User Input
          */
         $this->validate($request, [
+            'level' => 'required',
             'code' => 'required|unique:subjects',
             'title' => 'required',
             'description' => 'required'
             ]);
 
         // Assign Values to Variables
+        $level = $request['level'];
         $code = $request['code'];
         $title = $request['title'];
         $description = $request['description'];
 
         $add = new Subject();
 
+        $add->level_id = $level;
         $add->code = $code;
         $add->title = $title;
         $add->description = $description;
@@ -529,12 +532,14 @@ class AdminController extends Controller
          * Input validation
          */
         $this->validate($request, [
+            'level' => 'required',
             'code' => 'required',
             'title' => 'required',
             'description' => 'required'
             ]);
 
         $id = $request['id'];
+        $level = $request['level'];
         $code = $request['code'];
         $title = $request['title'];
         $description = $request['description'];
@@ -562,6 +567,7 @@ class AdminController extends Controller
 
             else {
 
+                $subject->level_id = $level;
                 $subject->title = $title;
                 $subject->description = $description;
 
@@ -585,6 +591,7 @@ class AdminController extends Controller
         }
         else {
 
+            $subject->level_id = $level;
             $subject->title = $title;
             $subject->description = $description;
 

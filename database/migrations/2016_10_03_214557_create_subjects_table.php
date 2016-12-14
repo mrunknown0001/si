@@ -15,6 +15,8 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('level_id')->unsigned();
+            $table->foreign('level_id')->references('id')->on('grade_levels');
             $table->string('code', 30)->unique();
             $table->string('title', 30);
             $table->string('description', 30)->nullable();

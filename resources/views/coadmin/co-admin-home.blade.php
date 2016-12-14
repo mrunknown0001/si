@@ -38,7 +38,15 @@
                 @endif
                 <hr/>
             </div>
+            <div class="col-md-12">
+                {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
+            </div>
 			<div class="col-lg-3 col-md-6">
+                
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">

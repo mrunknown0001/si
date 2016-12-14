@@ -8,6 +8,7 @@
                 <h4 class="modal-title">Subject Details</h4>
             </div>
             <div class="modal-body">
+                <p>Subject For: <span class="text-capitalize">{{ $subject->level->title }}</span></p>
                 <p>Subject Code: <span class="text-uppercase">{{ $subject->code }}</span></p>
                 <p>Subject Title: <span class="text-capitalize">{{ $subject->title }}</span></p>
                 <p class="text-capitalize">Description: <i>{{ $subject->description }}</i></p>

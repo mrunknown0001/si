@@ -14,6 +14,7 @@ use App\PasswordChange;
 use App\Grade;
 use App\StudentInfo;
 use App\StudentData;
+use App\Subject;
 
 class StudentController extends Controller
 {
@@ -21,7 +22,12 @@ class StudentController extends Controller
 
     public function home()
     {
-        return view('students.students-home');
+
+        $si = StudentInfo::where('student_id', Auth::user()->user_id)->first();
+
+        $subjects = Subject::where('level_id', $si->grade_level)->get();
+
+        return view('students.students-home', ['subjects' => $subjects]);
     }
     
     /*

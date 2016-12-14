@@ -46,6 +46,11 @@
                 <hr/>
             </div>
             @if(!empty($year) && !empty($quarter))
+            {{-- Includes errors and session flash message display container --}}
+                @include('includes.errors')
+                @include('includes.error')
+                @include('includes.success')
+                @include('includes.notice')
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -174,7 +179,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="color: gray;">
                         <div class="panel-footer">
                             <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -197,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="color: gray;">
                         <div class="panel-footer">
                             <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -220,7 +225,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="color: gray;">
                         <div class="panel-footer">
                             <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -243,7 +248,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="color: gray;">
                         <div class="panel-footer">
                             <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -266,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="color: gray;">
                         <div class="panel-footer">
                             <span class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> View</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
