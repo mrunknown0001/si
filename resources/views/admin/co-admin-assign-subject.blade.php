@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <select name="block" class="form-control text-capitalize">
-                                    <option value="">Select Class Block</option>
+                                    <option value="">Select Grade Block</option>
                                     @foreach($block as $b)
                                     <option value="{{ $b->id }}">{{ $b->name }}</option>
                                     @endforeach

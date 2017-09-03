@@ -52,7 +52,7 @@
                 @include('includes.success')
                 @include('includes.notice')
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">{{ $co_admins }}</div>
-                                <div>Advisers/Teachers</div>
+                                <div>Teachers</div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
 	        </div>
 
 	        <div class="col-lg-3 col-md-6">
-	            <div class="panel panel-yellow">
+	            <div class="panel panel-green">
 	                <div class="panel-heading">
 	                    <div class="row">
 	                        <div class="col-xs-3">
@@ -121,7 +121,7 @@
 	        </div>
 
 	        <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -144,7 +144,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
+                <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -175,7 +175,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">{{ $co_admins }}</div>
-                                <div>Advisers/Teachers</div>
+                                <div>Teachers</div>
                             </div>
                         </div>
                     </div>

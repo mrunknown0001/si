@@ -71,6 +71,7 @@
                     <a href="{{ route('co_admin_view_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
                 </li>
                 @endif
+                
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

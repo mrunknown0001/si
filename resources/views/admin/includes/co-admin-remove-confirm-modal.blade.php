@@ -5,10 +5,10 @@
         <div class="modal-content">
             <div class="modal-header modal-header-danger">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Adviser/Teacher Removal Confirmation</h4>
+                <h4 class="modal-title">Teacher Removal Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to remove co-admin with Employee Number: <strong>{{ $c->user_id }}</strong>?</p>
+                <p>Are you sure you want to remove <strong class="text-capitalize">{{ $c->firstname }} {{ $c->lastname }}</strong> with ID Number: <strong>{{ $c->user_id }}</strong>?</p>
                
             </div>
             <div class="modal-footer">

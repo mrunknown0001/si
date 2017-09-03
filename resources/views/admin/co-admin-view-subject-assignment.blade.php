@@ -27,10 +27,10 @@
                     <thead>
                         <tr>
                             <th>Subject</th>
-                            <th>Class Block</th>
+                            <th>Grade Block</th>
                             <th>Grade Level</th>
                             <th>Teacher's Name</th>
-                            <th>Employee Number</th>
+                            <th>ID Number</th>
                             <th>Action</th>
                         </tr>
                     </thead>

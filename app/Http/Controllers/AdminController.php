@@ -80,27 +80,31 @@ class AdminController extends Controller
          * Input Validation
          */
         $this->validate($request, [
-            'tin' => 'required',
+            'id_number' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
+            'birthday' => 'required',
+            'sex' => 'required',
+            'address' => 'required',
             'email' => 'required|email|unique:users',
-            'mobile' => 'required',
-            'birthday' => 'required'
+            'mobile' => 'required'
             ]);
 
         // Assigning Values to variables
-        $user_id = $request['tin'];
+        $user_id = $request['id_number'];
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
+        $sex = $request['sex'];
+        $address = $request['address'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = date('Y-m-d', strtotime($request['birthday']));
 
         // Check User ID Availability
         $user_id_check = User::where('user_id', $user_id)->first();
 
         if(!empty($user_id_check)) {
-            return redirect()->route('co_admin_add')->with('error_msg', 'This Employee Number: ' . $user_id . ' is already in use.');
+            return redirect()->route('co_admin_add')->with('error_msg', 'This ID Number: ' . $user_id . ' is already in use.');
         }
 
         // Check email availability
@@ -115,11 +119,12 @@ class AdminController extends Controller
         $add->user_id = $user_id;
         $add->firstname = $firstname;
         $add->lastname = $lastname;
+        $add->birthday = $birthday;
+        $add->sex = $sex;
+        $add->address = $address;
         $add->email = $email;
         $add->mobile = $mobile;
-        $add->birthday = $birthday;
-
-        $add->password = bcrypt('admin');
+        $add->password = bcrypt('gjc1946'); // gjc1946 is the default password for teachers
         $add->privilege = 2;
         $add->status = 1;
 
@@ -129,11 +134,11 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Added Co-Admin with User Employee Number: ' . $user_id;
+            $log->action = 'Added Teacher with User ID Number: ' . $user_id;
 
             $log->save();
 
-            return redirect()->route('co_admin_add')->with('success', 'Adviser Added: ' . $firstname . ' ' . $lastname);
+            return redirect()->route('co_admin_add')->with('success', 'Teacher Added: ' . ucwords($firstname) . ' ' . ucwords($lastname));
 
         }
 
@@ -178,22 +183,27 @@ class AdminController extends Controller
          * Input validation
          */
         $this->validate($request, [
-            'tin' => 'required',
+            'id_number' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'birthday' => 'required'
+            'birthday' => 'required',
+            'sex' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'mobile' => 'required'
             ]);
 
         // Assigning Values to variables
         $id = $request['id'];
-        $user_id = $request['tin'];
-        $firstname = ucwords($request['firstname']);
-        $lastname = ucwords($request['lastname']);
+
+        $user_id = $request['id_number'];
+        $firstname = $request['firstname'];
+        $lastname = $request['lastname'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
+        $sex = $request['sex'];
+        $address = $request['address'];
         $email = $request['email'];
         $mobile = $request['mobile'];
-        $birthday = date('Y-m-d', strtotime($request['birthday']));
 
         if($id == null) {
             // If the script is modified suspiciously
@@ -217,7 +227,7 @@ class AdminController extends Controller
             $user_id_check = User::where('user_id', $user_id)->first();
 
             if($user_id_check == True) {
-                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'Employee Number already in use.');
+                return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'ID Number already in use.');
             }
         }
 
@@ -241,9 +251,11 @@ class AdminController extends Controller
         $user->user_id = $user_id;
         $user->firstname = $firstname;
         $user->lastname = $lastname;
+        $user->birthday = $birthday;
+        $user->sex = $sex;
+        $user->address = $address;
         $user->email = $email;
         $user->mobile = $mobile;
-        $user->birthday = $birthday;
 
         if($user->save()) {
 
@@ -255,7 +267,7 @@ class AdminController extends Controller
 
             $log->save();
 
-            return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('success', 'Co-Admin Details Successfully Updated');
+            return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('success', 'Teacher\'s Details Successfully Updated');
         }
         else {
             return redirect()->route('admin_get_edit_co_admin', $user->user_id)->with('error_msg', 'Error Occured! Please try again later.');
@@ -288,12 +300,12 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Removed Co-Admin with Employee Number: ' . $user_id;
+            $log->action = 'Removed Teacher with Employee Number: ' . $user_id;
 
             $log->save();
 
             // Redirect if the operation is successful
-            return redirect()->route('co_admin_view')->with('success', 'Successfully Remove Co-Admin.');
+            return redirect()->route('co_admin_view')->with('success', 'Successfully Remove Teacher.');
         }
 
     }

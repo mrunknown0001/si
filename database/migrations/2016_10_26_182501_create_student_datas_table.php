@@ -15,10 +15,7 @@ class CreateStudentDatasTable extends Migration
     {
         Schema::create('student_datas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('student_id', 20); // Student ID/LRN
-            // Personal Date - other data found in users table
-            $table->string('sex', 10)->nullable();
-            $table->string('home_address', 30)->nullable();
+            $table->string('student_id', 20); // Student ID
 
             $table->timestamps();
         });

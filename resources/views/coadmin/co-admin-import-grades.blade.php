@@ -71,7 +71,7 @@
                         <tr>
                             <th>Subject</th>
                             <th>Quarter</th>
-                            <th>Grade/Year Level</th>
+                            <th>Grade Level</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -31,13 +31,13 @@
                 @include('includes.notice')
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Assign Block/Section to Adviser</strong>
+                        <strong><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Assign Block/Section to Teacher</strong>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('admin_post_assign_block') }}" method="POST">
                             <div class="form-group">
                                 <select name="co_admin" class="form-control text-capitalize">
-                                    <option value="">Select Co-Admin</option>
+                                    <option value="">Select Teacher</option>
                                     @foreach($co_admin as $c)
                                     <option value="{{ $c->id }}">{{ $c->user_id }} - {{ $c->firstname }} {{ $c->lastname }}</option>
                                     @endforeach

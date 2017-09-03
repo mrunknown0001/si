@@ -10,7 +10,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">View Block Assignment to Adviser</h3>
+                <h3 class="page-header">View Block Assignment to Teacher</h3>
             </div>
             
         </div>
@@ -25,7 +25,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Adviser Name</th>
+                            <th>Teacher's Name</th>
                             <th>Block Name</th>
                             <th>Grade Level</th>
                             <th>Action</th>

@@ -25,7 +25,7 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>Employee Number</th>
+        					<th>ID Number</th>
         					<th>Full Name</th>
         					<th>Email</th>
         					<th>Actions</th>
@@ -35,7 +35,7 @@
                         @foreach($ca as $c)
                         <tr>
         					<td>{{ $c->user_id }}</td>
-        					<td>{{ $c->firstname }}  {{ $c->lastname }}</td>
+        					<td class="text-capitalize">{{ $c->firstname }}  {{ $c->lastname }}</td>
         					<td>{{ $c->email }}</td>
                             <td>
                                 <div class="btn-group btn-group-xs">

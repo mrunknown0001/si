@@ -19,7 +19,7 @@
             <div class="col-lg-4">
                 <form action="{{ route('student_search') }}" method="GET" autocomplete="off">
                     <div class="input-group custom-search-form">
-                        <input type="text" name="keyword" class="form-control" placeholder="Search by LRN or by Last Name...">
+                        <input type="text" name="keyword" class="form-control" placeholder="Search by ID Number or Name">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">
                                 <i class="fa fa-search"></i>
@@ -38,7 +38,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>LRN (Learner Reference Number)</th>
+                            <th>ID Number</th>
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Actions</th>

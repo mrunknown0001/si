@@ -15,7 +15,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('admin_home') }}">Admin Panel</a>
+        <a class="navbar-brand" href="{{ route('admin_home') }}">Logo</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -49,20 +49,20 @@
                 </li>
                 @if(!empty($year) && !empty($quarter))
                 <li>
-                    <a><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-users fa-fw"></i> Teachers<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('co_admin_add') }}">Add New Adviser/Teacher</a>
+                            <a href="{{ route('co_admin_add') }}">Add New Teacher</a>
                         </li>
                         <li>
                             <a href="{{ route('co_admin_view') }}">View All Teachers</a>
                         </li>
-                        <li>
+                       <!--  <li>
                             <a href="{{ route('admin_co_admin_assign_block') }}">Assign Block/Section</a>
                         </li>
                         <li>
                             <a href="{{ route('admin_view_block_assignment') }}">View Block Assignment</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{ route('admin_assign_subject') }}">Assign Subject Load</a>
                         </li>
@@ -76,7 +76,10 @@
                     <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('students_import') }}">Import Students</a>
+                            <a href="{{ route('students_import') }}">Class Import Students</a>
+                        </li>
+                        <li>
+                            <a href="#">Add Student</a>
                         </li>
                         <li>
                             <a href="{{ route('students_filter') }}">Students Filter</a>
