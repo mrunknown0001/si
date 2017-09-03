@@ -1,5 +1,6 @@
-# Student Info Using Laravel 5.3
-Student Information System
+# Gerona Junior College Student Info  (Laravel 5.3)
 
-This app is for High School and College
+This app is for High School Gerona Junior College.
+
+
 

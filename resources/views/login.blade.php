@@ -2,7 +2,7 @@
 <html class="full" lang="en">
     <head>
         <title>
-            Admin &amp; Adviser/Teacher's Login - Student Information System
+            {{ env('SCHOOL_NAME') }} Student Information System - Admin &amp; Teachers Login 
         </title>
 
         <meta charset="utf-8" />
@@ -33,16 +33,16 @@
     </head>
     <body>
         <div class="container">
-            <h2 id="welcome" class="text-center">Bamban National High School Student Information System</h2>
+            <h2 id="welcome" class="text-center">{{ env('SCHOOL_NAME') }} Student Information System</h2>
             <br/><br/>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     {{-- Includes Errors and Success Message templates --}}
                     @include('includes.errors')
                     @include('includes.error')
-                    <div class="login-panel panel panel-primary">
+                    <div class="login-panel panel panel-success">
                         <div class="panel-heading">
-                            <strong><i class="fa fa-user fa-lg"></i> Admin &amp; Advisers/Teachers Login</strong>
+                            <strong><i class="fa fa-user fa-lg"></i> Admin &amp; Teachers Login</strong>
                         
                         </div>
                         <div class="panel-body">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>    
+                                        <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>    
                                     </div>
                                     
                                 </fieldset>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="{{ route('home') }}" class="btn btn-primary btn-xs">Student Login</a></p>
+                    <p class="text-center"><a href="{{ route('home') }}" class="btn btn-success btn-xs">Student Login</a></p>
                 </div>
             </div>
         </div>

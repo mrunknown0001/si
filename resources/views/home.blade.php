@@ -2,7 +2,7 @@
 <html class="full" lang="en">
     <head>
         <title>
-            Login - Student Information System
+            {{ env('SCHOOL_NAME') }} Student Information System - Student Login
         </title>
 
         <meta charset="utf-8" />
@@ -33,7 +33,7 @@
     </head>
     <body>
         <div class="container">
-            <h2 id="welcome" class="text-center">Welcome to Bamban National High School Student Information System</h2>
+            <h2 id="welcome" class="text-center">Welcome to {{ env('SCHOOL_NAME') }} Student Information System</h2>
             <br/><br/>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
@@ -42,7 +42,7 @@
                     @include('includes.error')
                     @include('includes.notice')
                     @include('includes.success')
-                    <div class="login-panel panel panel-primary welcome">
+                    <div class="login-panel panel panel-success welcome">
                         <div class="panel-heading">
                             <strong><i class="fa fa-user fa-lg"></i> Student Login</strong>
                         </div>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+                                        <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
                                         
                                     </div>
                                     
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="{{ route('login') }}" class="welcome btn btn-primary btn-xs">Admin &amp; Advisers/Teachers</a></p>
+                    <p class="text-center"><a href="{{ route('login') }}" class="welcome btn btn-success btn-xs">Admin &amp; Teachers</a></p>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         // admin
     	DB::table('users')->insert([
-    		'user_id' => '143934412',
+    		'user_id' => 'admin',
     		'firstname' => 'Admin',
     		'lastname' => 'Admin',
     		'email' => 'admin@admin.com',
@@ -28,12 +28,12 @@ class DatabaseSeeder extends Seeder
 
         // co-admin
         DB::table('users')->insert([
-            'user_id' => '143934413',
-            'firstname' => 'Adviser',
+            'user_id' => '0001-1111',
+            'firstname' => 'Teacher',
             'lastname' => 'Adviser',
-            'email' => 'Adviser@admin.com',
+            'email' => 'teacher@admin.com',
             'mobile' => '09222222222',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('gjc1946'),
             'privilege' =>'2',  // co-admin privilege // Adviser Privillege
             'birthday' => date('Y-m-d', strtotime('10/1/1992'))
             ]);
