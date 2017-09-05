@@ -8,10 +8,26 @@
                 <h4 class="modal-title">Subject Details</h4>
             </div>
             <div class="modal-body">
-                <p>Subject For: <span class="text-capitalize">{{ $subject->level->title }}</span></p>
-                <p>Subject Code: <span class="text-uppercase">{{ $subject->code }}</span></p>
+                <p>Grade Level: <span class="text-capitalize">{{ $subject->level}}</span></p>
                 <p>Subject Title: <span class="text-capitalize">{{ $subject->title }}</span></p>
                 <p class="text-capitalize">Description: <i>{{ $subject->description }}</i></p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Activity: {{ $subject->activity }}%</p>
+                        <p>Assignment: {{ $subject->assignment }}%</p>
+                        <p>Attendance: {{ $subject->attendance }}%</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Quiz: {{ $subject->quiz }}%</p>
+                        <p>Project: {{ $subject->project }}%</p>
+                        <p>Exam: {{ $subject->exam }}%</p>
+                        <p>Other: {{ $subject->others }}%</p>
+
+                    </div>
+                </div>
+                
+                
             </div>
             <div class="modal-footer">
             

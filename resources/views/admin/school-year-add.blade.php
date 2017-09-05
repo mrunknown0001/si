@@ -33,11 +33,13 @@
 								
 								<select name="from_year" id="from_year" class="form-control">
 									<option value="">Select Year</option>
-									<option value="{{ date('Y') }}">{{ date('Y') }}</option>
+									<option value="{{ date('Y') }}">{{ date('Y') }} - {{ date('Y')+1 }}</option>
+                                    <!-- <option value="{{ date('Y')+1 }}">{{ date('Y')+1 }} - {{ date('Y')+2 }}</option>
+                                    <option value="{{ date('Y')+2 }}">{{ date('Y')+2 }} - {{ date('Y')+3 }}</option> -->
 								</select>
 								
         					</div>
-        					<div class="form-group">
+        					<!-- <div class="form-group">
         						<strong>to</strong>
         					</div>
         					<div class="form-group">
@@ -47,7 +49,7 @@
         							<option value="{{ date('Y') + 1 }}">{{ date('Y') + 1}}</option>
         						</select>
 
-        					</div>
+        					</div> -->
         					<div class="form-group pull-right">
         						<input type="hidden" name="_token" value="{{ csrf_token() }}" />
         						<button class="btn btn-primary">Add School Year</button>

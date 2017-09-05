@@ -2,7 +2,7 @@
 <html class="full" lang="en">
     <head>
         <title>
-            {{ env('SCHOOL_NAME') }} Student Information System - Student Login
+            Welcome to Student Information System
         </title>
 
         <meta charset="utf-8" />
@@ -30,43 +30,58 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+
+
     </head>
     <body>
         <div class="container">
-            <h2 id="welcome" class="text-center">Welcome to {{ env('SCHOOL_NAME') }} Student Information System</h2>
+            <h2 id="welcome" class="text-center"> Student Information System</h2>
             <br/><br/>
             <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    {{-- Includes Errors and Success Message templates --}}
-                    @include('includes.errors')
-                    @include('includes.error')
-                    @include('includes.notice')
-                    @include('includes.success')
-                    <div class="login-panel panel panel-success welcome">
-                        <div class="panel-heading">
-                            <strong><i class="fa fa-user fa-lg"></i> Student Login</strong>
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" action="{{ route('student_post_login') }}" method="POST" autocomplete="off">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Learner Reference Number" name="id" type="text" autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
-                                        
-                                    </div>
-                                    
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <h2 class="text-center">History</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="col-md-4">
+                    <br>
+                    <p class="text-center">
+                        <a href="{{ route('admin_login') }}" class="btn btn-primary btn-lg">ADMIN</a>
+                    </p>
+                    <p class="text-center">
+                        <a href="{{ route('teachers_login') }}" class="btn btn-primary btn-lg">TEACHER</a>
+                    </p>
+                    <p class="text-center">
+                        <a href="{{ route('student_login') }}" class="btn btn-primary btn-lg">STUDENT</a>
+                    </p>
+                
+                </div>
+                <div class="col-md-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                    <p class="text-center"><a href="{{ route('login') }}" class="welcome btn btn-success btn-xs">Admin &amp; Teachers</a></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                
                 </div>
             </div>
         </div>

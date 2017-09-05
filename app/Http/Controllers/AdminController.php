@@ -482,34 +482,63 @@ class AdminController extends Controller
          */
         $this->validate($request, [
             'level' => 'required',
-            'code' => 'required|unique:subjects',
+            // 'code' => 'required|unique:subjects',
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'activity' => 'required',
+            'assignment' => 'required',
+            'attendance' => 'required',
+            'quiz' => 'required',
+            'exam' => 'required'
             ]);
 
         // Assign Values to Variables
         $level = $request['level'];
-        $code = $request['code'];
+        // $code = $request['code'];
         $title = $request['title'];
         $description = $request['description'];
+        $activity = $request['activity'];
+        $assignment = $request['assignment'];
+        $attendance = $request['attendance'];
+        $quiz = $request['quiz'];
+        $project = $request['project'];
+        $exam = $request['exam'];
+        $other = $request['other'];
+
+        /*
+         * Check if the total of percentage is 100%
+         *
+         */
+        $total_percentage = $activity + $assignment + $attendance + $quiz + $project + $exam + $other;
+
+        if($total_percentage != 100) {
+            return redirect()->route('subjects_add')->with('error_msg', 'Check Subject Percentage!');
+        }
 
         $add = new Subject();
 
-        $add->level_id = $level;
-        $add->code = $code;
+        $add->level = $level;
+        // $add->code = $code;
         $add->title = $title;
         $add->description = $description;
+        $add->activity = $activity;
+        $add->assignment = $assignment;
+        $add->attendance = $attendance;
+        $add->quiz = $quiz;
+        $add->project = $project;
+        $add->exam = $exam;
+        $add->others = $other;
 
         if($add->save()) {
 
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Added New Subject with a code: ' . $code;
+            $log->action = 'Added New Subject: ' . $title;
 
             $log->save();
 
-            return redirect()->route('subjects_add')->with('success', 'Subject Successfully Added!');
+            return redirect()->route('subjects_add')->with('success', ucwords($title) . 'Subject Successfully Added!');
 
         }
 
@@ -519,10 +548,10 @@ class AdminController extends Controller
     /*
      * showSubjectEdit() method is use to show subject to edit
      */
-    public function showSubjectEdit($code = null)
+    public function showSubjectEdit($id = null)
     {
 
-        $subject = Subject::where('code', $code)->first();
+        $subject = Subject::findorfail($id);
 
         // If the code doesn't exist in database
         if(empty($subject)) {
@@ -543,18 +572,32 @@ class AdminController extends Controller
         /*
          * Input validation
          */
+        /*
+         * Validate User Input
+         */
         $this->validate($request, [
             'level' => 'required',
-            'code' => 'required',
+            // 'code' => 'required|unique:subjects',
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'activity' => 'required',
+            'assignment' => 'required',
+            'attendance' => 'required',
+            'quiz' => 'required',
+            'exam' => 'required'
             ]);
 
         $id = $request['id'];
         $level = $request['level'];
-        $code = $request['code'];
         $title = $request['title'];
         $description = $request['description'];
+        $activity = $request['activity'];
+        $assignment = $request['assignment'];
+        $attendance = $request['attendance'];
+        $quiz = $request['quiz'];
+        $project = $request['project'];
+        $exam = $request['exam'];
+        $other = $request['other'];
 
         // If id is empty
         if(empty($id)) {
@@ -568,57 +611,28 @@ class AdminController extends Controller
             return abort(404);
         }
 
-        // Check the availability of the subject code is the code is changed
-        if(strtolower($code) != $subject->code) {
+        $subject->level = $level;
+        $subject->title = $title;
+        $subject->description = $description;
+        $subject->activity = $activity;
+        $subject->assignment = $assignment;
+        $subject->attendance = $attendance;
+        $subject->quiz = $quiz;
+        $subject->project = $project;
+        $subject->exam = $exam;
+        $subject->others = $other;
 
-            $code_check = Subject::where('code', $code)->first();
-            if($code_check == True) {
-                // If the code entered is alreay in use
-                return 'System encountered error. Please reload this page.';    
-            }
+        if($subject->save()) {
 
-            else {
+            $log = new UserLog();
 
-                $subject->level_id = $level;
-                $subject->title = $title;
-                $subject->description = $description;
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Updated Subject: ' . ucwords($title);
 
-                if($subject->save()) {
+            $log->save();
 
-                    $log = new UserLog();
+            return redirect()->route('admin_get_edit_subject', $id)->with('success', 'Subject Successfully Updated');
 
-                    $log->user_id = Auth::user()->id;
-                    $log->action = 'Updated Subject';
-
-                    $log->save();
-
-                    return redirect()->route('admin_get_edit_subject', strtoupper($code))->with('success', 'Subject Successfully Updated');
-
-                }
-
-                return 'Error in Saving Update';
-
-            }
-            
-        }
-        else {
-
-            $subject->level_id = $level;
-            $subject->title = $title;
-            $subject->description = $description;
-
-            if($subject->save()) {
-
-                $log = new UserLog();
-
-                $log->user_id = Auth::user()->id;
-                $log->action = 'Updated Subject';
-
-                $log->save();
-
-                return redirect()->route('admin_get_edit_subject', strtoupper($code))->with('success', 'Subject Successfully Updated');
-
-            }
 
             return 'Error in Saving Update';
 
@@ -630,10 +644,10 @@ class AdminController extends Controller
     /*
      * removeSubject() method is use to remove subject
      */
-    public function removeSubject($code = null)
+    public function removeSubject($id = null)
     {
 
-        $subject = Subject::where('code', $code)->first();
+        $subject = Subject::findorfail($id);
 
         // Check if subject code belongs to a specific subject
         // If not, redirect to 404
@@ -677,7 +691,7 @@ class AdminController extends Controller
     public function adminActivityLog()
     {
 
-        $logs = UserLog::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+        $logs = UserLog::orderBy('created_at', 'desc')->paginate(15);
 
     	return view('admin.admin-log', ['logs' => $logs]);
     }
@@ -1132,13 +1146,13 @@ class AdminController extends Controller
          * Input validation
          */
         $this->validate($request, [
-            'from_year' => 'required',
-            'to_year' => 'required'
+            'from_year' => 'required'
+            // 'to_year' => 'required'
             ]);
 
         // Assign Values to Variables
         $from = $request['from_year'];
-        $to = $request['to_year'];
+        $to = $from + 1;
 
         $check_year = SchoolYear::where('from', $from)
                             ->where('to', $to)

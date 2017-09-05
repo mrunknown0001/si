@@ -2,7 +2,7 @@
 <html class="full" lang="en">
     <head>
         <title>
-            {{ env('SCHOOL_NAME') }} Student Information System - Admin &amp; Teachers Login 
+            Student Information System - Student Login
         </title>
 
         <meta charset="utf-8" />
@@ -33,30 +33,32 @@
     </head>
     <body>
         <div class="container">
-            <h2 id="welcome" class="text-center">{{ env('SCHOOL_NAME') }} Student Information System</h2>
+            <h2 id="welcome" class="text-center">Student Information System</h2>
             <br/><br/>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     {{-- Includes Errors and Success Message templates --}}
                     @include('includes.errors')
                     @include('includes.error')
-                    <div class="login-panel panel panel-success">
+                    @include('includes.notice')
+                    @include('includes.success')
+                    <div class="login-panel panel panel-primary welcome">
                         <div class="panel-heading">
-                            <strong><i class="fa fa-user fa-lg"></i> Admin &amp; Teachers Login</strong>
-                        
+                            <strong><i class="fa fa-user fa-lg"></i> Student Login</strong>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="{{ route('admin_post_login') }}" method="POST" autocomplete="off">
+                            <form role="form" action="{{ route('student_post_login') }}" method="POST" autocomplete="off">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Employee Number" name="id" type="text" autofocus>
+                                        <input class="form-control" placeholder="Learner Reference Number" name="id" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>    
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+                                        
                                     </div>
                                     
                                 </fieldset>
@@ -64,7 +66,7 @@
                         </div>
                     </div>
 
-                    <p class="text-center"><a href="{{ route('home') }}" class="btn btn-success btn-xs">Student Login</a></p>
+                    <p class="text-center"><a href="{{ route('home') }}" class="welcome btn btn-primary btn-xs">Back to Home</a></p>
                 </div>
             </div>
         </div>

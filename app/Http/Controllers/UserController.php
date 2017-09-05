@@ -44,7 +44,7 @@ class UserController extends Controller
 			 */
 			if(Auth::user()->status != 1) {
 				Auth::logout();
-				return redirect()->route('login')->with('error_msg', 'Your Accout is Inactive! Please Report to Admin.');
+				return redirect()->back()->with('error_msg', 'Your Accout is Inactive! Please Report to Admin.');
 			}
 
             /*
@@ -58,7 +58,7 @@ class UserController extends Controller
             	$user_log = new UserLog();
 
             	$user_log->user_id = Auth::user()->id;
-            	$user_log->action = 'Login';
+            	$user_log->action = 'Admin Login';
 
             	$user_log->save();
 
@@ -76,7 +76,7 @@ class UserController extends Controller
             	$user_log = new UserLog();
 
             	$user_log->user_id = Auth::user()->id;
-            	$user_log->action = 'Login to your account';
+            	$user_log->action = 'Teacher\'s Login';
 
             	$user_log->save();
 
@@ -88,7 +88,7 @@ class UserController extends Controller
 			 */
 			if(Auth::user()->privilege == 3) {
 				Auth::logout();
-				return redirect()->route('home')->with('error_msg', 'Use this login form for students');
+				return redirect()->route('student_login')->with('error_msg', 'Use this login form for students');
 			}
 
 
@@ -101,7 +101,7 @@ class UserController extends Controller
     	/*
     	 * Redirect to Login form if the user id or password is incorrect or if not in database
     	 */
-    	return redirect()->route('login')->with('error_msg', 'ID or Password Incorrect!');
+    	return redirect()->back()->with('error_msg', 'ID or Password Incorrect!');
 	}
 
 }

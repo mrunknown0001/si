@@ -24,9 +24,9 @@
             <ul class="dropdown-menu dropdown-message">
                 <li><a href="{{ route('co_admin_profile') }}"><i class="fa fa-user fa-fw"></i>  {{ !empty($ba)? 'Adviser' : 'Teacher' }} Profile</a>
                 </li>
-                <li><a href="{{ route('co_admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="{{ route('co_admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
                 </li>
-                <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> {{ !empty($ba)? 'Adviser' : 'Teacher' }} Log</a></li>
+                <!-- <li><a href="{{ route('co_admin_log') }}"><i class="fa fa-history fa-fw"></i> {{ !empty($ba)? 'Adviser' : 'Teacher' }} Log</a></li> -->
                 <li class="divider"></li>
                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>

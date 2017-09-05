@@ -25,8 +25,7 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-                            <th>Subject For</th>
-        					<th>Subject Code</th>
+                            <th>Grade Level</th>
         					<th>Subject Title</th>
         					<th>Actions</th>
         				</tr>
@@ -34,14 +33,13 @@
         			<tbody>
                         @foreach($subjects as $subject)
         				<tr>
-                            <td class="text-capitalize">{{ $subject->level->title }}</td>
-        					<td class="text-uppercase">{{ $subject->code }}</td>
+                            <td class="text-capitalize">{{ $subject->level }}</td>
         					<td class="text-capitalize">{{ $subject->title }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
 									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $subject->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<a href="{{ route('admin_get_edit_subject', strtoupper($subject->code)) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-									<button class="btn btn-danger" data-toggle="modal" data-target="#{{ $subject->code }}-remove"><i class="fa fa-times" aria-hidden="true"></i></button>
+									<a href="{{ route('admin_get_edit_subject', strtoupper($subject->id)) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#{{ $subject->id }}-remove"><i class="fa fa-times" aria-hidden="true"></i></button>
 								</div>
         					</td>
         				</tr>

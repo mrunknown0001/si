@@ -128,17 +128,25 @@ class GeneralController extends Controller
 		/*
 		 * UserLog  1 and 2 and StudentLog 3
 		 */
-		if(Auth::user()->privilege == 1 || Auth::user()->privilege == 2) {
+		if(Auth::user()->privilege == 1) {
 			/*
 			 * UserLog
 			 */
 			$user_log = new UserLog();
 
 			$user_log->user_id = Auth::user()->id;
-			$user_log->action = 'Logout to your account';
+			$user_log->action = 'Admin Logout';
 
 			$user_log->save();
 
+		}
+		else if( Auth::user()->privilege == 2) {
+			$user_log = new UserLog();
+
+			$user_log->user_id = Auth::user()->id;
+			$user_log->action = 'Teacher\'s Logout';
+
+			$user_log->save();
 		}
 		else if(Auth::user()->privilege == 3) {
 			/*
@@ -147,7 +155,7 @@ class GeneralController extends Controller
 			$students_log = new StudentLog();
 
 			$students_log->student = Auth::user()->id;
-			$students_log->action = 'Logout to your account';
+			$students_log->action = 'Student Logout';
 
 			$students_log->save();
 		}

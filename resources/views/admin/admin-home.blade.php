@@ -52,7 +52,7 @@
                 @include('includes.success')
                 @include('includes.notice')
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -75,7 +75,7 @@
             </div>
 
 	         <div class="col-lg-3 col-md-6">
-	            <div class="panel panel-green">
+	            <div class="panel panel-primary">
 	                <div class="panel-heading">
 	                    <div class="row">
 	                        <div class="col-xs-3">
@@ -98,7 +98,7 @@
 	        </div>
 
 	        <div class="col-lg-3 col-md-6">
-	            <div class="panel panel-green">
+	            <div class="panel panel-primary">
 	                <div class="panel-heading">
 	                    <div class="row">
 	                        <div class="col-xs-3">
@@ -121,7 +121,7 @@
 	        </div>
 
 	        <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -143,8 +143,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+            <!-- <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -164,7 +164,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
             @else
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-default">
@@ -258,7 +258,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <!-- <div class="col-lg-3 col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
@@ -279,7 +279,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
             @endif          
 	    </div>
     </div>

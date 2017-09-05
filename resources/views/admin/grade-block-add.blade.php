@@ -29,8 +29,19 @@
 	        		</div>
 	        		<div class="panel-body">
 	        			<form action="{{ route('admin_post_add_grade_block') }}" method="POST" autocomplete="off">
-	        				<div class="form-group">
+	        				<!-- <div class="form-group">
 	        					<input type="text" name="code" class="form-control text-uppercase" placeholder="Grade Block Code" />
+	        				</div> -->
+	        				<div class="form-group">
+	        					<select name="grade_level" id="grade_level">
+	        						<option value="">Select Grade Level</option>
+	        						<option value="Grade7">Grade 7</option>
+                                    <option value="Grade8">Grade 8</option>
+                                    <option value="Grade9">Grade 9</option>
+                                    <option value="Grade10">Grade 10</option>
+                                    <option value="Grade11">Grade 11</option>
+                                    <option value="Grade12">Grade 12</option>
+	        					</select>
 	        				</div>
 	        				<div class="form-group">
 	        					<input type="text" name="title" class="form-control text-capitalize" placeholder="Grade Block Title" />

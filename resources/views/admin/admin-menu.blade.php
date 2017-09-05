@@ -16,7 +16,8 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{ route('admin_home') }}">Logo</a>
-    </div>
+    </div>    
+
     <!-- /.navbar-header -->
 
     <ul class="nav navbar-top-links navbar-right">
@@ -28,9 +29,8 @@
             <ul class="dropdown-menu dropdown-message">
                 <li><a href="{{ route('admin_profile') }}"><i class="fa fa-user fa-fw"></i> Admin Profile</a>
                 </li>
-                <li><a href="{{ route('admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="{{ route('admin_settings') }}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
                 </li>
-                <li><a href="{{ route('admin_activity_log') }}"><i class="fa fa-history fa-fw"></i> Admin Log</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
@@ -52,10 +52,10 @@
                     <a><i class="fa fa-users fa-fw"></i> Teachers<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('co_admin_add') }}">Add New Teacher</a>
+                            <a href="{{ route('co_admin_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Teacher</a>
                         </li>
                         <li>
-                            <a href="{{ route('co_admin_view') }}">View All Teachers</a>
+                            <a href="{{ route('co_admin_view') }}"><i class="fa fa-eye" aria-hidden="true"></i> View All Teachers</a>
                         </li>
                        <!--  <li>
                             <a href="{{ route('admin_co_admin_assign_block') }}">Assign Block/Section</a>
@@ -64,10 +64,10 @@
                             <a href="{{ route('admin_view_block_assignment') }}">View Block Assignment</a>
                         </li> -->
                         <li>
-                            <a href="{{ route('admin_assign_subject') }}">Assign Subject Load</a>
+                            <a href="{{ route('admin_assign_subject') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Assign Subject Load</a>
                         </li>
                         <li>
-                            <a href="{{ route('admin_get_subject_assignments') }}">View Subject Assignment</a>
+                            <a href="{{ route('admin_get_subject_assignments') }}"><i class="fa fa-eye" aria-hidden="true"></i> View Subject Assignment</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -76,36 +76,48 @@
                     <a><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('students_import') }}">Class Import Students</a>
+                            <a href="{{ route('students_import') }}"><i class="fa fa-clone" aria-hidden="true"></i> Batch Import Students</a>
                         </li>
                         <li>
-                            <a href="#">Add Student</a>
+                            <a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add Student</a>
                         </li>
                         <li>
-                            <a href="{{ route('students_filter') }}">Students Filter</a>
+                            <!-- <a href="{{ route('students_filter') }}">Students Filter</a> -->
                         </li>
                         <li>
-                            <a href="{{ route('students_view') }}">View All Students</a>
+                            <a href="{{ route('students_view') }}"><i class="fa fa-eye" aria-hidden="true"></i> View All Students</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{ route('admin_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
-                </li>
+                </li> -->
                 <li>
                     <a><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('subjects_add') }}">Add New Subject</a>
+                            <a href="{{ route('subjects_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Subject</a>
                         </li>
                         <li>
-                            <a href="{{ route('subjects_view') }}">View All Subjects</a>
+                            <a href="{{ route('subjects_view') }}"><i class="fa fa-eye" aria-hidden="true"></i> View All Subjects</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
+                    <a><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('grade_blocks_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Grade Block</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('grade_blocks_view') }}"><i class="fa fa-eye" aria-hidden="true"></i> View All Grade Blocks</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <!-- <li>
                     <a><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
@@ -116,41 +128,30 @@
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ route('grade_blocks_add') }}">Add New Grade Block</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('grade_blocks_view') }}">View All Grade Blocks</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+                <!-- </li> --> 
+                
                 @else
                 <li>
-                    <a style="color: grey;"><i class="fa fa-users fa-fw"></i> Adivsers/Teachers<span class="fa arrow"></span></a>
+                    <a style="color: grey;"><i class="fa fa-users fa-fw"></i> Teachers<span class="fa arrow"></span></a>
                 </li>
                 <li>
                     <a style="color: grey;"><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
                 </li>
-                <li>
+                <!-- <li>
                     <a style="color: grey;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
-                </li>
+                </li> -->
                 <li>
                     <a style="color: grey;"><i class="fa fa-book fa-fw"></i> Subjects<span class="fa arrow"></span></a>
                 </li>
-                <li>
+                <!-- <li>
                     <a style="color: grey;"><i class="fa fa-list-alt fa-fw"></i> Grade Levels<span class="fa arrow"></span></a>
-                </li>
+                </li> -->
                 <li>
                     <a style="color: grey;"><i class="fa fa-list fa-fw"></i> Grade Block<span class="fa arrow"></span></a>
                 </li>
                 @endif
                 <li>
-                    <a><i class="fa fa-university fa-fw"></i> School Year<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-calendar fa-fw"></i> School Year<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                         	<a href="{{ route('school_year_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add School Year</a>
@@ -162,6 +163,7 @@
                     <!-- /.nav-second-level -->
 
                 </li>
+                <li><a href="{{ route('admin_activity_log') }}"><i class="fa fa-history fa-fw"></i> Activity Log</a></li>
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

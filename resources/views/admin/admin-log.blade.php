@@ -20,6 +20,7 @@
         		<table class="table table-hover">
                     <thead>
                         <tr>
+                            <th>Username/ID Number</th>
                             <th>Date &amp; Time</th>
                             <th>Action Made</th>
                         </tr>
@@ -27,7 +28,8 @@
                     <tbody>
                         @foreach($logs as $log)
                         <tr>
-                            <td>{{ date('F j, Y - g:i A l', strtotime($log->created_at) + 28800) }}</td>
+                            <td>{{ $log->user->user_id }}</td>
+                            <td>{{ date('F j, Y - g:i:s A l', strtotime($log->created_at) + 28800) }}</td>
                             <td>{{ $log->action }}</td>
                         </tr>
                         @endforeach

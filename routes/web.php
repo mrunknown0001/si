@@ -27,87 +27,33 @@ Route::get('/', function () {
 })->name('home');
 
 
-/*
- * Admin and Co-Admin Login
- */
-Route::get('login', function () {
-	return view('login');
+Route::get('/home', function() {
+	return view('home');
 })->name('login');
-Route::get('a', function () {
-	return redirect()->route('login');
-});
-Route::get('b', function () {
-	return redirect()->route('login');
-});
-Route::get('c', function () {
-	return redirect()->route('login');
-});
-Route::get('d', function () {
-	return redirect()->route('login');
-});
-Route::get('e', function () {
-	return redirect()->route('login');
-});
-Route::get('f', function () {
-	return redirect()->route('login');
-});
-Route::get('g', function () {
-	return redirect()->route('login');
-});
-Route::get('h', function () {
-	return redirect()->route('login');
-});
-Route::get('i', function () {
-	return redirect()->route('login');
-});
-Route::get('j', function () {
-	return redirect()->route('login');
-});
-Route::get('k', function () {
-	return redirect()->route('login');
-});
-Route::get('l', function () {
-	return redirect()->route('login');
-});
-Route::get('m', function () {
-	return redirect()->route('login');
-});
-Route::get('n', function () {
-	return redirect()->route('login');
-});
-Route::get('o', function () {
-	return redirect()->route('login');
-});
-Route::get('p', function () {
-	return redirect()->route('login');
-});
-Route::get('q', function () {
-	return redirect()->route('login');
-});
-Route::get('r', function () {
-	return redirect()->route('login');
-});
-Route::get('t', function () {
-	return redirect()->route('login');
-});
-Route::get('u', function () {
-	return redirect()->route('login');
-});
-Route::get('v', function () {
-	return redirect()->route('login');
-});
-Route::get('w', function () {
-	return redirect()->route('login');
-});
-Route::get('x', function () {
-	return redirect()->route('login');
-});
-Route::get('y', function () {
-	return redirect()->route('login');
-});
-Route::get('z', function () {
-	return redirect()->route('login');
-});
+
+/*
+ * Route to go to student login
+ */
+Route::get('/student/login', function () {
+	return view('student-login');
+})->name('student_login');
+
+
+/*
+ * Admin Login
+ */
+Route::get('/admin/login', function () {
+	return view('admin-login');
+})->name('admin_login');
+
+
+/*
+ * Teacher's Login
+ */
+Route::get('/teacher/login', function () {
+	return view('teacher-login');
+})->name('teachers_login');
+
 
 Route::post('login', [
 	'uses' => 'UserController@postLogin',
@@ -461,7 +407,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Route to remove subject in database
 		 */
-		Route::get('remove/{code}', [
+		Route::get('remove/{id}', [
 			'uses' => 'AdminController@removeSubject',
 			'as' => 'admin_get_remove_subject'
 			]);
@@ -474,7 +420,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Route to show subject edit
 		 */
-		Route::get('edit/{code}', [
+		Route::get('edit/{id}', [
 			'uses' => 'AdminController@showSubjectEdit',
 			'as' => 'admin_get_edit_subject'
 			]);

@@ -33,9 +33,11 @@ class DatabaseSeeder extends Seeder
             'lastname' => 'Adviser',
             'email' => 'teacher@admin.com',
             'mobile' => '09222222222',
-            'password' => bcrypt('gjc1946'),
+            'password' => bcrypt('1111'),
             'privilege' =>'2',  // co-admin privilege // Adviser Privillege
-            'birthday' => date('Y-m-d', strtotime('10/1/1992'))
+            'birthday' => date('Y-m-d', strtotime('10/1/1992')),
+            'sex' => 'Male',
+            'address' => 'Tarlac'
             ]);
 
 

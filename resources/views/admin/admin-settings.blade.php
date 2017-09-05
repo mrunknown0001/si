@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Settings - Admin - Student Information System @endsection
+@section('title') Change Password - Admin - Student Information System @endsection
 
 @section('content')
 <div id="wrapper">
@@ -11,7 +11,7 @@
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Admin Settings</h3>
+                <h3 class="page-header">Admin Change Password</h3>
             </div>
             
         </div>
