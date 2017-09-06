@@ -28,20 +28,25 @@
 	        			<strong><i class="fa fa-list fa-lg" aria-hidden="true"></i> Grade Block Details</strong>
 	        		</div>
 	        		<div class="panel-body">
-	        			<form action="{{ route('admin_post_grade_block_update') }}" method="POST" autocomplete="off">
+	        			<form action="{{ route('admin_post_grade_block_update') }}" method="POST" autocomplete="off"><div class="form-group">
+                                <select name="level" class="form-control">
+                                    <option value="">Subject For...</option>
+                                    <option @if($block->level == 'Grade7') selected @endif value="Grade7">Grade 7</option>
+                                    <option @if($block->level == 'Grade8') selected @endif value="Grade8">Grade 8</option>
+                                    <option @if($block->level == 'Grade9') selected @endif value="Grade9">Grade 9</option>
+                                    <option @if($block->level == 'Grade10') selected @endif value="Grade10">Grade 10</option>
+                                    <option @if($block->level == 'Grade11') selected @endif value="Grade11">Grade 11</option>
+                                    <option @if($block->level == 'Grade12') selected @endif value="Grade12">Grade 12</option>
+                                </select>
+                            </div>
 	        				<div class="form-group">
-	        					<input type="text" name="code" class="form-control text-capitalize" value="{{ $block->code }}" placeholder="Grade Block Code" />
+	        					<input type="text" name="title" class="form-control text-capitalize" value="{{ $block->name }}" placeholder="Section Name" />
 	        				</div>
-	        				<div class="form-group">
-	        					<input type="text" name="title" class="form-control text-capitalize" value="{{ $block->name }}" placeholder="Grade Block Title" />
-	        				</div>
-		        			<div class="form-group">
-		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control text-capitalize" placeholder="Description of the Grade Block...">{{ $block->description }}</textarea>
-		        			</div>
 		        			<div class="form-group">
 		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 		        				<input type="hidden" name="id" value="{{ $block->id }}" />
 		        				<button class="btn btn-primary">Update Grade Block</button>
+		        				<a href="{{ route('grade_blocks_view') }}" class="btn btn-danger">Cancel</a>
 		        			</div>
 		        		</form>
 	        		</div>

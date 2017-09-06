@@ -32,8 +32,8 @@
 	        				<!-- <div class="form-group">
 	        					<input type="text" name="code" class="form-control text-uppercase" placeholder="Grade Block Code" />
 	        				</div> -->
-	        				<div class="form-group">
-	        					<select name="grade_level" id="grade_level">
+	        				<div class="form-group" >
+	        					<select name="level" id="level" class="form-control">
 	        						<option value="">Select Grade Level</option>
 	        						<option value="Grade7">Grade 7</option>
                                     <option value="Grade8">Grade 8</option>
@@ -44,11 +44,11 @@
 	        					</select>
 	        				</div>
 	        				<div class="form-group">
-	        					<input type="text" name="title" class="form-control text-capitalize" placeholder="Grade Block Title" />
-	        				</div>
+	        					<input type="text" name="name" class="form-control text-capitalize" placeholder="Section Name" />
+	        				</div><!-- 
 		        			<div class="form-group">
 		        				<textarea name="description" id="description" cols="30" rows="10" class="form-control text-capitalize" placeholder="Description of the Grade Block..."></textarea>
-		        			</div>
+		        			</div> -->
 		        			<div class="form-group">
 		        				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 		        				<button class="btn btn-primary">Add Grade Block</button>

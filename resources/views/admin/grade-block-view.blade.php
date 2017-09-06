@@ -26,22 +26,20 @@
         		<table class="table table-hover">
         			<thead>
         				<tr>
-        					<th>Grade Block Code</th>
-        					<th>Grade Block Title</th>
-        					<th>Description</th>
+        					<th>Level</th>
+        					<th>Section Name</th>
         					<th>Actions</th>
         				</tr>
         			</thead>
         			<tbody>
                         @foreach($blocks as $block)
         				<tr>
-        					<td class="text-capitalize">{{ $block->code }}</td>
+        					<td class="text-capitalize">{{ $block->level }}</td>
         					<td class="text-capitalize">{{ $block->name }}</td>
-        					<td class="text-capitalize">{{ $block->description }}</td>
         					<td>
 								<div class="btn-group btn-group-xs">
 									<button class="btn btn-success" data-toggle="modal" data-target="#{{ $block->code }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>
-									<a href="{{ route('admin_show_grade_block_edit', $block->code) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+									<a href="{{ route('admin_show_grade_block_edit', $block->id) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 									<button class="btn btn-danger" data-toggle="modal" data-target="#{{ $block->code }}-remove"><i class="fa fa-times" aria-hidden="true"></i></button>
 								</div>
         					</td>

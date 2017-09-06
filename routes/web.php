@@ -631,7 +631,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Rout to edit view of grade block
 		 */
-		Route::get('edit/{code}', [
+		Route::get('edit/{id}', [
 			'uses' => 'AdminController@showGradeBlockEdit',
 			'as' => 'admin_show_grade_block_edit'
 			]);

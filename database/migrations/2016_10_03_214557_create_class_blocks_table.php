@@ -18,7 +18,7 @@ class CreateClassBlocksTable extends Migration
             // $table->string('code', 20)->unique();
             $table->string('level', 20);
             $table->string('name', 20);
-            $table->string('description', 20)->nullable();
+            // $table->string('description', 20)->nullable();
             $table->timestamps();
         });
     }

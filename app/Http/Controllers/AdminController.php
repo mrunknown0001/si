@@ -861,21 +861,19 @@ class AdminController extends Controller
          * Input validation 
          */
         $this->validate($request, [
-            'code' => 'required|unique:class_blocks',
-            'title' => 'required',
-            'description' => 'required'
+            'level' => 'required',
+            'name' => 'required'
             ]);
 
         // Assigning Values to Variable
-        $code = $request['code'];
-        $name = $request['title'];
-        $description = $request['description'];
+        $level = $request['level'];
+        $name = $request['name'];
 
         $class = new ClassBlock();
 
-        $class->code = $code;
+        $class->level = $level;
         $class->name = $name;
-        $class->description = $description;
+
 
         // Condition and Saving of new Grade/Class Block
         if($class->save()) {
@@ -883,11 +881,11 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Added Grade or Class Block';
+            $log->action = 'Added Grade Block: ' . ucwords($name);
             // Saving Log for this activity
             $log->save();
 
-            return redirect()->route('grade_blocks_add')->with('success', 'Grade/Class Block Successfully Added');
+            return redirect()->route('grade_blocks_add')->with('success', 'Grade Block Successfully Added');
         }
 
         return 'Error Occured! Please reload this page.';
@@ -920,11 +918,10 @@ class AdminController extends Controller
     /*
      * showGradeBlockEdit() use to show and edit grade block
      */
-    public function showGradeBlockEdit($code = null)
+    public function showGradeBlockEdit($id = null)
     {
 
-        $block = ClassBlock::where('code', $code)->first();
-
+        $block = ClassBlock::findorfail($id);
         if(empty($block)) {
             return redirect()->route('grade_blocks_view')->with('error_msg', 'Something\'s Fishy!');
         }
@@ -943,34 +940,20 @@ class AdminController extends Controller
          * Input validation
          */
         $this->validate($request, [
-            'code' => 'required',
-            'title' => 'required',
-            'description' => 'required'
+            'level' => 'required',
+            'title' => 'required'
             ]);
 
         // Assign Values to variables
-        $code = $request['code'];
+        $level = $request['level'];
         $name = $request['title'];
-        $description = $request['description'];
+
         $id = $request['id'];
 
         $block = ClassBlock::findorfail($id);
 
-        if($code != $block->code) {
-        
-            $code_check = ClassBlock::where('code', $code)->first();
-
-            if(empty($code_check)) {
-                return redirect()->route('admin_show_grade_block_edit', $block->code)->with('error_msg', 'Block Code is not Available.');
-            }
-
-            $block->code = $code;
-
-        }
-
-
         $block->name = $name;
-        $block->description = $description;
+        $block->level = $level;
 
         if($block->save()) {
 
@@ -978,7 +961,7 @@ class AdminController extends Controller
             $log = new UserLog();
 
             $log->user_id = Auth::user()->id;
-            $log->action = 'Updated Grade Block';
+            $log->action = 'Updated Grade Block: ' . ucwords($name);
 
             $log->save();
 
