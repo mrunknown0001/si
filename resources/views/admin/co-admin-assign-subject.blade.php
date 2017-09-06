@@ -1,11 +1,3 @@
-<?php
-
-    $co_admin = App\User::where('privilege', 2)->where('status', 1)->get();
-    $grade_level = App\GradeLevel::all();
-    $block = App\ClassBlock::all();
-    $subjects = App\Subject::all();
-?>
-
 @extends('layouts.app')
 
 @section('title') Assign Subject - Admin Dashboard - Student Information System @endsection
@@ -33,7 +25,7 @@
                 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <strong>Assign Subject</strong>
+                        <strong>Assign Subject {{ ucwords($level) }}</strong>
                     </div>
                     <div class="panel-body">
                         <form action="{{ route('admin_post_assign_subject') }}" method="POST">
@@ -43,22 +35,20 @@
                                     @foreach($co_admin as $ca)
                                     <option value="{{ $ca->id }}">{{ $ca->user_id }} - {{ $ca->firstname }} {{ $ca->lastname }}</option>
                                     @endforeach
+                                    @if(count($co_admin) == 0)
+                                    <option value="">No Teacher Registered</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="level" class="form-control text-capitalize">
-                                    <option value="">Select Grade Level</option>
-                                    @foreach($grade_level as $l)
-                                    <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                <select name="grade_section" id="" class="form-control">
+                                    <option value="">Select Grade Section</option>
+                                    @foreach($class as $c)
+                                    <option value="{{ $c->id }}">{{ $c->level }} - {{ ucwords($c->name) }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select name="block" class="form-control text-capitalize">
-                                    <option value="">Select Grade Block</option>
-                                    @foreach($block as $b)
-                                    <option value="{{ $b->id }}">{{ $b->name }}</option>
-                                    @endforeach
+                                    @if(count($class) == 0)
+                                    <option value="">No Section For This Grade Level</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group">
@@ -67,6 +57,9 @@
                                     @foreach($subjects as $s)
                                     <option value="{{ $s->id }}">{{ $s->title }}</option>
                                     @endforeach
+                                    @if(count($subjects) == 0)
+                                    <option value="">No Subject For This Grade Level</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group">

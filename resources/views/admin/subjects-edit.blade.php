@@ -16,13 +16,13 @@
 
      <div id="page-wrapper">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <h3 class="page-header">Edit Subject</h3>
             </div>
             
         </div>
         <div class="row">
-        	<div class="col-lg-12 col-md-12">
+        	<div class="col-lg-8 col-md-12">
                 {{-- Includes errors and session flash message display container --}}
                 @include('includes.errors')
                 @include('includes.error')
@@ -35,7 +35,7 @@
                     <form action="{{ route('admin_post_subject_update') }}" method="POST" autocomplete="off">
 	        		<div class="panel-body">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                     <div class="form-group">
                                         <select name="level" class="form-control">
                                             <option value="">Subject For...</option>
@@ -65,7 +65,7 @@
                                 
                             </div>
                             <div class="col-md-1"></div>
-                            <div class="col-md-3">
+<!--                             <div class="col-md-3">
                                 <strong>Percentage</strong>
                                 <br>
                                 <div class="form-group">
@@ -111,7 +111,7 @@
                                         <input type="number" name="other" value="{{ $subject->others }}" class="form-control" placeholder="%" aria-label="%" aria-describedby="basic-addon1">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 	        			</form>
 	        		</div>

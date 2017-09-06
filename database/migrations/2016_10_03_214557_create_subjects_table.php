@@ -21,13 +21,6 @@ class CreateSubjectsTable extends Migration
             $table->string('level', 20);
             $table->string('title', 30);
             $table->string('description', 150)->nullable();
-            $table->smallinteger('activity')->unsigned();
-            $table->smallinteger('assignment')->unsigned();
-            $table->smallinteger('attendance')->unsigned();
-            $table->smallinteger('quiz')->unsigned();
-            $table->smallinteger('other')->unsigned()->nullable();
-            $table->smallinteger('project')->unsigned();
-            $table->smallinteger('exam')->unsigned();
             $table->timestamps();
         });
     }

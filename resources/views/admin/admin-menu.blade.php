@@ -64,7 +64,29 @@
                             <a href="{{ route('admin_view_block_assignment') }}">View Block Assignment</a>
                         </li> -->
                         <li>
-                            <a href="{{ route('admin_assign_subject') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Assign Subject Load</a>
+                            <!-- <a href="{{ route('admin_assign_subject') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Assign Subject Load</a> -->
+                            <a><i class="fa fa-book"></i> Assign Subject<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade7') }}"> Grade 7</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade8') }}"> Grade 8</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade9') }}"> Grade 9</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade10') }}"> Grade 10</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade11') }}"> Grade 11</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin_assign_subject', 'grade12') }}"> Grade 12</a>
+                                </li>
+                            </ul>
+
                         </li>
                         <li>
                             <a href="{{ route('admin_get_subject_assignments') }}"><i class="fa fa-eye" aria-hidden="true"></i> View Subject Assignment</a>

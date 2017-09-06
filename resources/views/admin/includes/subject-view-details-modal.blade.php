@@ -12,7 +12,7 @@
                 <p>Subject Title: <span class="text-capitalize">{{ $subject->title }}</span></p>
                 <p class="text-capitalize">Description: <i>{{ $subject->description }}</i></p>
                 <hr>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <p>Activity: {{ $subject->activity }}%</p>
                         <p>Assignment: {{ $subject->assignment }}%</p>
@@ -25,7 +25,7 @@
                         <p>Other: {{ $subject->others }}%</p>
 
                     </div>
-                </div>
+                </div> -->
                 
                 
             </div>

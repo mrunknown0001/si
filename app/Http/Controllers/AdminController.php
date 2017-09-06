@@ -484,12 +484,7 @@ class AdminController extends Controller
             'level' => 'required',
             // 'code' => 'required|unique:subjects',
             'title' => 'required',
-            'description' => 'required',
-            'activity' => 'required',
-            'assignment' => 'required',
-            'attendance' => 'required',
-            'quiz' => 'required',
-            'exam' => 'required'
+            'description' => 'required'
             ]);
 
         // Assign Values to Variables
@@ -497,23 +492,7 @@ class AdminController extends Controller
         // $code = $request['code'];
         $title = $request['title'];
         $description = $request['description'];
-        $activity = $request['activity'];
-        $assignment = $request['assignment'];
-        $attendance = $request['attendance'];
-        $quiz = $request['quiz'];
-        $project = $request['project'];
-        $exam = $request['exam'];
-        $other = $request['other'];
 
-        /*
-         * Check if the total of percentage is 100%
-         *
-         */
-        $total_percentage = $activity + $assignment + $attendance + $quiz + $project + $exam + $other;
-
-        if($total_percentage != 100) {
-            return redirect()->route('subjects_add')->with('error_msg', 'Check Subject Percentage!');
-        }
 
         $add = new Subject();
 
@@ -521,13 +500,7 @@ class AdminController extends Controller
         // $add->code = $code;
         $add->title = $title;
         $add->description = $description;
-        $add->activity = $activity;
-        $add->assignment = $assignment;
-        $add->attendance = $attendance;
-        $add->quiz = $quiz;
-        $add->project = $project;
-        $add->exam = $exam;
-        $add->others = $other;
+
 
         if($add->save()) {
 
@@ -538,7 +511,7 @@ class AdminController extends Controller
 
             $log->save();
 
-            return redirect()->route('subjects_add')->with('success', ucwords($title) . 'Subject Successfully Added!');
+            return redirect()->route('subjects_add')->with('success', ucwords($title) . ' Subject Successfully Added!');
 
         }
 
@@ -579,25 +552,13 @@ class AdminController extends Controller
             'level' => 'required',
             // 'code' => 'required|unique:subjects',
             'title' => 'required',
-            'description' => 'required',
-            'activity' => 'required',
-            'assignment' => 'required',
-            'attendance' => 'required',
-            'quiz' => 'required',
-            'exam' => 'required'
+            'description' => 'required'
             ]);
 
         $id = $request['id'];
         $level = $request['level'];
         $title = $request['title'];
         $description = $request['description'];
-        $activity = $request['activity'];
-        $assignment = $request['assignment'];
-        $attendance = $request['attendance'];
-        $quiz = $request['quiz'];
-        $project = $request['project'];
-        $exam = $request['exam'];
-        $other = $request['other'];
 
         // If id is empty
         if(empty($id)) {
@@ -614,13 +575,6 @@ class AdminController extends Controller
         $subject->level = $level;
         $subject->title = $title;
         $subject->description = $description;
-        $subject->activity = $activity;
-        $subject->assignment = $assignment;
-        $subject->attendance = $attendance;
-        $subject->quiz = $quiz;
-        $subject->project = $project;
-        $subject->exam = $exam;
-        $subject->others = $other;
 
         if($subject->save()) {
 
@@ -1344,6 +1298,33 @@ class AdminController extends Controller
     }
 
 
+
+    /*
+     * assign subject per grade level (filter)
+     *
+     */
+
+    public function assignSubjectPerGrade($level = 0) {
+
+        /*
+         * Filter grade level here if there is tampering happed or manual input in
+         * address bar parameter
+         */
+
+        $co_admin = User::where('privilege', 2)->where('status', 1)->get();
+        $class = ClassBlock::where('level', $level)->get();
+        $subject = Subject::where('level', $level)->get();
+
+        // dd($subject);
+
+        return view('admin.co-admin-assign-subject', ['co_admin' => $co_admin,
+                                                'class' => $class,
+                                                'subjects' => $subject,
+                                                'level' => $level]);
+    }
+
+
+
     /*
      * viewBlockAssignment() use toview block assignment
      */
@@ -1678,15 +1659,13 @@ class AdminController extends Controller
          */
         $this->validate($request, [
             'teacher' => 'required',
-            'level' => 'required',
-            'block' => 'required',
+            'grade_section' => 'required',
             'subject' => 'required'
             ]);
 
         // Assign Valudes to Variables
         $teacher = $request['teacher'];
-        $level = $request['level'];
-        $block = $request['block'];
+        $section = $request['grade_section'];
         $subject = $request['subject'];
 
         // Check if subject selected is assigned with the same teacher

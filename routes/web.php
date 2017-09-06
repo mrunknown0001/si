@@ -264,9 +264,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 		/*
 		 * Route to Assign Subject to Teacher/Adviser
 		 */
-		Route::get('assign-subject', function () {
-			return view('admin.co-admin-assign-subject');
-		})->name('admin_assign_subject');
+		Route::get('assign-subject/{level?}', [
+			'uses' => 'AdminController@assignSubjectPerGrade',
+			'as' => 'admin_assign_subject'
+			]);
+
 
 		Route::post('assign-subject',[
 			'uses' => 'AdminController@postAssignSubject',

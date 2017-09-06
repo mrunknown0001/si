@@ -1,10 +1,3 @@
-<?php
-
-    $co_admin = App\User::where('privilege', 2)->where('status', 1)->get();
-    $grade_level = App\GradeLevel::all();
-    $block = App\ClassBlock::all();
-?>
-
 @extends('layouts.app')
 
 @section('title') Assign Block Co-Admin - Student Information System @endsection
@@ -45,17 +38,17 @@
                             </div>
                             <div class="form-group">
                                 <select name="grade_level" class="form-control text-capitalize">
-                                    <option value="">Select Grade Level</option>
-                                    @foreach($grade_level as $l)
-                                    <option value="{{ $l->id }}">{{ $l->title }}</option>
+                                    <option value="">Select Section</option>
+                                    @foreach($section as $s)
+                                    <option value="{{ $s->id }}">{{ $s->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <select name="block" class="form-control text-capitalize">
-                                    <option value="">Select Block/Class</option>
-                                    @foreach($block as $b)
-                                    <option value="{{ $b->id }}">{{ $b->name }}</option>
+                                    <option value="">Select Subject</option>
+                                    @foreach($subject as $sub)
+                                    <option value="{{ $sub->id }}">{{ $sub->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
