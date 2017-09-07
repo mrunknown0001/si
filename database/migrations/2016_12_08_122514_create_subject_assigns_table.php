@@ -17,7 +17,7 @@ class CreateSubjectAssignsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();  // ID of user
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('block_id')->unsigned(); // section id
+            $table->integer('section_id')->unsigned(); // section id
             $table->integer('subject_id')->unsigned();
             $table->timestamps();
         });

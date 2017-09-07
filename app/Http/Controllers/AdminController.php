@@ -1306,6 +1306,9 @@ class AdminController extends Controller
 
     public function assignSubjectPerGrade($level = 0) {
 
+        if($level == '') {
+            return view('admin.co-admin-assign-subject-select');
+        }
         /*
          * Filter grade level here if there is tampering happed or manual input in
          * address bar parameter
@@ -1671,25 +1674,23 @@ class AdminController extends Controller
         // Check if subject selected is assigned with the same teacher
         $sa = SubjectAssign::where('user_id', $teacher)
                         ->where('subject_id', $subject)
-                        ->where('block_id', $block)
-                        ->where('level_id', $level)
+                        ->where('section_id', $section)
                         ->first();
 
         if(!empty($sa)) {
             // Message that the subject in the class selected is assigned to the same teacher selected
-            return redirect()->route('admin_assign_subject')->with('error_msg', 'Subject Assigned to the same Teacher!');
+            return redirect()->back()->with('error_msg', 'Subject Assigned to the same Teacher!');
         }
 
 
         // Check if subject in the class selected is assigned in other teacher
         $se = SubjectAssign::where('subject_id', $subject)
-                        ->where('block_id', $block)
-                        ->where('level_id', $level)
+                        ->where('section_id', $section)
                         ->first();
 
         if(!empty($se)) {
             // The subject in the class selected is assigned to other teacher
-            return redirect()->route('admin_assign_subject')->with('error_msg', 'Subject Assigned to other Teacher!');
+            return redirect()->back()->with('error_msg', 'Subject Already Assigned');
         }
 
         // If the top condition is failed to pass you can now assign subject to the selected teacher
@@ -1697,8 +1698,7 @@ class AdminController extends Controller
 
         $assign->user_id = $teacher;
         $assign->subject_id = $subject;
-        $assign->block_id = $block;
-        $assign->level_id = $level;
+        $assign->section_id = $section;
 
         if($assign->save()) {
             // Add Admin Log in Assigning Subject to the teacher selected
@@ -1707,7 +1707,7 @@ class AdminController extends Controller
             $log->action = 'Assigned Subject to a Teacher';
             $log->save();
 
-            return redirect()->route('admin_assign_subject')->with('success', 'Successfully Assigned Subject to teacher.');
+            return redirect()->back()->with('success', 'Successfully Assigned Subject to teacher.');
         }
 
 

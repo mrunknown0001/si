@@ -31,7 +31,7 @@
         				<form action="{{ route('admin_post_add_new_school_year') }}" method="POST" class="form-inline">
         					<div class="form-group">
 								
-								<select name="from_year" id="from_year" class="form-control">
+								<select name="from_year" class="form-control">
 									<option value="">Select Year</option>
 									<option value="{{ date('Y') }}">{{ date('Y') }} - {{ date('Y')+1 }}</option>
                                     <!-- <option value="{{ date('Y')+1 }}">{{ date('Y')+1 }} - {{ date('Y')+2 }}</option>

@@ -11,7 +11,7 @@ class SubjectAssign extends Model
     	return $this->belongsTo('App\Subject');
     }
 
-    public function block()
+    public function section()
     {
     	return $this->belongsTo('App\ClassBlock');
     }

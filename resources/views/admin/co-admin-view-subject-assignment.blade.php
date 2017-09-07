@@ -27,7 +27,7 @@
                     <thead>
                         <tr>
                             <th>Subject</th>
-                            <th>Grade Block</th>
+                            <th>Section</th>
                             <th>Grade Level</th>
                             <th>Teacher's Name</th>
                             <th>ID Number</th>
@@ -38,8 +38,8 @@
                         @foreach($assigns as $a)
                         <tr>
                             <td class="text-capitalize">{{ $a->subject->title }}</td>
-                            <td class="text-capitalize">{{ $a->block->name }}</td>
-                            <td class="text-capitalize">{{ $a->level->title }}</td>
+                            <td class="text-capitalize">{{ $a->section->name }}</td>
+                            <td class="text-capitalize">{{ $a->subject->level }}</td>
                             <td class="text-capitalize">{{ $a->user->firstname }} {{ $a->user->lastname }}</td>
                             <td class="text-capitalize">{{ $a->user->user_id }}</td>
                             <td>
