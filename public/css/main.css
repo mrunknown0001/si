@@ -135,3 +135,8 @@ ul {
    background-color: #136F75;
    color: white;
 }
+
+#profile-picture {
+  max-width: 50% !important;
+  border-radius: 50%;
+}

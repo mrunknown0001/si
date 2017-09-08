@@ -669,7 +669,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
  * Route Group co-admin
  * middleware auth and checkcoadmin
  */
-Route::group(['prefix' => 'ca', 'middleware' => ['auth', 'checkcoadmin']], function () {
+Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'checkcoadmin']], function () {
 
 	/*
 	 * Route to co-admin dashboard

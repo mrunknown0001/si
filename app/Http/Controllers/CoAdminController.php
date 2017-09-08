@@ -47,7 +47,13 @@ class CoAdminController extends Controller
         $tq = GradeImport::where('quarter_id', 3)->where('block_id', $b->id)->get();
         $foq = GradeImport::where('quarter_id', 4)->where('block_id', $b->id)->get();
 
-        return view('coadmin.co-admin-home', ['school_year' => $school_year, 'quarter' => $quarter, 'first_quarter' => $fq, 'second_quarter' => $sq, 'third_quarter' => $tq, 'forth_quarter' => $foq, 'b' => $b]);
+
+
+        $subjects = SubjectAssign::where('user_id', Auth::user()->id)->get();
+
+        return $subjects;
+
+        return view('coadmin.co-admin-home', ['subjects' => $subjects]);
     }
 
 

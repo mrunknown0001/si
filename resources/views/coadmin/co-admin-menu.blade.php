@@ -1,5 +1,5 @@
 <?php
-    $ba = App\BlockAssign::where('co_admin', Auth::user()->id)->first();
+    $ba = App\SubjectAssign::where('user_id', Auth::user()->id)->get();
 ?>
 
 <!-- Navigation -->
@@ -40,37 +40,30 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
+                <li class="text-center">
+                    <a href="{{ route('co_admin_home') }}"><img src="{{ URL::asset('uploads/profile/default.jpg') }}" alt="" class="img-thumbnail" id="profile-picture"></a>
+                </li><!-- 
                 <li>
-                    <a href="{{ route('co_admin_home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                </li>
-                <!-- <li>
-                    <a><i class="fa fa-book fa-fw"></i> My Subjects<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ route('co_admin_my_subjects') }}">View My Subjects</a>
-                        </li>
-                    </ul>
-                    
+                    <a href="#"><i class="fa fa-book"></i> My Subject Loads</a>
                 </li> -->
-                @if(!empty($ba))
                 <li>
-                    <a><i class="fa fa-list fa-fw"></i> My Grade Blocks<span class="fa arrow"></span></a>
+                    <a><i class="fa fa-book fa-fw"></i> My Subject Loads<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        @foreach($ba as $s)
                         <li>
-                            <a href="{{ route('co_admin_my_grade_blocks') }}">View My Grade Blocks</a>
+                            <a href="#">{{ ucwords($s->subject->title) }}</a>
                         </li>
+                        @endforeach
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
-                @endif
                 <li>
-                    <a href="{{ route('co_admin_import_grades') }}"><span class="glyphicon glyphicon-import"></span> Import Grades</a>
+                    <a><i class="fa fa-graduation-cap fa-fw"></i> My Students<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#">Grade/Section 1</a></li>
+                        <li><a href="#">Grade/Section 2</a></li>
+                        <li><a href="#">Grade/Section 3</a></li>
+                    </ul>
                 </li>
-                @if(!empty($ba))
-                <li>
-                    <a href="{{ route('co_admin_view_export_grade') }}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Export Grade</a>
-                </li>
-                @endif
                 
             </ul>
         </div>
