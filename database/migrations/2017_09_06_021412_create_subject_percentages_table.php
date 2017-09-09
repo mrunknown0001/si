@@ -15,7 +15,9 @@ class CreateSubjectPercentagesTable extends Migration
     {
         Schema::create('subject_percentages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('subject_id');
+            $table->integer('subject_id')->unsigned();
+            $table->integer('section_id')->unsigned(); // block id
+            $table->integer('user_id')->unsigned();
             $table->smallinteger('activity')->unsigned();
             $table->smallinteger('assignment')->unsigned();
             $table->smallinteger('attendance')->unsigned();

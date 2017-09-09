@@ -101,7 +101,7 @@
                             <a href="{{ route('students_import') }}"><i class="fa fa-clone" aria-hidden="true"></i> Batch Import Students</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add Student</a>
+                            <a href="{{ route('add_student') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add Student</a>
                         </li>
                         <li>
                             <!-- <a href="{{ route('students_filter') }}">Students Filter</a> -->

@@ -1,5 +1,9 @@
 <?php
+
     $ba = App\SubjectAssign::where('user_id', Auth::user()->id)->get();
+    $sections = App\SubjectAssign::where('user_id', Auth::user()->id)->distinct()->get(['section_id']);
+    $sub = App\SubjectAssign::where('user_id', Auth::user()->id)->get();
+
 ?>
 
 <!-- Navigation -->
@@ -11,7 +15,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('co_admin_home') }}">{{ !empty($ba)? 'Adviser' : 'Teacher' }} Panel</a>
+        <a class="navbar-brand" href="{{ route('co_admin_home') }}">Teacher's Panel</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -51,17 +55,37 @@
                     <ul class="nav nav-second-level">
                         @foreach($ba as $s)
                         <li>
-                            <a href="#">{{ ucwords($s->subject->title) }}</a>
+                            <a href="#"><i class="fa fa-circle-o"></i> {{ ucwords($s->subject->title) }}</a>
                         </li>
                         @endforeach
+                        @if(count($ba) == 0)
+                        <li>
+                            <a href="javascript: void(0)">Empty Subject Load</a>
+                        </li>
+                        @endif
                     </ul>
                 </li>
                 <li>
                     <a><i class="fa fa-graduation-cap fa-fw"></i> My Students<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="#">Grade/Section 1</a></li>
-                        <li><a href="#">Grade/Section 2</a></li>
-                        <li><a href="#">Grade/Section 3</a></li>
+                        @foreach($sections as $sec)
+                        <li><a><i class="fa fa-circle-o"></i> {{ ucwords($sec->section->level) }} - {{ ucwords($sec->section->name) }} <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                @foreach($sub as $subject)
+                                    @if($sec->section_id == $subject->section_id )
+                                    <li>
+                                        <a href="#"><i class="fa fa-minus"></i> {{ ucwords($subject->subject->title) }}</a>
+                                    </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                        @endforeach
+                        @if(count($sections) == 0)
+                        <li>
+                            <a href="javascript: void(0)">No Section Assigned</a>
+                        </li>
+                        @endif
                     </ul>
                 </li>
                 

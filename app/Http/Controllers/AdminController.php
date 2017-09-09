@@ -124,7 +124,7 @@ class AdminController extends Controller
         $add->address = $address;
         $add->email = $email;
         $add->mobile = $mobile;
-        $add->password = bcrypt('gjc1946'); // gjc1946 is the default password for teachers
+        $add->password = bcrypt('0000'); // gjc1946 is the default password for teachers
         $add->privilege = 2;
         $add->status = 1;
 
@@ -317,8 +317,8 @@ class AdminController extends Controller
      */
     public function getAllStudents()
     {
-        $students = DB::table('users')->where('privilege', '3')->where('status', '1')->orderBy('lastname', 'asc')
-                ->join('student_datas', 'users.user_id', '=', 'student_datas.student_id')
+        $students = User::where('privilege', 3)->where('status', 1)
+                ->orderBy('lastname', 'asc')
                 ->paginate(15);
 
     	return view('admin.students-view', ['students'=> $students]);
@@ -328,17 +328,23 @@ class AdminController extends Controller
     /*
      * editStudentInfo() method is use to edit info of the students
      */
-    public function editStudentInfo($lrn = null)
+    public function editStudentInfo($student_id = null)
     {
         // Get the student User info
-        $student = User::where('user_id', $lrn)->first();
+        $student = User::where('user_id', $student_id)->first();
+
+        // get all grade and section
+        $sections = ClassBlock::orderBy('level', 'asc')->get();
+
+        // student info
+        $info = StudentInfo::where('student_id', $student_id)->first();
 
         // Check if the stuent lrn is existing or not
         if(empty($student)) {
             return abort(404);
         }
 
-        return view('admin.students-edit', ['s' => $student]);
+        return view('admin.students-edit', ['s' => $student, 'sections' => $sections, 'info' => $info]);
     }
 
 
@@ -465,7 +471,8 @@ class AdminController extends Controller
      */
     public function getAllSubjects()
     {
-        $subjects = Subject::paginate(15);
+        $subjects = Subject::orderBy('level','asc')
+                        ->paginate(15);
 
     	return view('admin.subjects-view', ['subjects' => $subjects]);
     }
@@ -799,7 +806,7 @@ class AdminController extends Controller
     public function getAllGradeBlocks()
     {
 
-        $blocks = ClassBlock::paginate();
+        $blocks = ClassBlock::paginate(15);
 
         return view('admin.grade-block-view', ['blocks' => $blocks]);
     }
@@ -1304,9 +1311,13 @@ class AdminController extends Controller
      *
      */
 
-    public function assignSubjectPerGrade($level = 0) {
+    public function assignSubjectPerGrade($level = '') {
 
         if($level == '') {
+            return view('admin.co-admin-assign-subject-select');
+        }
+
+        if($level != 'grade7' || $level != 'grade8' || $level != 'grade9' || $level != 'grade10' || $level != 'grade11' || $level != 'grade12') {
             return view('admin.co-admin-assign-subject-select');
         }
         /*
@@ -1364,6 +1375,110 @@ class AdminController extends Controller
         return 'Error Occured!';
 
     }
+
+
+
+    // ADD STUDENT
+    // ONE BY ONE
+    public function showAddStudent() {
+        // get all grade and section
+        $sections = ClassBlock::orderBy('level', 'asc')->get();
+
+        return view('admin.students-add', ['sections' => $sections]);
+    }
+
+
+    // FUNCTION TO ADD STUDENTS IN database
+    public function postAddStudent(Request $request) {
+         /*
+         * Input Validation
+         */
+        $this->validate($request, [
+            'grade_section' => 'required',
+            'student_number' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'birthday' => 'required',
+            'sex' => 'required',
+            'address' => 'required',
+            'email' => 'required|email|unique:users',
+            'mobile' => 'required'
+            ]);
+
+        // Assigning Values to variables
+        $grade_section = $request['grade_section'];
+        $student_number = $request['student_number'];
+        $firstname = $request['firstname'];
+        $lastname = $request['lastname'];
+        $birthday = date('Y-m-d', strtotime($request['birthday']));
+        $sex = $request['sex'];
+        $address = $request['address'];
+        $email = $request['email'];
+        $mobile = $request['mobile'];
+
+
+        /*
+         * GET SECTION NAME AND GRADE LEVEL
+         */
+        $grade = ClassBlock::findorfail($grade_section);
+
+        // Check User ID Availability
+        $user_id_check = User::where('user_id', $student_number)->first();
+
+        if(!empty($user_id_check)) {
+            return redirect()->route('add_student')->with('error_msg', 'This Student Number/ID Number: ' . $student_number . ' is already in use.');
+        }
+
+        // Check email availability
+        $email_check = User::where('email', $email)->first();
+
+        if(!empty($email_check)) {
+            return redirect()->route('co_admin_add')->with('error_msg', 'This email: ' . $email . ' is registered with different account, please choose different active email address.');
+        }
+
+        // Add in users table
+        $add = new User();
+
+        $add->user_id = $student_number;
+        $add->firstname = $firstname;
+        $add->lastname = $lastname;
+        $add->birthday = $birthday;
+        $add->sex = $sex;
+        $add->address = $address;
+        $add->email = $email;
+        $add->mobile = $mobile;
+        $add->password = bcrypt('0000'); 
+        $add->privilege = 3; // 1 for admin, 2 for teachers, 3 for students
+        $add->status = 1;
+
+        // Add in studentsinfos table
+        $add_info = new StudentInfo();
+
+        $add_info->student_id = $student_number;
+        $add_info->level = $grade->level;
+        $add_info->section = $grade_section;
+
+
+        if($add->save() && $add_info->save()) {
+
+            // Add log to admin
+            $log = new UserLog();
+
+            $log->user_id = Auth::user()->id;
+            $log->action = 'Added Student with User Student Number/ID Number: ' . $student_number;
+
+            $log->save();
+
+            return redirect()->route('add_student')->with('success', 'Student Added: ' . ucwords($firstname) . ' ' . ucwords($lastname));
+
+        }
+
+        // If something is wrong
+        return redirect()->route('add_student')->with('error_msg', 'Something is Wrong! Please reload this page.');
+
+
+    }
+
 
 
     /*

@@ -48,8 +48,8 @@
                         @foreach($students as $s)
                             <tr>
                                 <td>{{ $s->user_id }}</td>
-                                <td>{{ $s->lastname }}</td>
-                                <td>{{ $s->firstname }}</td>
+                                <td class="text-capitalize">{{ $s->lastname }}</td>
+                                <td class="text-capitalize">{{ $s->firstname }}</td>
                                 <td>
                                     <div class="btn-group btn-group-xs">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#{{ $s->user_id }}-view"><i class="fa fa-eye" aria-hidden="true"></i></button>

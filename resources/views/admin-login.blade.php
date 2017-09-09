@@ -68,6 +68,9 @@
                 </div>
             </div>
         </div>
+
+        @include('includes.footer')
+
         {{-- jQuery --}}
         <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
 

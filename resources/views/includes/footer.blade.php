@@ -1,0 +1,1 @@
+<footer class="text-center">&copy; Copyright {{ date('Y') }}</footer>

@@ -18,7 +18,7 @@ class StudentInfo extends Model
 
     public function block()
     {
-    	return $this->belongsTo('App\ClassBlock', 'class_block', 'id');
+    	return $this->belongsTo('App\ClassBlock', 'section', 'id');
     }
 
     public function data()

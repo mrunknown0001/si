@@ -28,6 +28,24 @@ Route::get('/', function () {
 
 
 Route::get('/home', function() {
+	/*
+	 * Checking if there are authenticated user and redirecting
+	 * to the corrent path
+	 */
+	if(Auth::check()) {
+		if(Auth::user()->privilege == 1) {
+			return redirect()->route('admin_home');
+		}
+		else if(Auth::user()->privilege == 2) {
+			return redirect()->route('co_admin_home');
+		}
+		else if(Auth::user()->privilege == 3) {
+			return redirect()->route('students_home');
+		}
+		else {
+			return view('home');
+		}
+	}
 	return view('home');
 })->name('login');
 
@@ -35,6 +53,24 @@ Route::get('/home', function() {
  * Route to go to student login
  */
 Route::get('/student/login', function () {
+	/*
+	 * Checking if there are authenticated user and redirecting
+	 * to the corrent path
+	 */
+	if(Auth::check()) {
+		if(Auth::user()->privilege == 1) {
+			return redirect()->route('admin_home');
+		}
+		else if(Auth::user()->privilege == 2) {
+			return redirect()->route('co_admin_home');
+		}
+		else if(Auth::user()->privilege == 3) {
+			return redirect()->route('students_home');
+		}
+		else {
+			return view('home');
+		}
+	}
 	return view('student-login');
 })->name('student_login');
 
@@ -43,6 +79,24 @@ Route::get('/student/login', function () {
  * Admin Login
  */
 Route::get('/admin/login', function () {
+	/*
+	 * Checking if there are authenticated user and redirecting
+	 * to the corrent path
+	 */
+	if(Auth::check()) {
+		if(Auth::user()->privilege == 1) {
+			return redirect()->route('admin_home');
+		}
+		else if(Auth::user()->privilege == 2) {
+			return redirect()->route('co_admin_home');
+		}
+		else if(Auth::user()->privilege == 3) {
+			return redirect()->route('students_home');
+		}
+		else {
+			return view('home');
+		}
+	}
 	return view('admin-login');
 })->name('admin_login');
 
@@ -51,6 +105,24 @@ Route::get('/admin/login', function () {
  * Teacher's Login
  */
 Route::get('/teacher/login', function () {
+	/*
+	 * Checking if there are authenticated user and redirecting
+	 * to the corrent path
+	 */
+	if(Auth::check()) {
+		if(Auth::user()->privilege == 1) {
+			return redirect()->route('admin_home');
+		}
+		else if(Auth::user()->privilege == 2) {
+			return redirect()->route('co_admin_home');
+		}
+		else if(Auth::user()->privilege == 3) {
+			return redirect()->route('students_home');
+		}
+		else {
+			return view('home');
+		}
+	}
 	return view('teacher-login');
 })->name('teachers_login');
 
@@ -660,6 +732,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkadmin']], func
 	Route::post('export', [
 		'uses' => 'AdminController@exportGrade',
 		'as' => 'admin_post_export_grade'
+		]);
+
+
+	// ROUTE TO ADD STUDENT ONE BY ONE
+	Route::get('add-student', [
+		'uses' => 'AdminController@showAddStudent',
+		'as' => 'add_student'
+		]);
+
+
+	// route to go to the functio in admin controller to add students one by one
+	Route::post('add-student', [
+		'uses' => 'AdminController@postAddStudent',
+		'as' => 'post_add_student'
 		]);
 
 });

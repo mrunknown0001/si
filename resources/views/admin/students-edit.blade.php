@@ -29,22 +29,40 @@
                     <div class="panel-body">
                         <form action="{{ route('admin_post_update_student_info') }}" method="POST" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" name="lrn" value="{{ $s->user_id }}" class="form-control" placeholder="Student's LRN" />
+                                <select name="grade_section" id="" class="form-control" autofocus="">
+                                    <option value="">Select Grade &amp; Section</option>
+                                    @foreach($sections as $sec)
+                                    <option @if($sec->id == $info->section) selected @endif value="{{ $sec->id }}">{{ ucwords($sec->level) }} - {{ ucwords($sec->name) }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="firstname" value="{{ $s->firstname }}" class="form-control" placeholder="First Name" />
+                                <input type="text" name="student_number" value="{{ $s->user_id }}" class="form-control text-capitalize" placeholder="Student Number" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="lastname" value="{{ $s->lastname }}" class="form-control" placeholder="Last Name" />
+                                <input type="text" name="firstname" value="{{ $s->firstname }}" class="form-control text-capitalize" placeholder="First Name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lastname" value="{{ $s->lastname }}" class="form-control text-capitalize" placeholder="Last Name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="address" value="{{ $s->address }}" class="form-control text-capitalize" placeholder="Address" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="birthday" value="{{ date('m/d/Y', strtotime($s->birthday)) }}" class="form-control" placeholder="MM/DD/YYY" />
+                            </div>
+                            <div class="form-group">
+                                <select name="sex" id="sex" class="form-control">
+                                    <option value="">Select Gender...</option>
+                                    <option @if($s->sex == 'Male') selected @endif value="Male">Male</option>
+                                    <option @if($s->sex == 'Female') selected @endif value="Female">Female</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="email" value="{{ $s->email }}" class="form-control" placeholder="Email" />
                             </div>
                             <div class="form-group">
                                 <input type="text" name="mobile" value="{{ $s->mobile }}" class="form-control" placeholder="11 Digit Mobile Number" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="birthday" value="{{ date('m/d/Y', strtotime($s->birthday)) }}" class="form-control" placeholder="MM/DD/YYY" />
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />

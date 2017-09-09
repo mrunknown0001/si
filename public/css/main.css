@@ -136,7 +136,37 @@ ul {
    color: white;
 }
 
+/*Profile Picture Style*/
+
 #profile-picture {
   max-width: 50% !important;
   border-radius: 50%;
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0px !important;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/*COLOR UPDATES*/
+
+.panel-primary > .panel-heading {
+  background-color: #0D47A1 !important;
+}
+
+li > a {
+  color: #0D47A1 !important;
+}
+
+button.btn.btn-primary {
+  background-color: #0D47A1 !important;  
+}
+
+a.btn.btn-primary {
+  background-color: #0D47A1 !important; 
 }

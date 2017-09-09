@@ -40,6 +40,32 @@ class DatabaseSeeder extends Seeder
             'address' => 'Tarlac'
             ]);
 
+        DB::table('users')->insert([
+            'user_id' => '0002-2222',
+            'firstname' => 'Juan',
+            'lastname' => 'Dela Cruz',
+            'email' => 'teacher.juan@admin.com',
+            'mobile' => '09222222222',
+            'password' => bcrypt('2222'),
+            'privilege' =>'2',  // co-admin privilege // Adviser Privillege
+            'birthday' => date('Y-m-d', strtotime('10/1/1992')),
+            'sex' => 'Male',
+            'address' => 'Tarlac'
+            ]);
+
+        DB::table('users')->insert([
+            'user_id' => '0003-3333',
+            'firstname' => 'Juana',
+            'lastname' => 'Dela Cruz',
+            'email' => 'teacher.juana@admin.com',
+            'mobile' => '09222222222',
+            'password' => bcrypt('2222'),
+            'privilege' =>'2',  // co-admin privilege // Adviser Privillege
+            'birthday' => date('Y-m-d', strtotime('10/1/1992')),
+            'sex' => 'Female',
+            'address' => 'Tarlac'
+            ]);
+
 
         /*
          * Insert only one - Quarters
@@ -68,62 +94,128 @@ class DatabaseSeeder extends Seeder
             'finish' => 0
             ]);
 
+        DB::table('subjects')->insert([
+            'level' => 'grade7',
+            'title' => 'math1',
+            'description' => 'mathematics1'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade7',
+            'title' => 'science1',
+            'description' => 'science 1 biology'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade7',
+            'title' => 'history1',
+            'description' => 'asian history'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade8',
+            'title' => 'math2',
+            'description' => 'algebra'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade8',
+            'title' => 'physics',
+            'description' => 'physical science'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade9',
+            'title' => 'trigonometry',
+            'description' => 'trygonometry'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade10',
+            'title' => 'math101',
+            'description' => 'fundamentals of calculus'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade11',
+            'title' => 'history 3',
+            'description' => 'world history'
+            ]);
+
+        DB::table('subjects')->insert([
+            'level' => 'grade12',
+            'title' => 'PE',
+            'description' => 'physical education'
+            ]);
 
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade7',
+            'name' => 'red'
+            ]);
 
-        /*
-         * Grade Levels
-         */
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'GRD7',
-        //     'title' => 'Grade 7',
-        //     'description' => 'Grade 7'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade7',
+            'name' => 'blue'
+            ]);
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade7',
+            'name' => 'green'
+            ]);
 
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'GRD8',
-        //     'title' => 'Grade 8',
-        //     'description' => 'Grade 8'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade8',
+            'name' => 'nara'
+            ]);
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade8',
+            'name' => 'acacia'
+            ]);
 
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'GRD9',
-        //     'title' => 'Grade 9',
-        //     'description' => 'Grade 9'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade8',
+            'name' => 'red'
+            ]);
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade8',
+            'name' => 'mahogany'
+            ]);
 
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'GRD10',
-        //     'title' => 'Grade 10',
-        //     'description' => 'Grade 10'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade9',
+            'name' => 'river'
+            ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade9',
+            'name' => 'ocean'
+            ]);
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade10',
+            'name' => 'earth'
+            ]);
 
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'JUNIOR',
-        //     'title' => 'Junior',
-        //     'description' => 'Junior High'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade10',
+            'name' => 'mars'
+            ]);
 
+        DB::table('class_blocks')->insert([
+            'level' => 'grade11',
+            'name' => 'eagle'
+            ]);
 
-        // DB::table('grade_levels')->insert([
-        //     'code' => 'SENIOR',
-        //     'title' => 'Senior',
-        //     'description' => 'Senior'
-        //     ]);
+        DB::table('class_blocks')->insert([
+            'level' => 'grade11',
+            'name' => 'parrot'
+            ]);
 
-
-        /*
-         * SAmple Grade Block
-         */
-        // DB::table('class_blocks')->insert([
-        //     'code' => 'Mahusay',
-        //     'name' => 'Mahusay',
-        //     'description' => 'Mahusay'
-        //     ]);
-
+        DB::table('class_blocks')->insert([
+            'level' => 'grade12',
+            'name' => 'mahusay'
+            ]);
     }
 }
